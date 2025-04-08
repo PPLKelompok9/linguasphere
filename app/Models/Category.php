@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $table = 'category';
+    protected $table = 'categories';
     protected $fillable = ['name'];
     public function courses(){
         return $this->hasMany(Course::class, 'id_category');

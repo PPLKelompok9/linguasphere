@@ -10,6 +10,11 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Component\TextInput;
+use Filament\Forms\Component\Select;
+use Filament\Forms\Component\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -23,7 +28,10 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('email')->email()->label('Email')->maxLength(255)->required(),
+                TextInput::make('password')->password()->label('Kata Sandi')->required()->minLength(9)->maxLength(255)->helperText('Kata Sandi Minimal 9 Karakter'),
+                TextInput::make('name')->label('Nama Lengkap')->maxLength(255)->required,
+                Select::make('roles')->label('Roles')->required()->relationship('roles','name')
             ]);
     }
 
@@ -31,7 +39,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('photo'),
+                TextColumn::make('name')->searchable(),
+                TextColumn::make('roles.name')
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

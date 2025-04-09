@@ -9,11 +9,17 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
+use Filament\Panel;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, softDeletes, HasRoles;
+
+    public function canAccessPanel(Panel $panel): bool {
+        return $this->hasRole('admin');
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +31,6 @@ class User extends Authenticatable
         'email',
         'password',
         'photo',
-        'roles',
     ];
 
     /**
@@ -52,7 +57,7 @@ class User extends Authenticatable
     }
 
     public function scholarshipdetail(){
-        $return->hasMNay(ScholarshipDetail::class);
+        $return->hasMaNy(ScholarshipDetail::class);
     }
 
     public function pretest(){

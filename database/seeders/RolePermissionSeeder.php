@@ -30,7 +30,7 @@ class RolePermissionSeeder extends Seeder
         $admin = User::create([
             'name' => 'Admin Linguasphere',
             'email' => 'admin@linguasphere.com',
-            'password' => bcrypt('linguaspehere@09')
+            'password' => bcrypt('linguasphere@09')
         ]);
         
         $admin->assignRole($adminPermissionRole);

@@ -17,4 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
+Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
+
 require __DIR__.'/auth.php';

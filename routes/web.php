@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [ExternalController::class, 'index'])->name('external.index');
+// Route::get('/', [ExternalController::class, 'index'])->name('external.index');
 Route::get('/price',[ExternalController::class, 'price'])->name('external.price');
 Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
 

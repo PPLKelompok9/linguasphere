@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
 
 class CourseResource extends Resource
 {
@@ -23,7 +26,12 @@ class CourseResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')->label('Nama Kursus')->required()->maxLength(255),
+                FileUpload::make('cover')->label('Gambar Kursus')->required()->hint('Upload cover gambar kursus'),
+                TextInput::make('price')->numeric()->inputMode('decimal')->label('Harga Kursus')->required(),
+                TextInput::make('diskon_price')->numeric()->inputMode('decimal')->label('Harga Diskon')->required()->hint('Jika tidak ada harga diskon, input 0'),
+                TextInput::make('level')->label('Level')->required(),
+                RichEditor::make('description')->label('Deskripsi Kursus')->required(),
             ]);
     }
 

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 
 class CourseResource extends Resource
 {
@@ -26,12 +27,13 @@ class CourseResource extends Resource
     {
         return $form
             ->schema([
+                Select::make('id_agency')->label('Lembaga Bahasa')->relationship('agency', 'name')->searchable()->preload(),
                 TextInput::make('name')->label('Nama Kursus')->required()->maxLength(255),
                 FileUpload::make('cover')->label('Gambar Kursus')->required()->hint('Upload cover gambar kursus'),
                 TextInput::make('price')->numeric()->inputMode('decimal')->label('Harga Kursus')->required(),
-                TextInput::make('diskon_price')->numeric()->inputMode('decimal')->label('Harga Diskon')->required()->hint('Jika tidak ada harga diskon, input 0'),
-                TextInput::make('level')->label('Level')->required(),
-                RichEditor::make('description')->label('Deskripsi Kursus')->required(),
+                TextInput::make('diskon_price')->numeric()->inputMode('decimal')->label('Harga Diskon')->required()->default(0),
+                Select::make('level')->label('Level')->required()->options(['beginner'=>'Pemula','intermediate'=>'Menengah','advanced'=>'profesional'])->default('beginner'),
+                TextInput::make('description')->label('Deskripsi Kursus')->required(),
             ]);
     }
 
@@ -39,7 +41,8 @@ class CourseResource extends Resource
     {
         return $table
             ->columns([
-                //
+              
+
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relation\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Course extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['name', 'description', 'cover', 'slug','price', 'diskon_price', 'level', 'id_agency', 'id_category'];
+    protected $table = 'courses';
+    protected $fillable = ['name', 'description', 'cover', 'slug','price', 'diskon_price', 'level', 'id_agency'];
     public function setNameAttribute($value){
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
@@ -18,7 +20,5 @@ class Course extends Model
     public function agency():BelongsTo{
         return $this->belongsTo(Agency::class);
     }
-    public function category():BelongsTo{
-        return $this->belongsTo(Category::class);
-    }
+
 }

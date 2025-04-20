@@ -28,9 +28,9 @@ class RolePermissionSeeder extends Seeder
         ]);
 
         $admin = User::create([
-            'name' => 'Admin Relingo',
-            'email' => 'admin@relingo.com',
-            'password' => bcrypt('relingo354')
+            'name' => 'Admin Linguasphere',
+            'email' => 'admin@linguasphere.com',
+            'password' => bcrypt('linguasphere@09')
         ]);
         
         $admin->assignRole($adminPermissionRole);

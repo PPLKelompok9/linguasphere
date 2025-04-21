@@ -5,15 +5,57 @@ use App\Models\Agency;
 use App\Models\Path;
 use App\Models\Course;
 use App\Models\PathDetail;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Filament\Facades\Filament;
+use Spatie\Permission\Models\Role;
+use PHPUnit\Framework\Attributes\Test;
+
 
 class LearningPathTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function a_learning_path_can_be_created()
+    protected function setUp(): void{
+        parent::setUp();
+        Role::firstOrCreate(['name'=>'admin']);
+
+    }
+
+    private function createAdmin(): User
+    {
+        $user = User::create([
+            'name' => 'Test Admin',
+            'email' => 'testadmin@admin.com',
+            'password' => bcrypt('password'),
+        ]);
+        $user->assignRole('admin');
+        return $user;
+    }
+
+    private function createAgency(): Agency{
+        return Agency::create([
+            'name' => 'English Bandung',
+            'slug' => 'english-bdg',
+            'cover' => 'agency-default-cover.jpg',
+            'description' => 'This is a default description for the agency',
+            'address' => 'Jl. Soekarno-Hatta, Bandung',
+            'contact' => 'contact@example.com',
+        ]);
+    }
+
+    #[Test]
+    public function learningpathaccessiblebyadmin(){
+       $user = $this->createAdmin();
+       Filament::setCurrentPanel(Filament::getPanel('admin'));
+       $this->actingAs($user);
+       $response = $this->get('/admin/paths');
+       $response->assertStatus(200);
+    }
+
+    #[Test]
+    public function learningpathcreated()
     {
         $path = Path::create([
             'name' => 'English for Beginners',
@@ -25,8 +67,8 @@ class LearningPathTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function a_learning_path_can_have_multiple_courses()
+    #[Test]
+    public function learningpathhavemultiplecourses()
     {
         
         $path = Path::create([
@@ -34,14 +76,7 @@ class LearningPathTest extends TestCase
             'description' => 'Advanced level English learning path.',
         ]);
 
-        $agency = Agency::create([
-            'name' => 'English Agency',
-            'slug' => 'english-agency',
-            'cover' => 'agency-default-cover.jpg',
-            'description' => 'This is a default description for the agency',
-            'address' => 'This is a default description for the agency',
-            'contact' => 'This is a default description for the agency',
-        ]);
+        $agency = $this->createAgency();
 
         $course1 = Course::create([
             'name' => 'Advanced English Course 1',
@@ -81,19 +116,11 @@ class LearningPathTest extends TestCase
         $this->assertCount(2, $path->pathDetails);
     }
 
-    /** @test */
-    public function path_detail_can_access_related_course()
+    #[Test]
+    public function pathdetailcasaccessrelatedcourses()
     {
         
-        $agency = Agency::create([
-            'name' => 'English Agency',
-            'slug' => 'english-agency',
-            'cover' => 'agency-default-cover.jpg',
-            'description' => 'This is a default description for the agency',
-            'address' => 'This is a default description for the agency',
-            'contact' => 'This is a default description for the agency',
-        ]);
-
+        $agency = $this->createAgency();
     
     $course = Course::create([
         'name' => 'Advanced English',

@@ -16,6 +16,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
+
 
 class CourseResource extends Resource
 {
@@ -41,7 +43,10 @@ class CourseResource extends Resource
     {
         return $table
             ->columns([
-              
+                TextColumn::make('name')->label('Kursus')->searchable()->sortable(),
+                TextColumn::make('agency.name')->label('Lembaga Bahasa')->searchable(),
+                TextColumn::make('price')->label('Harga')->sortable(),
+                TextColumn::make('level')->label('level')->sortable()
 
             ])
             ->filters([

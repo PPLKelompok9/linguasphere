@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
 
 class PathResource extends Resource
 {
@@ -23,7 +25,8 @@ class PathResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')->required()->label('Path'),
+                TextInput::make('description')->required()->label('Deskripsi'),
             ]);
     }
 
@@ -31,7 +34,9 @@ class PathResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->searchable(),
+                TextColumn::make('description')->limit(50),
+                TextColumn::make('created_at')->dateTime()->label('Dibuat'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -51,7 +56,7 @@ class PathResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            \app\Filament\Resources\PathResource\RelationManagers\PathdetailsRelationManager::class,
         ];
     }
 

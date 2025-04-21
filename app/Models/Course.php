@@ -18,7 +18,11 @@ class Course extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
     public function agency():BelongsTo{
-        return $this->belongsTo(Agency::class);
+        return $this->belongsTo(Agency::class, 'id_agency');
+    }
+
+    public function pathDetails(){
+        return $this->hasMany(PathDetail::class, 'id_course');
     }
 
 }

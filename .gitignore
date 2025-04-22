@@ -1,1 +1,26 @@
-node_modules
+# Direktori dan file dependensi
+/vendor/
+node_modules/
+
+# File sementara dan cache
+*.log
+*.bak
+*.swp
+*.swo
+.cache/
+phpunit.result.cache
+
+# File sistem operasi
+.DS_Store
+Thumbs.db
+
+# File IDE dan editor
+.vscode/
+
+# File pengujian dan hasil tes
+coverage/
+phpunit.result.cache
+
+# File database dan dump
+*.sql
+*.dump

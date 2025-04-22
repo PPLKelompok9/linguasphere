@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+        <h2 class="text-lg font-medium text-obito-text-primary">
             {{ __('Profile Information') }}
         </h2>
 
@@ -17,16 +17,22 @@
         @csrf
         @method('patch')
 
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        <div class="flex flex-col gap-2 mt-4">
+            <x-input-label for="name" :value="__('Name')" icon="assets/icons/profile.svg">
+            <x-text-input id="name" type="text" name="name" :value="old('name', $user->name)" required autofocus
+            placeholder="Type your valid full name" />
+            </x-input-label>
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+        <div class="flex flex-col gap-2">
+            <x-input-label for="email" :value="__('Email Address')" icon="assets/icons/sms.svg">
+            <x-text-input id="email" type="email" name="email" :value="old('name', $user->email)" required autofocus autocomplete="email"
+            placeholder="Type your valid email address" />
+            </x-input-label>
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
@@ -48,7 +54,9 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>
+            <span class="font-semibold text-white">{{ __('Save') }}</span>
+            </x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p

@@ -13,7 +13,13 @@
           <img src="assets/photos/sami.png" class="w-full h-full object-cover" alt="profile">
         </div>
         <div>
-          <p class="font-semibold text-lg">{{ Auth::user()->name }}</p>
+          <p class="font-semibold text-lg">
+            @if(Auth::check())
+        {{ Auth::user()->name }}
+      @else
+    Guest
+  @endif
+          </p>
         </div>
         <div class="hidden sm:flex sm:items-center">
           <x-dropdown align="right" width="48">

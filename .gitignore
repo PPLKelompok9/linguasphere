@@ -24,3 +24,5 @@ phpunit.result.cache
 # File database dan dump
 *.sql
 *.dump
+*.sqlite
+*.sqlite3

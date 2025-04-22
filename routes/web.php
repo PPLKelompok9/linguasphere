@@ -26,4 +26,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
+Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
+
 require __DIR__.'/auth.php';

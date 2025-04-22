@@ -8,12 +8,32 @@ use Illuminate\Http\Request;
 
 class SertificationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $query = Sertification::query()->with(['agency', 'category']);
+
+        // Search functionality
+        if ($request->has('search') && !empty($request->search)) {
+            $searchTerm = '%' . $request->search . '%';
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', $searchTerm)
+                  ->orWhere('description', 'like', $searchTerm)
+                  ->orWhereHas('agency', function($q) use ($searchTerm) {
+                      $q->where('name', 'like', $searchTerm);
+                  })
+                  ->orWhereHas('category', function($q) use ($searchTerm) {
+                      $q->where('name', 'like', $searchTerm);
+                  });
+            });
+        }
+
+        // Category Filter
+        if ($request->filled('category')) {
+            $query->where('id_category', $request->category);
+        }
+
+        $sertifications = $query->latest()->get();
         $categories = Category::all();
-        $sertifications = Sertification::with('category')
-            ->orderBy('created_at', 'desc')
-            ->get();
 
         return view('Sertifications.index', compact('sertifications', 'categories'));
     }
@@ -21,7 +41,7 @@ class SertificationController extends Controller
     public function show($slug)
     {
         $sertification = Sertification::where('slug', $slug)
-            ->with('category')
+            ->with(['agency', 'category'])
             ->firstOrFail();
 
         return view('Sertifications.show', compact('sertification'));

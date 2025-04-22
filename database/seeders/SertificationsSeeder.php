@@ -6,7 +6,7 @@ use App\Models\Sertification;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class SertificationSeeder extends Seeder
+class SertificationsSeeder extends Seeder
 {
     public function run(): void
     {

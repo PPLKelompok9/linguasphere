@@ -70,6 +70,15 @@
                             <p class="text-lg font-semibold">{{ $sertification->level }}</p>
                         </div>
                     </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-signal text-purple-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Agency Contact</p>
+                            <p class="text-lg font-semibold">{{ $sertification->agency->contact }}</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Description -->

@@ -6,7 +6,7 @@ use App\Models\Agency;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class AgencySeeder extends Seeder
+class AgenciesSeeder extends Seeder
 {
     public function run(): void
     {

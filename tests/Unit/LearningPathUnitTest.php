@@ -16,12 +16,12 @@ class LearningPathUnitTest extends TestCase
 
     private function createAgency(): Agency{
         return Agency::create([
-            'name' => 'English Bandung',
-            'slug' => 'english-bdg',
-            'cover' => 'agency-default-cover.jpg',
-            'description' => 'This is a default description for the agency',
-            'address' => 'Jl. Soekarno-Hatta, Bandung',
-            'contact' => 'contact@example.com',
+            'name' => 'Kampung British',
+            'slug' => 'kampungbritish-bdg',
+            'cover' => 'kampungbritish-cover.jpg',
+            'description' => 'kampung british bandung',
+            'address' => 'Jl. Soekarno-Hatta, Kota Bandung',
+            'contact' => 'kampungbritishbdg@google.com',
         ]);
     }
 

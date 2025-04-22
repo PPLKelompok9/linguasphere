@@ -21,7 +21,7 @@ return new class extends Migration
             $table->float("diskon_price");
             $table->float("level");
             $table->foreignId("id_agency")->constrained("agencies")->onDelete("cascade");
-            $table->foreignId("id_category")->contrained("categories")->onDelete("cascade");
+            $table->foreignId("id_category")->contrained("categories")->onDelete("cascade")->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

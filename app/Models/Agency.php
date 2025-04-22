@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relation\HasMany;
 use Illuminate\Database\Eloquent\Relation\BelongsTo;
+use Illuminate\Support\Str;
 
 class Agency extends Model
 {
     use SoftDeletes, HasFactory;
 
-    protected $table = 'agency';
-    protected $fillable = ['name', 'cover', 'description', 'slug', 'address', 'contact'];
+    protected $table = 'agencies';
+    protected $fillable = ['name', 'cover', 'description', 'slug', 'address', 'contact','category_id',];
+    public function setNameAttribute($value){
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
     public function courses():HasMany{
         return $this->hasMany(Course::class, 'id_agency');
     }
@@ -22,5 +27,9 @@ class Agency extends Model
     }
     public function partneship():HasMany{
         return $this->hasMany(Partnership::class,'id_agency');
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

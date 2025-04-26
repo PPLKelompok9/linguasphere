@@ -1,29 +1,33 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2 shrink-0">
-                        <img src="{{ asset('assets/logos/logo-64.svg') }}" class="flex shrink-0" alt="logo">
-                        <span class="font-bold text-2xl tracking-wide">Linguasphere</span>
-                    </a>
+                    <a href="{{ route('dashboard') }}">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                    </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+                @if (!request()->routeIs('profile.edit'))
+                  <form action="#" class="relative mt-1.5">
+                     <label class="group">
+                        <input type="text" name="search" id="search" class="appearance-none outline-none ring-1 ring-obito-grey rounded-full w-[400px] py-[14px] px-5 bg-white font-bold placeholder:font-normal placeholder:text-obito-text-secondary group-focus-within:ring-obito-green transition-all duration-300 pr-[50px]" placeholder="Search course by name">
+                        <button type="submit" class="absolute right-0 top-0 h-[52px] w-[52px] flex shrink-0 items-center justify-center">
+                          <img src="{{ asset('assets/icons/search-normal-green-fill.svg') }}" class="flex shrink-0 w-10 h-10" alt="search">
+                        </button>
+                      </label>
+                  </form>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown class="!bg-white" align="right" width="48">
+                <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-obito-green hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -35,7 +39,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link class="hover:!bg-obito-green !text-obito-text-primary hover:!text-white" :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -43,15 +47,15 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link class="hover:!bg-obito-green !text-obito-text-primary hover:!text-white" :href="route('logout')"
+                            <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
-                </x-dropdown>
-            </div>
+                        </x-dropdown>
+                    </div>
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">

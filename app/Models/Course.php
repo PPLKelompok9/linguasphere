@@ -10,19 +10,27 @@ use Illuminate\Support\Str;
 
 class Course extends Model
 {
-    use HasFactory, SoftDeletes;
-    protected $table = 'courses';
-    protected $fillable = ['name', 'description', 'cover', 'slug','price', 'diskon_price', 'level', 'id_agency'];
-    public function setNameAttribute($value){
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
-    }
-    public function agency():BelongsTo{
-        return $this->belongsTo(Agency::class, 'id_agency');
-    }
+  use HasFactory, SoftDeletes;
+  protected $table = 'courses';
+  protected $fillable = ['name', 'description', 'cover', 'slug', 'price', 'diskon_price', 'level', 'id_agency', 'id_category'];
+  public function setNameAttribute($value)
+  {
+    $this->attributes['name'] = $value;
+    $this->attributes['slug'] = Str::slug($value);
+  }
+  public function agency(): BelongsTo
+  {
+    return $this->belongsTo(Agency::class, 'id_agency');
+  }
 
-    public function pathDetails(){
-        return $this->hasMany(PathDetail::class, 'id_course');
-    }
+  public function category(): BelongsTo
+  {
+    return $this->belongsTo(Category::class, 'id_category');
+  }
+
+  public function pathDetails()
+  {
+    return $this->hasMany(PathDetail::class, 'id_course');
+  }
 
 }

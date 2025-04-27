@@ -3,14 +3,15 @@
 use App\Http\Controllers\Pretest\PretestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExternalController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
   return redirect()->route('dashboard');
 });
 
-Route::get('/price', [ExternalController::class, 'price'])->name('external.price');
-Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
+
+Route::get('/courses', [DashboardController::class, 'courses'])->name('dashboard.courses');
 
 Route::get('/dashboard', function () {
   return view('homepage.main');

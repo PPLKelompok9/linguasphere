@@ -13,6 +13,7 @@ Route::get('/', function () {
 
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('/courses/detail', [CourseController::class, 'detail'])->name('courses.detail');
 
 Route::get('/dashboard', function () {
   return view('homepage.main');

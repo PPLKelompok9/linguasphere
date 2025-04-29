@@ -20,10 +20,11 @@
             <main class="relative flex-1 ml-[30rem] mt-[5rem] mr-[5rem] overflow-y-auto ">
                 <div class="flex flex-wrap items-center gap-5 h-[90%]  bg-white shadow-xl rounded-xl p-10">
                     @foreach($coursesByCategory as $category => $courses)
-                    <div class="mx-auto rounded-xl h-[20rem] w-[20rem] flex flex-col justify-center items-center bg-teal-700 shadow-xl/20 transform transition duration-200 hover:-translate-y-5 hover:translate-x-3 hover:shadow-2xl/30 ">
-                        <img src="{{ asset('assets/icons/united-kingdom.png') }}" class="w-24" alt="" srcset="">
-                        <p class="text-white font-bold text-3xl mt-5">{{ $category }} <span>Course</span></p>
-                    </div>
+                    <a href="{{ route('courses.detail') }}" class="mx-auto rounded-xl h-[20rem] w-[20rem] flex flex-col justify-center items-center bg-teal-700 shadow-xl/20 transform transition duration-200 hover:-translate-y-5 hover:translate-x-3 hover:shadow-2xl/30 ">
+                            <img src="{{ Storage::url($courses->first()->category->images) ?? asset('assets/icons/japan.png') }}" class="w-24" alt="logo" srcset="">
+                            <p class="text-white font-bold text-3xl mt-5">{{ $category }} <span>Course</span></p>
+                    </a>
+                    
                     @endforeach
                     {{-- <div class="mx-auto rounded-xl h-[20rem] w-[20rem] flex flex-col justify-center items-center bg-teal-700 shadow-xl/20 transform transition duration-200 hover:-translate-y-5 hover:translate-x-3 hover:shadow-2xl/30 ">
                         <img src="{{ asset('assets/icons/german.png') }}" class="w-24" alt="" srcset="">

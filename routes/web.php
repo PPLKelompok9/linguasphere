@@ -4,6 +4,7 @@ use App\Http\Controllers\Pretest\PretestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExternalController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,7 +12,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/courses', [DashboardController::class, 'courses'])->name('dashboard.courses');
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 
 Route::get('/dashboard', function () {
   return view('homepage.main');
@@ -31,9 +32,7 @@ Route::get('/home', function () {
   return redirect()->route('dashboard');
 })->name('home');
 
-Route::get('/courses', function () {
-  return view('courses.index');
-})->name('courses');
+
 
 Route::get('/pretest', [PretestController::class, 'index'])->name('pretest');
 Route::get('/pretest/{slug}', [PretestController::class, 'show'])->name('pretest.show');

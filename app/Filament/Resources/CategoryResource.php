@@ -14,6 +14,8 @@ use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
 
 class CategoryResource extends Resource
 {
@@ -25,7 +27,8 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('Kategori')->required()->maxLength(255)->helperText("Input Nama Kategori")
+                TextInput::make('name')->label('Kategori')->required()->maxLength(255)->helperText("Input Nama Kategori"),
+                FileUpload::make('images')->required()->label('Foto')->maxSize(2048)
             ]);
     }
 
@@ -33,6 +36,7 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('images'),
                 TextColumn::make('name')->searchable()->sortable(),
             ])
             ->filters([

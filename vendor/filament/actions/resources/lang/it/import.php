@@ -13,6 +13,13 @@ return [
             'file' => [
                 'label' => 'File',
                 'placeholder' => 'Carica un file CSV',
+<<<<<<< HEAD
+=======
+
+                'rules' => [
+                    'duplicate_columns' => '{0} Il file non deve contenere più di un\'intestazione di colonna vuota.|{1,*} Il file non deve contenere intestazioni di colonna duplicate: :columns.',
+                ],
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             ],
 
             'columns' => [
@@ -72,6 +79,10 @@ return [
         'file_name' => 'import-:import_id-:csv_name-failed-rows',
         'error_header' => 'errore',
         'system_error' => 'Errore di sistema, per favore contatta il supporto.',
+<<<<<<< HEAD
+=======
+        'column_mapping_required_for_new_record' => 'La colonna :attribute non è stata mappata ad una colonna nel file, ma è richiesta per la creazione di nuovi record.',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     ],
 
 ];

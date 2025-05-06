@@ -65,6 +65,10 @@ trait DetectsLostConnections
             'SSL: Handshake timed out',
             'SSL error: sslv3 alert unexpected message',
             'unrecognized SSL error code:',
+<<<<<<< HEAD
+=======
+            'SQLSTATE[HY000] [1045] Access denied for user',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             'SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it',
             'SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond',
             'SQLSTATE[HY000] [2002] Network is unreachable',

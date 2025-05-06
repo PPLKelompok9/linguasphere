@@ -52,4 +52,15 @@ return [
 
     ],
 
+<<<<<<< HEAD
+=======
+    'avatar' => [
+        'alt' => 'Avatar di :name',
+    ],
+
+    'logo' => [
+        'alt' => 'Logo di :name',
+    ],
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 ];

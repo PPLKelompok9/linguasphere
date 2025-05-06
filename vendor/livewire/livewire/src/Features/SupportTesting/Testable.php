@@ -26,6 +26,18 @@ class Testable
         protected ComponentState $lastState,
     ) {}
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $name
+     * @param array $params
+     * @param array $fromQueryString
+     * @param array $cookies
+     * @param array $headers
+     *
+     * @return static
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     static function create($name, $params = [], $fromQueryString = [], $cookies = [], $headers = [])
     {
         $name = static::normalizeAndRegisterComponentName($name);
@@ -44,6 +56,14 @@ class Testable
         return new static($requestBroker, $initialState);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string|array<string>|object $name
+     *
+     * @return string
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     static function normalizeAndRegisterComponentName($name)
     {
         if (is_array($otherComponents = $name)) {
@@ -69,6 +89,14 @@ class Testable
         return $name;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param ?string $driver
+     *
+     * @return void
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     static function actingAs(\Illuminate\Contracts\Auth\Authenticatable $user, $driver = null)
     {
         if (isset($user->wasRecentlyCreated) && $user->wasRecentlyCreated) {
@@ -84,21 +112,51 @@ class Testable
         return $this->lastState->getComponent()->getId();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $key
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function get($key)
     {
         return data_get($this->lastState->getComponent(), $key);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param bool $stripInitialData
+     *
+     * @return string
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function html($stripInitialData = false)
     {
         return $this->lastState->getHtml($stripInitialData);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function updateProperty($name, $value = null)
     {
         return $this->set($name, $value);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param array $values
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function fill($values)
     {
         foreach ($values as $name => $value) {
@@ -108,11 +166,27 @@ class Testable
         return $this;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function toggle($name)
     {
         return $this->set($name, ! $this->get($name));
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string|array<string mixed> $name
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function set($name, $value = null)
     {
         if (is_array($name)) {
@@ -126,6 +200,14 @@ class Testable
         return $this;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function setProperty($name, $value)
     {
         if ($value instanceof \Illuminate\Http\UploadedFile) {
@@ -139,11 +221,27 @@ class Testable
         return $this->update(updates: [$name => $value]);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $method
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function runAction($method, ...$params)
     {
         return $this->call($method, ...$params);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $method
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function call($method, ...$params)
     {
         if ($method === '$refresh') {
@@ -163,16 +261,37 @@ class Testable
         ]);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function commit()
     {
         return $this->update();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function refresh()
     {
         return $this->update();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param array $calls
+     * @param array $updates
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function update($calls = [], $updates = [])
     {
         $newState = SubsequentRender::make(
@@ -188,7 +307,19 @@ class Testable
         return $this;
     }
 
+<<<<<<< HEAD
     /** @todo Move me outta here and into the file upload folder somehow... */
+=======
+    /**
+     * @todo Move me outta here and into the file upload folder somehow...
+     *
+     * @param string $name
+     * @param array $files
+     * @param bool $isMultiple
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function upload($name, $files, $isMultiple = false)
     {
         // This method simulates the calls Livewire's JavaScript
@@ -239,6 +370,12 @@ class Testable
         return $this;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $key
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function viewData($key)
     {
         return $this->lastState->getView()->getData()[$key];
@@ -259,6 +396,12 @@ class Testable
         return \Livewire\invade($this->lastState->getComponent());
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function dump()
     {
         dump($this->lastState->getHtml());
@@ -266,11 +409,23 @@ class Testable
         return $this;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return void
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function dd()
     {
         dd($this->lastState->getHtml());
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function tap($callback)
     {
         $callback($this);
@@ -278,6 +433,12 @@ class Testable
         return $this;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $property
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function __get($property)
     {
         if ($property === 'effects') return $this->lastState->getEffects();
@@ -287,6 +448,14 @@ class Testable
         return $this->instance()->$property;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param string $method
+     *
+     * @return $this
+     */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     function __call($method, $params)
     {
         if (static::hasMacro($method)) {

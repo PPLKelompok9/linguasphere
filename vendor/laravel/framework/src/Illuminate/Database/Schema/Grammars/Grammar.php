@@ -169,7 +169,11 @@ abstract class Grammar extends BaseGrammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
+<<<<<<< HEAD
      * @return array|string
+=======
+     * @return list<string>|string
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function compileRenameColumn(Blueprint $blueprint, Fluent $command)
     {
@@ -185,7 +189,11 @@ abstract class Grammar extends BaseGrammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
+<<<<<<< HEAD
      * @return array|string
+=======
+     * @return list<string>|string
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      *
      * @throws \RuntimeException
      */
@@ -427,8 +435,13 @@ abstract class Grammar extends BaseGrammar
      * Add a prefix to an array of values.
      *
      * @param  string  $prefix
+<<<<<<< HEAD
      * @param  array  $values
      * @return array
+=======
+     * @param  array<string>  $values
+     * @return array<string>
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function prefixArray($prefix, array $values)
     {

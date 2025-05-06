@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 class ExternalController extends Controller
 {
-
-
-    public function courses(){
+    public function courses()
+    {
         return view('dashboard.courses');
+    }
+
+    public function path()
+    {
+        return view('external.path');
     }
 }

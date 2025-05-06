@@ -100,6 +100,24 @@ class Uri implements Htmlable, Responsable, Stringable
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Get a URI instance for a controller action.
+     *
+     * @param  string|array  $action
+     * @param  mixed  $parameters
+     * @param  bool  $absolute
+     * @return static
+     *
+     * @throws \InvalidArgumentException
+     */
+    public static function action($action, $parameters = [], $absolute = true): static
+    {
+        return new static(call_user_func(static::$urlGeneratorResolver)->action($action, $parameters, $absolute));
+    }
+
+    /**
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Get the URI's scheme.
      */
     public function scheme(): ?string

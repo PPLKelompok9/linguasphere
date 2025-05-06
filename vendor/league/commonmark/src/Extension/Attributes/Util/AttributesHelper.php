@@ -23,7 +23,11 @@ use League\CommonMark\Util\RegexHelper;
  */
 final class AttributesHelper
 {
+<<<<<<< HEAD
     private const SINGLE_ATTRIBUTE = '\s*([.]-?[_a-z][^\s}]*|[#][^\s}]+|' . RegexHelper::PARTIAL_ATTRIBUTENAME . RegexHelper::PARTIAL_ATTRIBUTEVALUESPEC . ')\s*';
+=======
+    private const SINGLE_ATTRIBUTE = '\s*([.]-?[_a-z][^\s.}]*|[#][^\s}]+|' . RegexHelper::PARTIAL_ATTRIBUTENAME . RegexHelper::PARTIAL_ATTRIBUTEVALUESPEC . ')\s*';
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     private const ATTRIBUTE_LIST   = '/^{:?(' . self::SINGLE_ATTRIBUTE . ')+}/i';
 
     /**

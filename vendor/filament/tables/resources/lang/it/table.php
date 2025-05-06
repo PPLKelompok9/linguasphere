@@ -10,6 +10,13 @@ return [
 
     'columns' => [
 
+<<<<<<< HEAD
+=======
+        'actions' => [
+            'label' => 'Azione|Azioni',
+        ],
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         'text' => [
 
             'actions' => [
@@ -112,6 +119,13 @@ return [
 
         'actions' => [
 
+<<<<<<< HEAD
+=======
+            'apply' => [
+                'label' => 'Applica filtri',
+            ],
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             'remove' => [
                 'label' => 'Rimuovi filtro',
             ],

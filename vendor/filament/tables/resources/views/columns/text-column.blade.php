@@ -281,8 +281,13 @@
                     @if ($isLimitedListExpandable)
                         <x-filament::link
                             color="gray"
+<<<<<<< HEAD
                             tag="button"
                             x-on:click.prevent="isLimited = false"
+=======
+                            tag="div"
+                            x-on:click.prevent.stop="isLimited = false"
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                             x-show="isLimited"
                         >
                             {{ trans_choice('filament-tables::table.columns.text.actions.expand_list', $limitedArrayStateCount) }}
@@ -290,9 +295,15 @@
 
                         <x-filament::link
                             color="gray"
+<<<<<<< HEAD
                             tag="button"
                             x-cloak
                             x-on:click.prevent="isLimited = true"
+=======
+                            tag="div"
+                            x-cloak
+                            x-on:click.prevent.stop="isLimited = true"
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                             x-show="! isLimited"
                         >
                             {{ trans_choice('filament-tables::table.columns.text.actions.collapse_list', $limitedArrayStateCount) }}

@@ -70,7 +70,11 @@ trait CanUpdateState
             (($tableRelationship = $this->getTable()->getRelationship()) instanceof BelongsToMany) &&
             in_array($columnName, $tableRelationship->getPivotColumns())
         ) {
+<<<<<<< HEAD
             $record = $record->{$tableRelationship->getPivotAccessor()};
+=======
+            $record = $record->getRelationValue($tableRelationship->getPivotAccessor());
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         } else {
             $columnName = (string) str($columnName)->replace('.', '->');
         }

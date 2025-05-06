@@ -99,7 +99,11 @@ class RateLimiter
      * @param  string  $key
      * @param  int  $maxAttempts
      * @param  \Closure  $callback
+<<<<<<< HEAD
      * @param  int  $decaySeconds
+=======
+     * @param  \DateTimeInterface|\DateInterval|int  $decaySeconds
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return mixed
      */
     public function attempt($key, $maxAttempts, Closure $callback, $decaySeconds = 60)
@@ -141,7 +145,11 @@ class RateLimiter
      * Increment (by 1) the counter for a given key for a given decay time.
      *
      * @param  string  $key
+<<<<<<< HEAD
      * @param  int  $decaySeconds
+=======
+     * @param  \DateTimeInterface|\DateInterval|int  $decaySeconds
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return int
      */
     public function hit($key, $decaySeconds = 60)
@@ -153,7 +161,11 @@ class RateLimiter
      * Increment the counter for a given key for a given decay time by a given amount.
      *
      * @param  string  $key
+<<<<<<< HEAD
      * @param  int  $decaySeconds
+=======
+     * @param  \DateTimeInterface|\DateInterval|int  $decaySeconds
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @param  int  $amount
      * @return int
      */
@@ -184,7 +196,11 @@ class RateLimiter
      * Decrement the counter for a given key for a given decay time by a given amount.
      *
      * @param  string  $key
+<<<<<<< HEAD
      * @param  int  $decaySeconds
+=======
+     * @param  \DateTimeInterface|\DateInterval|int  $decaySeconds
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @param  int  $amount
      * @return int
      */

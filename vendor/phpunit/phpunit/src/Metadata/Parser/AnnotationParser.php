@@ -407,6 +407,7 @@ final class AnnotationParser implements Parser
             }
         }
 
+<<<<<<< HEAD
         if (method_exists($className, $methodName)) {
             try {
                 $result = array_merge(
@@ -426,6 +427,25 @@ final class AnnotationParser implements Parser
                     ),
                 );
             }
+=======
+        try {
+            $result = array_merge(
+                $result,
+                $this->parseRequirements(
+                    AnnotationRegistry::getInstance()->forMethod($className, $methodName)->requirements(),
+                    'method',
+                ),
+            );
+        } catch (InvalidVersionRequirementException $e) {
+            EventFacade::emitter()->testRunnerTriggeredPhpunitWarning(
+                sprintf(
+                    'Method %s::%s is annotated using an invalid version requirement: %s',
+                    $className,
+                    $methodName,
+                    $e->getMessage(),
+                ),
+            );
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         }
 
         if (!empty($result) &&

@@ -180,6 +180,22 @@ trait EnumeratesValues
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Create a new collection by decoding a JSON string.
+     *
+     * @param  string  $json
+     * @param  int  $depth
+     * @param  int  $flags
+     * @return static<TKey, TValue>
+     */
+    public static function fromJson($json, $depth = 512, $flags = 0)
+    {
+        return new static(json_decode($json, true, $depth, $flags));
+    }
+
+    /**
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Get the average value of a given key.
      *
      * @param  (callable(TValue): float|int)|string|null  $callback
@@ -1046,11 +1062,16 @@ trait EnumeratesValues
      */
     protected function getArrayableItems($items)
     {
+<<<<<<< HEAD
         if (is_array($items)) {
             return $items;
         }
 
         return match (true) {
+=======
+        return match (true) {
+            is_array($items) => $items,
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             $items instanceof WeakMap => throw new InvalidArgumentException('Collections can not be created using instances of WeakMap.'),
             $items instanceof Enumerable => $items->all(),
             $items instanceof Arrayable => $items->toArray(),

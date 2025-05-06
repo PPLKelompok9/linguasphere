@@ -53,7 +53,11 @@ class DumpCommand extends Command
 
         if ($this->option('prune')) {
             (new Filesystem)->deleteDirectory(
+<<<<<<< HEAD
                 $path = database_path('migrations'), $preserve = false
+=======
+                $path = database_path('migrations'), preserve: false
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             );
 
             $info .= ' and pruned';

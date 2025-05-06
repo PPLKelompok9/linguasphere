@@ -40,6 +40,16 @@ trait HasRelationships
     protected $touches = [];
 
     /**
+<<<<<<< HEAD
+=======
+     * The relationship autoloader callback.
+     *
+     * @var \Closure|null
+     */
+    protected $relationAutoloadCallback = null;
+
+    /**
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * The many to many relationship methods.
      *
      * @var string[]
@@ -93,6 +103,100 @@ trait HasRelationships
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Determine if a relationship autoloader callback has been defined.
+     *
+     * @return bool
+     */
+    public function hasRelationAutoloadCallback()
+    {
+        return ! is_null($this->relationAutoloadCallback);
+    }
+
+    /**
+     * Define an automatic relationship autoloader callback for this model and its relations.
+     *
+     * @param  \Closure  $callback
+     * @param  mixed  $context
+     * @return $this
+     */
+    public function autoloadRelationsUsing(Closure $callback, $context = null)
+    {
+        $this->relationAutoloadCallback = $callback;
+
+        foreach ($this->relations as $key => $value) {
+            $this->propagateRelationAutoloadCallbackToRelation($key, $value, $context);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Attempt to autoload the given relationship using the autoload callback.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    protected function attemptToAutoloadRelation($key)
+    {
+        if (! $this->hasRelationAutoloadCallback()) {
+            return false;
+        }
+
+        $this->invokeRelationAutoloadCallbackFor($key, []);
+
+        return $this->relationLoaded($key);
+    }
+
+    /**
+     * Invoke the relationship autoloader callback for the given relationships.
+     *
+     * @param  string  $key
+     * @param  array  $tuples
+     * @return void
+     */
+    protected function invokeRelationAutoloadCallbackFor($key, $tuples)
+    {
+        $tuples = array_merge([[$key, get_class($this)]], $tuples);
+
+        call_user_func($this->relationAutoloadCallback, $tuples);
+    }
+
+    /**
+     * Propagate the relationship autoloader callback to the given related models.
+     *
+     * @param  string  $key
+     * @param  mixed  $models
+     * @param  mixed  $context
+     * @return void
+     */
+    protected function propagateRelationAutoloadCallbackToRelation($key, $models, $context = null)
+    {
+        if (! $this->hasRelationAutoloadCallback() || ! $models) {
+            return;
+        }
+
+        if ($models instanceof Model) {
+            $models = [$models];
+        }
+
+        if (! is_iterable($models)) {
+            return;
+        }
+
+        $callback = fn (array $tuples) => $this->invokeRelationAutoloadCallbackFor($key, $tuples);
+
+        foreach ($models as $model) {
+            // Check if relation autoload contexts are different to avoid circular relation autoload...
+            if ((is_null($context) || $context !== $model) && is_object($model) && method_exists($model, 'autoloadRelationsUsing')) {
+                $model->autoloadRelationsUsing($callback, $context);
+            }
+        }
+    }
+
+    /**
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Define a one-to-one relationship.
      *
      * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
@@ -974,7 +1078,32 @@ trait HasRelationships
      */
     public function relationLoaded($key)
     {
+<<<<<<< HEAD
         return array_key_exists($key, $this->relations);
+=======
+        if (array_key_exists($key, $this->relations)) {
+            return true;
+        }
+
+        [$relation, $nestedRelation] = array_replace(
+            [null, null],
+            explode('.', $key, 2),
+        );
+
+        if (! array_key_exists($relation, $this->relations)) {
+            return false;
+        }
+
+        if ($nestedRelation !== null) {
+            foreach ($this->$relation as $related) {
+                if (! $related->relationLoaded($nestedRelation)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**
@@ -988,6 +1117,11 @@ trait HasRelationships
     {
         $this->relations[$relation] = $value;
 
+<<<<<<< HEAD
+=======
+        $this->propagateRelationAutoloadCallbackToRelation($relation, $value, $this);
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         return $this;
     }
 
@@ -1018,6 +1152,21 @@ trait HasRelationships
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Enable relationship autoloading for this model.
+     *
+     * @return $this
+     */
+    public function withRelationshipAutoloading()
+    {
+        $this->newCollection([$this])->withRelationshipAutoloading();
+
+        return $this;
+    }
+
+    /**
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Duplicate the instance and unset all the loaded relations.
      *
      * @return $this

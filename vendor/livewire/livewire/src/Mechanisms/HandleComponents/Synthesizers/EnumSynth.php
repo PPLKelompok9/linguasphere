@@ -13,10 +13,13 @@ class EnumSynth extends Synth {
         return is_subclass_of($type, 'BackedEnum');
     }
 
+<<<<<<< HEAD
     static function unwrapForValidation($target) {
         return $target->value;
     }
 
+=======
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     static function hydrateFromType($type, $value) {
         if ($value === '') return null;
 

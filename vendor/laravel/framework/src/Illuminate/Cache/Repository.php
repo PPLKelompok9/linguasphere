@@ -7,6 +7,10 @@ use BadMethodCallException;
 use Closure;
 use DateTimeInterface;
 use Illuminate\Cache\Events\CacheFlushed;
+<<<<<<< HEAD
+=======
+use Illuminate\Cache\Events\CacheFlushFailed;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Illuminate\Cache\Events\CacheFlushing;
 use Illuminate\Cache\Events\CacheHit;
 use Illuminate\Cache\Events\CacheMissed;
@@ -584,6 +588,11 @@ class Repository implements ArrayAccess, CacheContract
 
         if ($result) {
             $this->event(new CacheFlushed($this->getName()));
+<<<<<<< HEAD
+=======
+        } else {
+            $this->event(new CacheFlushFailed($this->getName()));
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         }
 
         return $result;

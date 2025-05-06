@@ -2,16 +2,49 @@
 
 namespace Spatie\LaravelPackageTools;
 
+<<<<<<< HEAD
 use Carbon\Carbon;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use ReflectionClass;
+=======
+use Illuminate\Support\ServiceProvider;
+use ReflectionClass;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessAssets;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessBladeComponents;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessCommands;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessConfigs;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessInertia;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessMigrations;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessRoutes;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessServiceProviders;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessTranslations;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessViewComposers;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessViews;
+use Spatie\LaravelPackageTools\Concerns\PackageServiceProvider\ProcessViewSharedData;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Spatie\LaravelPackageTools\Exceptions\InvalidPackage;
 
 abstract class PackageServiceProvider extends ServiceProvider
 {
+<<<<<<< HEAD
+=======
+    use ProcessAssets;
+    use ProcessBladeComponents;
+    use ProcessCommands;
+    use ProcessConfigs;
+    use ProcessInertia;
+    use ProcessMigrations;
+    use ProcessRoutes;
+    use ProcessServiceProviders;
+    use ProcessTranslations;
+    use ProcessViewComposers;
+    use ProcessViews;
+    use ProcessViewSharedData;
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     protected Package $package;
 
     abstract public function configurePackage(Package $package): void;
@@ -29,7 +62,12 @@ abstract class PackageServiceProvider extends ServiceProvider
             throw InvalidPackage::nameIsRequired();
         }
 
+<<<<<<< HEAD
         $this->registerConfigs();
+=======
+        $this->registerPackageConfigs();
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         $this->packageRegistered();
 
         return $this;
@@ -44,6 +82,7 @@ abstract class PackageServiceProvider extends ServiceProvider
         return new Package();
     }
 
+<<<<<<< HEAD
     public function registerConfigs()
     {
         if (empty($this->package->configFileNames)) {
@@ -55,6 +94,8 @@ abstract class PackageServiceProvider extends ServiceProvider
         }
     }
 
+=======
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function packageRegistered()
     {
     }
@@ -65,11 +106,16 @@ abstract class PackageServiceProvider extends ServiceProvider
 
         $this
             ->bootPackageAssets()
+<<<<<<< HEAD
+=======
+            ->bootPackageBladeComponents()
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             ->bootPackageCommands()
             ->bootPackageConsoleCommands()
             ->bootPackageConfigs()
             ->bootPackageInertia()
             ->bootPackageMigrations()
+<<<<<<< HEAD
             ->bootPackageProviders()
             ->bootPackageRoutes()
             ->bootPackageTranslations()
@@ -79,6 +125,15 @@ abstract class PackageServiceProvider extends ServiceProvider
             ->bootPackageViewSharedData();
 
         $this->packageBooted();
+=======
+            ->bootPackageRoutes()
+            ->bootPackageServiceProviders()
+            ->bootPackageTranslations()
+            ->bootPackageViews()
+            ->bootPackageViewComposers()
+            ->bootPackageViewSharedData()
+            ->packageBooted();
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
         return $this;
     }
@@ -94,6 +149,10 @@ abstract class PackageServiceProvider extends ServiceProvider
     protected function getPackageBaseDir(): string
     {
         $reflector = new ReflectionClass(get_class($this));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         $packageBaseDir = dirname($reflector->getFileName());
 
         // Some packages like to keep Laravels directory structure and place
@@ -112,6 +171,7 @@ abstract class PackageServiceProvider extends ServiceProvider
             ? $this->package->shortName()
             : $this->package->viewNamespace;
     }
+<<<<<<< HEAD
 
     protected function bootPackageAssets(): static
     {
@@ -392,4 +452,6 @@ abstract class PackageServiceProvider extends ServiceProvider
     {
         return preg_replace('/^\d{4}_\d{2}_\d{2}_\d{6}_/', '', $filename);
     }
+=======
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 }

@@ -180,6 +180,11 @@ class TestsColumns
 
             $livewireClass = $this->instance()::class;
 
+<<<<<<< HEAD
+=======
+            $column->clearCachedState();
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             $state = $column->getState();
 
             if (is_array($state)) {
@@ -216,6 +221,11 @@ class TestsColumns
 
             $livewireClass = $this->instance()::class;
 
+<<<<<<< HEAD
+=======
+            $column->clearCachedState();
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             $state = $column->getState();
 
             if (is_array($state)) {
@@ -252,6 +262,11 @@ class TestsColumns
 
             $livewireClass = $this->instance()::class;
 
+<<<<<<< HEAD
+=======
+            $column->clearCachedState();
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             Assert::assertEquals(
                 $value,
                 $column->formatState($column->getState()),
@@ -279,6 +294,11 @@ class TestsColumns
 
             $livewireClass = $this->instance()::class;
 
+<<<<<<< HEAD
+=======
+            $column->clearCachedState();
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             Assert::assertFalse(
                 $column->formatState($column->getState()) == $value,
                 message: "Failed asserting that a table column with name [{$name}] does not have a formatted state of [{$value}] for record [{$record->getKey()}] on the [{$livewireClass}] component.",

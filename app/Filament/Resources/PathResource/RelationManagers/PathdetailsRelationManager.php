@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 
 class PathdetailsRelationManager extends RelationManager
 {
@@ -23,6 +24,7 @@ class PathdetailsRelationManager extends RelationManager
         return $form
             ->schema([
                 Select::make('id_course')->required()->relationship('course', 'name')->label('Kursus')->hint('Pilih Kursus')->searchable()->preload(),
+                TextInput::make('position')->required()->label('Urutan')->hint('Urutan Posisi Pada Path'),
             ]);
     }
 
@@ -32,7 +34,8 @@ class PathdetailsRelationManager extends RelationManager
             ->recordTitleAttribute('course.name')
             ->columns([
                TextColumn::make('course.name')->label('Kursus')->searchable(),
-               TextColumn::make('course.level')->label('level'),
+               TextColumn::make('course.level')->label('Level'),
+               TextColumn::make('position')->label('Urutan'),
                TextColumn::make('created_at')->label('Ditambahkan')->dateTime(),
             ])
             ->filters([

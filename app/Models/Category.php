@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'categories';
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'images'];
     public function agencies()
     {
         return $this->hasMany(Agency::class);

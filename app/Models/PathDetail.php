@@ -10,7 +10,7 @@ class PathDetail extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'path_details';
-    protected $fillable = ['id_path', 'id_course'];
+    protected $fillable = ['id_path', 'id_course', 'position'];
     public function path(){
         return $this->belongsTo(Path::class, 'id_path');
     }

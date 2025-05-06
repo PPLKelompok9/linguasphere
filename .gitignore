@@ -26,3 +26,5 @@ phpunit.result.cache
 *.dump
 *.sqlite
 *.sqlite3
+.env
+

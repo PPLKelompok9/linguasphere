@@ -331,6 +331,7 @@ class MySqlGrammar extends Grammar
         }
     }
 
+<<<<<<< HEAD
     /**
      * Compile a rename column command.
      *
@@ -338,6 +339,9 @@ class MySqlGrammar extends Grammar
      * @param  \Illuminate\Support\Fluent  $command
      * @return array|string
      */
+=======
+    /** @inheritDoc */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function compileRenameColumn(Blueprint $blueprint, Fluent $command)
     {
         $isMaria = $this->connection->isMaria();
@@ -396,6 +400,7 @@ class MySqlGrammar extends Grammar
         );
     }
 
+<<<<<<< HEAD
     /**
      * Compile a change column command into a series of SQL statements.
      *
@@ -403,6 +408,9 @@ class MySqlGrammar extends Grammar
      * @param  \Illuminate\Support\Fluent  $command
      * @return array|string
      */
+=======
+    /** @inheritDoc */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function compileChange(Blueprint $blueprint, Fluent $command)
     {
         $column = $command->column;
@@ -650,7 +658,11 @@ class MySqlGrammar extends Grammar
     /**
      * Compile the SQL needed to drop all tables.
      *
+<<<<<<< HEAD
      * @param  array  $tables
+=======
+     * @param  array<string>  $tables
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return string
      */
     public function compileDropAllTables($tables)
@@ -661,7 +673,11 @@ class MySqlGrammar extends Grammar
     /**
      * Compile the SQL needed to drop all views.
      *
+<<<<<<< HEAD
      * @param  array  $views
+=======
+     * @param  array<string>  $views
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return string
      */
     public function compileDropAllViews($views)
@@ -707,8 +723,13 @@ class MySqlGrammar extends Grammar
     /**
      * Quote-escape the given tables, views, or types.
      *
+<<<<<<< HEAD
      * @param  array  $names
      * @return array
+=======
+     * @param  array<string>  $names
+     * @return array<string>
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function escapeNames($names)
     {

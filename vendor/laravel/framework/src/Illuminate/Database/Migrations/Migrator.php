@@ -245,7 +245,11 @@ class Migrator
             : true;
 
         if (! $shouldRunMigration) {
+<<<<<<< HEAD
             $this->write(Task::class, $name, fn () => MigrationResult::Skipped);
+=======
+            $this->write(Task::class, $name, fn () => MigrationResult::Skipped->value);
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         } else {
             $this->write(Task::class, $name, fn () => $this->runMigration($migration, 'up'));
 

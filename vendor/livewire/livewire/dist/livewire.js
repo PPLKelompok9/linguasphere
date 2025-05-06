@@ -8162,14 +8162,30 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     if (!state.alpine)
       state.alpine = {};
     state.alpine[key] = unwrap(object);
+<<<<<<< HEAD
     window.history.replaceState(state, "", url.toString());
+=======
+    try {
+      window.history.replaceState(state, "", url.toString());
+    } catch (e) {
+      console.error(e);
+    }
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
   }
   function push(url, key, object) {
     let state = window.history.state || {};
     if (!state.alpine)
       state.alpine = {};
     state = { alpine: { ...state.alpine, ...{ [key]: unwrap(object) } } };
+<<<<<<< HEAD
     window.history.pushState(state, "", url.toString());
+=======
+    try {
+      window.history.pushState(state, "", url.toString());
+    } catch (e) {
+      console.error(e);
+    }
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
   }
   function unwrap(object) {
     if (object === void 0)
@@ -9914,8 +9930,13 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
 
   // js/directives/wire-dirty.js
   var refreshDirtyStatesByComponent = new WeakBag();
+<<<<<<< HEAD
   on2("commit", ({ component, succeed }) => {
     succeed(() => {
+=======
+  on2("commit", ({ component, respond }) => {
+    respond(() => {
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
       setTimeout(() => {
         refreshDirtyStatesByComponent.each(component, (i) => i(false));
       });
@@ -9923,7 +9944,10 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   });
   directive2("dirty", ({ el, directive: directive3, component }) => {
     let targets = dirtyTargets(el);
+<<<<<<< HEAD
     let dirty = Alpine.reactive({ state: false });
+=======
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     let oldIsDirty = false;
     let initialDisplay = el.style.display;
     let refreshDirtyState = (isDirty) => {

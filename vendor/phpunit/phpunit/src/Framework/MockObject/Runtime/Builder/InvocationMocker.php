@@ -144,13 +144,21 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
             $returnValue = array_pop($mapping);
 
             foreach (range(0, $numberOfParameters - 1) as $i) {
+<<<<<<< HEAD
                 if (isset($mapping[$i])) {
+=======
+                if (array_key_exists($i, $mapping)) {
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                     $_mapping[] = $mapping[$i];
 
                     continue;
                 }
 
+<<<<<<< HEAD
                 if (isset($defaultValues[$i])) {
+=======
+                if (array_key_exists($i, $defaultValues)) {
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                     $_mapping[] = $defaultValues[$i];
                 }
             }

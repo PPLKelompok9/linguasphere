@@ -14,7 +14,11 @@ class ViewErrorBag implements Countable, Stringable
     /**
      * The array of the view error bags.
      *
+<<<<<<< HEAD
      * @var array
+=======
+     * @var array<string, \Illuminate\Contracts\Support\MessageBag>
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     protected $bags = [];
 
@@ -43,7 +47,11 @@ class ViewErrorBag implements Countable, Stringable
     /**
      * Get all the bags.
      *
+<<<<<<< HEAD
      * @return array
+=======
+     * @return array<string, \Illuminate\Contracts\Support\MessageBag>
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function getBags()
     {

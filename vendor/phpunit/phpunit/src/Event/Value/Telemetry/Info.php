@@ -79,7 +79,11 @@ final readonly class Info
             '[%s / %s] [%d bytes]',
             $this->durationSinceStart()->asString(),
             $this->durationSincePrevious()->asString(),
+<<<<<<< HEAD
             $this->memoryUsage()->bytes(),
+=======
+            $this->peakMemoryUsage()->bytes(),
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         );
     }
 }

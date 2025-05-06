@@ -39,12 +39,16 @@ class MySqlProcessor extends Processor
         return is_numeric($id) ? (int) $id : $id;
     }
 
+<<<<<<< HEAD
     /**
      * Process the results of a columns query.
      *
      * @param  array  $results
      * @return array
      */
+=======
+    /** @inheritDoc */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function processColumns($results)
     {
         return array_map(function ($result) {
@@ -71,12 +75,16 @@ class MySqlProcessor extends Processor
         }, $results);
     }
 
+<<<<<<< HEAD
     /**
      * Process the results of an indexes query.
      *
      * @param  array  $results
      * @return array
      */
+=======
+    /** @inheritDoc */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function processIndexes($results)
     {
         return array_map(function ($result) {
@@ -92,12 +100,16 @@ class MySqlProcessor extends Processor
         }, $results);
     }
 
+<<<<<<< HEAD
     /**
      * Process the results of a foreign keys query.
      *
      * @param  array  $results
      * @return array
      */
+=======
+    /** @inheritDoc */
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function processForeignKeys($results)
     {
         return array_map(function ($result) {

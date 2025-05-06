@@ -2,13 +2,23 @@
 
 namespace Spatie\LaravelPackageTools\Commands;
 
+<<<<<<< HEAD
 use Closure;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+=======
+use Illuminate\Console\Command;
+use Spatie\LaravelPackageTools\Commands\Concerns\AskToRunMigrations;
+use Spatie\LaravelPackageTools\Commands\Concerns\AskToStarRepoOnGitHub;
+use Spatie\LaravelPackageTools\Commands\Concerns\PublishesResources;
+use Spatie\LaravelPackageTools\Commands\Concerns\SupportsServiceProviderInApp;
+use Spatie\LaravelPackageTools\Commands\Concerns\SupportsStartWithEndWith;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Spatie\LaravelPackageTools\Package;
 
 class InstallCommand extends Command
 {
+<<<<<<< HEAD
     protected Package $package;
 
     public ?Closure $startWith = null;
@@ -25,6 +35,16 @@ class InstallCommand extends Command
 
     public $hidden = true;
 
+=======
+    use AskToRunMigrations;
+    use AskToStarRepoOnGitHub;
+    use PublishesResources;
+    use SupportsServiceProviderInApp;
+    use SupportsStartWithEndWith;
+
+    protected Package $package;
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function __construct(Package $package)
     {
         $this->signature = $package->shortName() . ':install';
@@ -33,11 +53,17 @@ class InstallCommand extends Command
 
         $this->package = $package;
 
+<<<<<<< HEAD
+=======
+        $this->hidden = true;
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         parent::__construct();
     }
 
     public function handle()
     {
+<<<<<<< HEAD
         if ($this->startWith) {
             ($this->startWith)($this);
         }
@@ -195,5 +221,16 @@ class InstallCommand extends Command
         ));
 
         return $this;
+=======
+        $this
+            ->processStartWith()
+            ->processPublishes()
+            ->processAskToRunMigrations()
+            ->processCopyServiceProviderInApp()
+            ->processStarRepo()
+            ->processEndWith();
+
+        $this->info("{$this->package->shortName()} has been installed!");
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 }

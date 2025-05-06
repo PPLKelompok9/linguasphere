@@ -2437,6 +2437,10 @@ return array(
     'Illuminate\\Cache\\DynamoDbLock' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/DynamoDbLock.php',
     'Illuminate\\Cache\\DynamoDbStore' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/DynamoDbStore.php',
     'Illuminate\\Cache\\Events\\CacheEvent' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/Events/CacheEvent.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Cache\\Events\\CacheFlushFailed' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/Events/CacheFlushFailed.php',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'Illuminate\\Cache\\Events\\CacheFlushed' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/Events/CacheFlushed.php',
     'Illuminate\\Cache\\Events\\CacheFlushing' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/Events/CacheFlushing.php',
     'Illuminate\\Cache\\Events\\CacheHit' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/Events/CacheHit.php',
@@ -2458,6 +2462,10 @@ return array(
     'Illuminate\\Cache\\MemcachedConnector' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/MemcachedConnector.php',
     'Illuminate\\Cache\\MemcachedLock' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/MemcachedLock.php',
     'Illuminate\\Cache\\MemcachedStore' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/MemcachedStore.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Cache\\MemoizedStore' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/MemoizedStore.php',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'Illuminate\\Cache\\NoLock' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/NoLock.php',
     'Illuminate\\Cache\\NullStore' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/NullStore.php',
     'Illuminate\\Cache\\PhpRedisLock' => $vendorDir . '/laravel/framework/src/Illuminate/Cache/PhpRedisLock.php',
@@ -2552,6 +2560,10 @@ return array(
     'Illuminate\\Console\\View\\Components\\Task' => $vendorDir . '/laravel/framework/src/Illuminate/Console/View/Components/Task.php',
     'Illuminate\\Console\\View\\Components\\TwoColumnDetail' => $vendorDir . '/laravel/framework/src/Illuminate/Console/View/Components/TwoColumnDetail.php',
     'Illuminate\\Console\\View\\Components\\Warn' => $vendorDir . '/laravel/framework/src/Illuminate/Console/View/Components/Warn.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Console\\View\\TaskResult' => $vendorDir . '/laravel/framework/src/Illuminate/Console/View/TaskResult.php',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'Illuminate\\Container\\Attributes\\Auth' => $vendorDir . '/laravel/framework/src/Illuminate/Container/Attributes/Auth.php',
     'Illuminate\\Container\\Attributes\\Authenticated' => $vendorDir . '/laravel/framework/src/Illuminate/Container/Attributes/Authenticated.php',
     'Illuminate\\Container\\Attributes\\Cache' => $vendorDir . '/laravel/framework/src/Illuminate/Container/Attributes/Cache.php',
@@ -2802,6 +2814,10 @@ return array(
     'Illuminate\\Database\\Eloquent\\Concerns\\HidesAttributes' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HidesAttributes.php',
     'Illuminate\\Database\\Eloquent\\Concerns\\PreventsCircularRecursion' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/PreventsCircularRecursion.php',
     'Illuminate\\Database\\Eloquent\\Concerns\\QueriesRelationships' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/QueriesRelationships.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Database\\Eloquent\\Concerns\\TransformsToResource' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/TransformsToResource.php',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'Illuminate\\Database\\Eloquent\\Factories\\BelongsToManyRelationship' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Factories/BelongsToManyRelationship.php',
     'Illuminate\\Database\\Eloquent\\Factories\\BelongsToRelationship' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Factories/BelongsToRelationship.php',
     'Illuminate\\Database\\Eloquent\\Factories\\CrossJoinSequence' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Factories/CrossJoinSequence.php',
@@ -3181,7 +3197,10 @@ return array(
     'Illuminate\\Http\\Resources\\MergeValue' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Resources/MergeValue.php',
     'Illuminate\\Http\\Resources\\MissingValue' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Resources/MissingValue.php',
     'Illuminate\\Http\\Resources\\PotentiallyMissing' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Resources/PotentiallyMissing.php',
+<<<<<<< HEAD
     'Illuminate\\Http\\Resources\\TransformsToResource' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Resources/TransformsToResource.php',
+=======
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'Illuminate\\Http\\Response' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Response.php',
     'Illuminate\\Http\\ResponseTrait' => $vendorDir . '/laravel/framework/src/Illuminate/Http/ResponseTrait.php',
     'Illuminate\\Http\\StreamedEvent' => $vendorDir . '/laravel/framework/src/Illuminate/Http/StreamedEvent.php',
@@ -3611,6 +3630,10 @@ return array(
     'Illuminate\\Validation\\NotPwnedVerifier' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/NotPwnedVerifier.php',
     'Illuminate\\Validation\\PresenceVerifierInterface' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/PresenceVerifierInterface.php',
     'Illuminate\\Validation\\Rule' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Rule.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Validation\\Rules\\AnyOf' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Rules/AnyOf.php',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'Illuminate\\Validation\\Rules\\ArrayRule' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Rules/ArrayRule.php',
     'Illuminate\\Validation\\Rules\\Can' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Rules/Can.php',
     'Illuminate\\Validation\\Rules\\DatabaseRule' => $vendorDir . '/laravel/framework/src/Illuminate/Validation/Rules/DatabaseRule.php',
@@ -6878,6 +6901,7 @@ return array(
     'Spatie\\Color\\Xyz' => $vendorDir . '/spatie/color/src/Xyz.php',
     'Spatie\\Invade\\Invader' => $vendorDir . '/spatie/invade/src/Invader.php',
     'Spatie\\Invade\\StaticInvader' => $vendorDir . '/spatie/invade/src/StaticInvader.php',
+<<<<<<< HEAD
     'Spatie\\LaravelPackageTools\\Commands\\InstallCommand' => $vendorDir . '/spatie/laravel-package-tools/src/Commands/InstallCommand.php',
     'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasAssets' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasAssets.php',
     'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasCommands' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasCommands.php',
@@ -6890,6 +6914,36 @@ return array(
     'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasRoutes' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasRoutes.php',
     'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasTranslations' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasTranslations.php',
     'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasViewComponents' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasViewComponents.php',
+=======
+    'Spatie\\LaravelPackageTools\\Commands\\Concerns\\AskToRunMigrations' => $vendorDir . '/spatie/laravel-package-tools/src/Commands/Concerns/AskToRunMigrations.php',
+    'Spatie\\LaravelPackageTools\\Commands\\Concerns\\AskToStarRepoOnGitHub' => $vendorDir . '/spatie/laravel-package-tools/src/Commands/Concerns/AskToStarRepoOnGitHub.php',
+    'Spatie\\LaravelPackageTools\\Commands\\Concerns\\PublishesResources' => $vendorDir . '/spatie/laravel-package-tools/src/Commands/Concerns/PublishesResources.php',
+    'Spatie\\LaravelPackageTools\\Commands\\Concerns\\SupportsServiceProviderInApp' => $vendorDir . '/spatie/laravel-package-tools/src/Commands/Concerns/SupportsServiceProviderInApp.php',
+    'Spatie\\LaravelPackageTools\\Commands\\Concerns\\SupportsStartWithEndWith' => $vendorDir . '/spatie/laravel-package-tools/src/Commands/Concerns/SupportsStartWithEndWith.php',
+    'Spatie\\LaravelPackageTools\\Commands\\InstallCommand' => $vendorDir . '/spatie/laravel-package-tools/src/Commands/InstallCommand.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessAssets' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessAssets.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessBladeComponents' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessBladeComponents.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessCommands' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessCommands.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessConfigs' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessConfigs.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessInertia' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessInertia.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessMigrations' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessMigrations.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessRoutes' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessRoutes.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessServiceProviders' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessServiceProviders.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessTranslations' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessTranslations.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessViewComposers' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessViewComposers.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessViewSharedData' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessViewSharedData.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\PackageServiceProvider\\ProcessViews' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessViews.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasAssets' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasAssets.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasBladeComponents' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasBladeComponents.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasCommands' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasCommands.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasConfigs' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasConfigs.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasInertia' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasInertia.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasInstallCommand' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasInstallCommand.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasMigrations' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasMigrations.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasRoutes' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasRoutes.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasServiceProviders' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasServiceProviders.php',
+    'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasTranslations' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasTranslations.php',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasViewComposers' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasViewComposers.php',
     'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasViewSharedData' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasViewSharedData.php',
     'Spatie\\LaravelPackageTools\\Concerns\\Package\\HasViews' => $vendorDir . '/spatie/laravel-package-tools/src/Concerns/Package/HasViews.php',

@@ -551,6 +551,13 @@ trait HasAttributes
             return;
         }
 
+<<<<<<< HEAD
+=======
+        if ($this->attemptToAutoloadRelation($key)) {
+            return $this->relations[$key];
+        }
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         if ($this->preventsLazyLoading) {
             $this->handleLazyLoadingViolation($key);
         }

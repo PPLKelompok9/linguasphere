@@ -4,9 +4,18 @@ namespace Illuminate\Queue;
 
 use Closure;
 use DateTimeInterface;
+<<<<<<< HEAD
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Contracts\Queue\ShouldBeEncrypted;
+=======
+use Illuminate\Bus\UniqueLock;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Cache\Repository as Cache;
+use Illuminate\Contracts\Encryption\Encrypter;
+use Illuminate\Contracts\Queue\ShouldBeEncrypted;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Illuminate\Contracts\Queue\ShouldQueueAfterCommit;
 use Illuminate\Queue\Events\JobQueued;
 use Illuminate\Queue\Events\JobQueueing;
@@ -324,6 +333,17 @@ abstract class Queue
     {
         if ($this->shouldDispatchAfterCommit($job) &&
             $this->container->bound('db.transactions')) {
+<<<<<<< HEAD
+=======
+            if ($job instanceof ShouldBeUnique) {
+                $this->container->make('db.transactions')->addCallbackForRollback(
+                    function () use ($job) {
+                        (new UniqueLock($this->container->make(Cache::class)))->release($job);
+                    }
+                );
+            }
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             return $this->container->make('db.transactions')->addCallback(
                 function () use ($queue, $job, $payload, $delay, $callback) {
                     $this->raiseJobQueueingEvent($queue, $job, $payload, $delay);

@@ -2,6 +2,12 @@
 
 namespace Illuminate\Cache;
 
+<<<<<<< HEAD
+=======
+use Illuminate\Cache\Events\CacheFlushed;
+use Illuminate\Cache\Events\CacheFlushing;
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 class RedisTaggedCache extends TaggedCache
 {
     /**
@@ -105,9 +111,19 @@ class RedisTaggedCache extends TaggedCache
      */
     public function flush()
     {
+<<<<<<< HEAD
         $this->flushValues();
         $this->tags->flush();
 
+=======
+        $this->event(new CacheFlushing($this->getName()));
+
+        $this->flushValues();
+        $this->tags->flush();
+
+        $this->event(new CacheFlushed($this->getName()));
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         return true;
     }
 

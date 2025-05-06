@@ -21,6 +21,10 @@ return [
     'alpha' => 'The :attribute field must only contain letters.',
     'alpha_dash' => 'The :attribute field must only contain letters, numbers, dashes, and underscores.',
     'alpha_num' => 'The :attribute field must only contain letters and numbers.',
+<<<<<<< HEAD
+=======
+    'any_of' => 'The :attribute field is invalid.',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'array' => 'The :attribute field must be an array.',
     'ascii' => 'The :attribute field must only contain single-byte alphanumeric characters and symbols.',
     'before' => 'The :attribute field must be a date before :date.',

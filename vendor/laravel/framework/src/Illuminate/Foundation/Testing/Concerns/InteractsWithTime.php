@@ -15,7 +15,13 @@ trait InteractsWithTime
      */
     public function freezeTime($callback = null)
     {
+<<<<<<< HEAD
         return $this->travelTo(Carbon::now(), $callback);
+=======
+        $result = $this->travelTo($now = Carbon::now(), $callback);
+
+        return is_null($callback) ? $now : $result;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**
@@ -26,7 +32,13 @@ trait InteractsWithTime
      */
     public function freezeSecond($callback = null)
     {
+<<<<<<< HEAD
         return $this->travelTo(Carbon::now()->startOfSecond(), $callback);
+=======
+        $result = $this->travelTo($now = Carbon::now()->startOfSecond(), $callback);
+
+        return is_null($callback) ? $now : $result;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**

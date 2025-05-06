@@ -2,7 +2,11 @@
 
 namespace Illuminate\Console\View\Components;
 
+<<<<<<< HEAD
 use Illuminate\Database\Migrations\MigrationResult;
+=======
+use Illuminate\Console\View\TaskResult;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Illuminate\Support\InteractsWithTime;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
@@ -35,10 +39,17 @@ class Task extends Component
 
         $startTime = microtime(true);
 
+<<<<<<< HEAD
         $result = MigrationResult::Failure;
 
         try {
             $result = ($task ?: fn () => MigrationResult::Success)();
+=======
+        $result = TaskResult::Failure->value;
+
+        try {
+            $result = ($task ?: fn () => TaskResult::Success->value)();
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         } catch (Throwable $e) {
             throw $e;
         } finally {
@@ -55,8 +66,13 @@ class Task extends Component
 
             $this->output->writeln(
                 match ($result) {
+<<<<<<< HEAD
                     MigrationResult::Failure => ' <fg=red;options=bold>FAIL</>',
                     MigrationResult::Skipped => ' <fg=yellow;options=bold>SKIPPED</>',
+=======
+                    TaskResult::Failure->value => ' <fg=red;options=bold>FAIL</>',
+                    TaskResult::Skipped->value => ' <fg=yellow;options=bold>SKIPPED</>',
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                     default => ' <fg=green;options=bold>DONE</>'
                 },
                 $verbosity,

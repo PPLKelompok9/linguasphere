@@ -207,10 +207,14 @@ trait InteractsWithPivotTable
      */
     public function updateExistingPivot($id, array $attributes, $touch = true)
     {
+<<<<<<< HEAD
         if ($this->using &&
             empty($this->pivotWheres) &&
             empty($this->pivotWhereIns) &&
             empty($this->pivotWhereNulls)) {
+=======
+        if ($this->using) {
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             return $this->updateExistingPivotUsingCustomClass($id, $attributes, $touch);
         }
 
@@ -218,7 +222,11 @@ trait InteractsWithPivotTable
             $attributes = $this->addTimestampsToAttachment($attributes, true);
         }
 
+<<<<<<< HEAD
         $updated = $this->newPivotStatementForId($this->parseId($id))->update(
+=======
+        $updated = $this->newPivotStatementForId($id)->update(
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             $this->castAttributes($attributes)
         );
 
@@ -239,10 +247,14 @@ trait InteractsWithPivotTable
      */
     protected function updateExistingPivotUsingCustomClass($id, array $attributes, $touch)
     {
+<<<<<<< HEAD
         $pivot = $this->getCurrentlyAttachedPivots()
             ->where($this->foreignPivotKey, $this->parent->{$this->parentKey})
             ->where($this->relatedPivotKey, $this->parseId($id))
             ->first();
+=======
+        $pivot = $this->getCurrentlyAttachedPivotsForIds($id)->first();
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
         $updated = $pivot ? $pivot->fill($attributes)->isDirty() : false;
 
@@ -435,11 +447,15 @@ trait InteractsWithPivotTable
      */
     public function detach($ids = null, $touch = true)
     {
+<<<<<<< HEAD
         if ($this->using &&
             ! empty($ids) &&
             empty($this->pivotWheres) &&
             empty($this->pivotWhereIns) &&
             empty($this->pivotWhereNulls)) {
+=======
+        if ($this->using) {
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             $results = $this->detachUsingCustomClass($ids);
         } else {
             $query = $this->newPivotQuery();
@@ -480,11 +496,18 @@ trait InteractsWithPivotTable
     {
         $results = 0;
 
+<<<<<<< HEAD
         foreach ($this->parseIds($ids) as $id) {
             $results += $this->newPivot([
                 $this->foreignPivotKey => $this->parent->{$this->parentKey},
                 $this->relatedPivotKey => $id,
             ], true)->delete();
+=======
+        $records = $this->getCurrentlyAttachedPivotsForIds($ids);
+
+        foreach ($records as $record) {
+            $results += $record->delete();
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         }
 
         return $results;
@@ -497,6 +520,7 @@ trait InteractsWithPivotTable
      */
     protected function getCurrentlyAttachedPivots()
     {
+<<<<<<< HEAD
         return $this->newPivotQuery()->get()->map(function ($record) {
             $class = $this->using ?: Pivot::class;
 
@@ -506,6 +530,33 @@ trait InteractsWithPivotTable
                 ->setPivotKeys($this->foreignPivotKey, $this->relatedPivotKey)
                 ->setRelatedModel($this->related);
         });
+=======
+        return $this->getCurrentlyAttachedPivotsForIds();
+    }
+
+    /**
+     * Get the pivot models that are currently attached, filtered by related model keys.
+     *
+     * @param  mixed  $ids
+     * @return \Illuminate\Support\Collection
+     */
+    protected function getCurrentlyAttachedPivotsForIds($ids = null)
+    {
+        return $this->newPivotQuery()
+            ->when(! is_null($ids), fn ($query) => $query->whereIn(
+                $this->getQualifiedRelatedPivotKeyName(), $this->parseIds($ids)
+            ))
+            ->get()
+            ->map(function ($record) {
+                $class = $this->using ?: Pivot::class;
+
+                $pivot = $class::fromRawAttributes($this->parent, (array) $record, $this->getTable(), true);
+
+                return $pivot
+                    ->setPivotKeys($this->foreignPivotKey, $this->relatedPivotKey)
+                    ->setRelatedModel($this->related);
+            });
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**
@@ -557,7 +608,11 @@ trait InteractsWithPivotTable
      */
     public function newPivotStatementForId($id)
     {
+<<<<<<< HEAD
         return $this->newPivotQuery()->whereIn($this->relatedPivotKey, $this->parseIds($id));
+=======
+        return $this->newPivotQuery()->whereIn($this->getQualifiedRelatedPivotKeyName(), $this->parseIds($id));
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**

@@ -1203,7 +1203,11 @@ class Grammar extends BaseGrammar
      *
      * @param  \Illuminate\Database\Query\Builder  $query
      * @param  array  $values
+<<<<<<< HEAD
      * @param  string  $sequence
+=======
+     * @param  string|null  $sequence
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return string
      */
     public function compileInsertGetId(Builder $query, $values, $sequence)

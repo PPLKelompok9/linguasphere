@@ -175,7 +175,11 @@ trait InteractsWithInput
     /**
      * Get an array of all of the files on the request.
      *
+<<<<<<< HEAD
      * @return array<int, \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]>
+=======
+     * @return array<string, \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]>
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function allFiles()
     {
@@ -187,8 +191,13 @@ trait InteractsWithInput
     /**
      * Convert the given array of Symfony UploadedFiles to custom Laravel UploadedFiles.
      *
+<<<<<<< HEAD
      * @param  array<int, \Symfony\Component\HttpFoundation\File\UploadedFile|\Symfony\Component\HttpFoundation\File\UploadedFile[]>  $files
      * @return array<int, \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]>
+=======
+     * @param  array<string, \Symfony\Component\HttpFoundation\File\UploadedFile|\Symfony\Component\HttpFoundation\File\UploadedFile[]>  $files
+     * @return array<string, \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]>
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     protected function convertUploadedFiles(array $files)
     {
@@ -240,7 +249,11 @@ trait InteractsWithInput
      *
      * @param  string|null  $key
      * @param  mixed  $default
+<<<<<<< HEAD
      * @return ($key is null ? array<int, \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]> : \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]|null)
+=======
+     * @return ($key is null ? array<string, \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]> : \Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]|null)
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function file($key = null, $default = null)
     {

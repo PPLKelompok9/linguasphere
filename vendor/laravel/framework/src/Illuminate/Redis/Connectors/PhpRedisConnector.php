@@ -85,6 +85,11 @@ class PhpRedisConnector implements Connector
                 );
             }
 
+<<<<<<< HEAD
+=======
+            $this->establishConnection($client, $config);
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             if (array_key_exists('max_retries', $config)) {
                 $client->setOption(Redis::OPT_MAX_RETRIES, $config['max_retries']);
             }
@@ -101,8 +106,11 @@ class PhpRedisConnector implements Connector
                 $client->setOption(Redis::OPT_BACKOFF_CAP, $config['backoff_cap']);
             }
 
+<<<<<<< HEAD
             $this->establishConnection($client, $config);
 
+=======
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             if (! empty($config['password'])) {
                 if (isset($config['username']) && $config['username'] !== '' && is_string($config['password'])) {
                     $client->auth([$config['username'], $config['password']]);

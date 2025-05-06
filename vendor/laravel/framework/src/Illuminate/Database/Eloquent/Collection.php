@@ -249,6 +249,38 @@ class Collection extends BaseCollection implements QueueableCollection
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Load a relationship path for models of the given type if it is not already eager loaded.
+     *
+     * @param  array<int, <string, class-string>>  $tuples
+     * @return void
+     */
+    public function loadMissingRelationshipChain(array $tuples)
+    {
+        [$relation, $class] = array_shift($tuples);
+
+        $this->filter(function ($model) use ($relation, $class) {
+            return ! is_null($model) &&
+                ! $model->relationLoaded($relation) &&
+                $model::class === $class;
+        })->load($relation);
+
+        if (empty($tuples)) {
+            return;
+        }
+
+        $models = $this->pluck($relation)->whereNotNull();
+
+        if ($models->first() instanceof BaseCollection) {
+            $models = $models->collapse();
+        }
+
+        (new static($models))->loadMissingRelationshipChain($tuples);
+    }
+
+    /**
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Load a relationship path if it is not already eager loaded.
      *
      * @param  \Illuminate\Database\Eloquent\Collection<int, TModel>  $models
@@ -682,7 +714,11 @@ class Collection extends BaseCollection implements QueueableCollection
      */
     public function partition($key, $operator = null, $value = null)
     {
+<<<<<<< HEAD
         return parent::partition($key, $operator, $value)->toBase();
+=======
+        return parent::partition(...func_get_args())->toBase();
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**
@@ -722,6 +758,27 @@ class Collection extends BaseCollection implements QueueableCollection
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Enable relationship autoloading for all models in this collection.
+     *
+     * @return $this
+     */
+    public function withRelationshipAutoloading()
+    {
+        $callback = fn ($tuples) => $this->loadMissingRelationshipChain($tuples);
+
+        foreach ($this as $model) {
+            if (! $model->hasRelationAutoloadCallback()) {
+                $model->autoloadRelationsUsing($callback);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Get the type of the entities being queued.
      *
      * @return string|null

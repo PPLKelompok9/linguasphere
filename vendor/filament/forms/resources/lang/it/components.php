@@ -12,16 +12,73 @@ return [
 
             'add' => [
                 'label' => 'Aggiungi a :label',
+<<<<<<< HEAD
+=======
+
+                'modal' => [
+
+                    'heading' => 'Aggiungi a :label',
+
+                    'actions' => [
+
+                        'add' => [
+                            'label' => 'Aggiungi',
+                        ],
+
+                    ],
+
+                ],
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             ],
 
             'add_between' => [
                 'label' => 'Inserisci tra i blocchi',
+<<<<<<< HEAD
+=======
+
+                'modal' => [
+
+                    'heading' => 'Aggiungi a :label',
+
+                    'actions' => [
+
+                        'add' => [
+                            'label' => 'Aggiungi',
+                        ],
+
+                    ],
+
+                ],
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             ],
 
             'delete' => [
                 'label' => 'Elimina',
             ],
 
+<<<<<<< HEAD
+=======
+            'edit' => [
+
+                'label' => 'Modifica',
+
+                'modal' => [
+
+                    'heading' => 'Modifica blocco',
+
+                    'actions' => [
+
+                        'save' => [
+                            'label' => 'Salva modifiche',
+                        ],
+
+                    ],
+
+                ],
+
+            ],
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             'reorder' => [
                 'label' => 'Sposta',
             ],
@@ -357,6 +414,11 @@ return [
 
             'create_option' => [
 
+<<<<<<< HEAD
+=======
+                'label' => 'Crea',
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                 'modal' => [
 
                     'heading' => 'Crea',
@@ -379,6 +441,11 @@ return [
 
             'edit_option' => [
 
+<<<<<<< HEAD
+=======
+                'label' => 'Modifica',
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                 'modal' => [
 
                     'heading' => 'Modifica',
@@ -420,6 +487,34 @@ return [
         'placeholder' => 'Nuovo tag',
     ],
 
+<<<<<<< HEAD
+=======
+    'text_input' => [
+
+        'actions' => [
+
+            'hide_password' => [
+                'label' => 'Nascondi password',
+            ],
+
+            'show_password' => [
+                'label' => 'Mostra password',
+            ],
+
+        ],
+
+    ],
+
+    'toggle_buttons' => [
+
+        'boolean' => [
+            'true' => 'Si',
+            'false' => 'No',
+        ],
+
+    ],
+
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'wizard' => [
 
         'actions' => [

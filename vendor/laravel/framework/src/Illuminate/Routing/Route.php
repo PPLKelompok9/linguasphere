@@ -271,6 +271,11 @@ class Route
      * Get the controller instance for the route.
      *
      * @return mixed
+<<<<<<< HEAD
+=======
+     *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function getController()
     {
@@ -1274,6 +1279,11 @@ class Route
      * Get the dispatcher for the route's controller.
      *
      * @return \Illuminate\Routing\Contracts\ControllerDispatcher
+<<<<<<< HEAD
+=======
+     *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function controllerDispatcher()
     {

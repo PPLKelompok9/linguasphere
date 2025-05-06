@@ -184,6 +184,11 @@ final class JunitXmlLogger
     public function testPreparationStarted(PreparationStarted $event): void
     {
         $this->createTestCase($event);
+<<<<<<< HEAD
+=======
+
+        $this->preparationFailed = false;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     public function testPreparationFailed(): void
@@ -287,10 +292,18 @@ final class JunitXmlLogger
         $this->testSuiteTests[$this->testSuiteLevel]++;
         $this->testSuiteTimes[$this->testSuiteLevel] += $time;
 
+<<<<<<< HEAD
         $this->currentTestCase  = null;
         $this->time             = null;
         $this->prepared         = false;
         $this->unexpectedOutput = null;
+=======
+        $this->currentTestCase   = null;
+        $this->time              = null;
+        $this->preparationFailed = false;
+        $this->prepared          = false;
+        $this->unexpectedOutput  = null;
+>>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**

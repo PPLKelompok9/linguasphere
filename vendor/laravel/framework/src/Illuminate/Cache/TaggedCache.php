@@ -2,11 +2,8 @@
 
 namespace Illuminate\Cache;
 
-<<<<<<< HEAD
-=======
 use Illuminate\Cache\Events\CacheFlushed;
 use Illuminate\Cache\Events\CacheFlushing;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Illuminate\Contracts\Cache\Store;
 
 class TaggedCache extends Repository
@@ -82,17 +79,12 @@ class TaggedCache extends Repository
      */
     public function flush()
     {
-<<<<<<< HEAD
-        $this->tags->reset();
-
-=======
         $this->event(new CacheFlushing($this->getName()));
 
         $this->tags->reset();
 
         $this->event(new CacheFlushed($this->getName()));
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         return true;
     }
 
@@ -118,24 +110,16 @@ class TaggedCache extends Repository
     /**
      * Fire an event for this cache instance.
      *
-<<<<<<< HEAD
-     * @param  \Illuminate\Cache\Events\CacheEvent  $event
-=======
      * @param  object  $event
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return void
      */
     protected function event($event)
     {
-<<<<<<< HEAD
-        parent::event($event->setTags($this->tags->getNames()));
-=======
         if (method_exists($event, 'setTags')) {
             $event->setTags($this->tags->getNames());
         }
 
         parent::event($event);
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**

@@ -4,10 +4,7 @@ namespace Filament\Support\Concerns;
 
 use Closure;
 use Exception;
-<<<<<<< HEAD
-=======
 use Filament\Tables\Columns\Column;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -80,34 +77,6 @@ trait HasCellState
 
     public function getState(): mixed
     {
-<<<<<<< HEAD
-        $record = $this->getRecord();
-
-        if (! $record) {
-            return null;
-        }
-
-        if (array_key_exists($record->getKey(), $this->cachedState)) {
-            return $this->cachedState[$record->getKey()];
-        }
-
-        $state = ($this->getStateUsing !== null) ?
-            $this->evaluate($this->getStateUsing) :
-            $this->getStateFromRecord();
-
-        if (is_string($state) && ($separator = $this->getSeparator())) {
-            $state = explode($separator, $state);
-            $state = (count($state) === 1 && blank($state[0])) ?
-                [] :
-                $state;
-        }
-
-        if (blank($state)) {
-            $state = $this->getDefaultState();
-        }
-
-        return $this->cachedState[$record->getKey()] = $state;
-=======
         return $this->cacheState(function (): mixed {
             $state = ($this->getStateUsing !== null) ?
                 $this->evaluate($this->getStateUsing) :
@@ -126,7 +95,6 @@ trait HasCellState
 
             return $state;
         });
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     public function getStateFromRecord(): mixed
@@ -165,14 +133,11 @@ trait HasCellState
         return $state->all();
     }
 
-<<<<<<< HEAD
-=======
     public function clearCachedState(): void
     {
         $this->cachedState = [];
     }
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function separator(string | Closure | null $separator = ','): static
     {
         $this->separator = $separator;
@@ -335,8 +300,6 @@ trait HasCellState
 
         return (string) str($name)->beforeLast('.');
     }
-<<<<<<< HEAD
-=======
 
     protected function cacheState(Closure $state): mixed
     {
@@ -362,5 +325,4 @@ trait HasCellState
 
         return $this->cachedState[$recordKey] = $state();
     }
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 }

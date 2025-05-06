@@ -6,6 +6,8 @@ use App\Http\Controllers\ExternalController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScholarshipController;
+use App\Http\Controllers\SertificationController;
+use App\Http\Controllers\InstitutionController;
 use Illuminate\Support\Facades\Route;
 
 

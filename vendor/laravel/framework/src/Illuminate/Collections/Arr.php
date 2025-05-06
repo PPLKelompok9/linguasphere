@@ -112,15 +112,6 @@ class Arr
     {
         $results = [];
 
-<<<<<<< HEAD
-        foreach ($array as $key => $value) {
-            if (is_array($value) && ! empty($value)) {
-                $results = array_merge($results, static::dot($value, $prepend.$key.'.'));
-            } else {
-                $results[$prepend.$key] = $value;
-            }
-        }
-=======
         $flatten = function ($data, $prefix) use (&$results, &$flatten): void {
             foreach ($data as $key => $value) {
                 $newKey = $prefix.$key;
@@ -134,7 +125,6 @@ class Arr
         };
 
         $flatten($array, $prepend);
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
         return $results;
     }

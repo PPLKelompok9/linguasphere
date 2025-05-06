@@ -45,11 +45,7 @@ class DetachBulkAction extends BulkAction
 
                 if ($table->allowsDuplicates()) {
                     $records->each(
-<<<<<<< HEAD
-                        fn (Model $record) => $record->{$relationship->getPivotAccessor()}->delete(),
-=======
                         fn (Model $record) => $record->getRelationValue($relationship->getPivotAccessor())->delete(),
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                     );
                 } else {
                     $relationship->detach($records);

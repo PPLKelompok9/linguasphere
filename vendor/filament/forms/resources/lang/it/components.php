@@ -12,8 +12,6 @@ return [
 
             'add' => [
                 'label' => 'Aggiungi a :label',
-<<<<<<< HEAD
-=======
 
                 'modal' => [
 
@@ -28,13 +26,10 @@ return [
                     ],
 
                 ],
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             ],
 
             'add_between' => [
                 'label' => 'Inserisci tra i blocchi',
-<<<<<<< HEAD
-=======
 
                 'modal' => [
 
@@ -49,15 +44,12 @@ return [
                     ],
 
                 ],
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             ],
 
             'delete' => [
                 'label' => 'Elimina',
             ],
 
-<<<<<<< HEAD
-=======
             'edit' => [
 
                 'label' => 'Modifica',
@@ -78,7 +70,6 @@ return [
 
             ],
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             'reorder' => [
                 'label' => 'Sposta',
             ],
@@ -414,11 +405,8 @@ return [
 
             'create_option' => [
 
-<<<<<<< HEAD
-=======
                 'label' => 'Crea',
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                 'modal' => [
 
                     'heading' => 'Crea',
@@ -441,11 +429,8 @@ return [
 
             'edit_option' => [
 
-<<<<<<< HEAD
-=======
                 'label' => 'Modifica',
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                 'modal' => [
 
                     'heading' => 'Modifica',
@@ -487,8 +472,6 @@ return [
         'placeholder' => 'Nuovo tag',
     ],
 
-<<<<<<< HEAD
-=======
     'text_input' => [
 
         'actions' => [
@@ -514,7 +497,6 @@ return [
 
     ],
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     'wizard' => [
 
         'actions' => [

@@ -5,10 +5,7 @@ namespace Illuminate\Validation;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Traits\Macroable;
-<<<<<<< HEAD
-=======
 use Illuminate\Validation\Rules\AnyOf;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Illuminate\Validation\Rules\ArrayRule;
 use Illuminate\Validation\Rules\Can;
 use Illuminate\Validation\Rules\Date;
@@ -251,8 +248,6 @@ class Rule
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Get an "any of" rule builder instance.
      *
      * @param  array
@@ -266,7 +261,6 @@ class Rule
     }
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Compile a set of rules for an attribute.
      *
      * @param  string  $attribute

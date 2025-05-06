@@ -56,11 +56,7 @@ class EditAction extends Action
                 $translatableContentDriver = $table->makeTranslatableContentDriver();
 
                 if ($relationship instanceof BelongsToMany) {
-<<<<<<< HEAD
-                    $pivot = $record->{$relationship->getPivotAccessor()};
-=======
                     $pivot = $record->getRelationValue($relationship->getPivotAccessor());
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
                     $pivotColumns = $relationship->getPivotColumns();
                     $pivotData = Arr::only($data, $pivotColumns);

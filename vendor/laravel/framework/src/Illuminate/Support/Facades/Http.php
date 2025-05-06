@@ -11,11 +11,7 @@ use Illuminate\Http\Client\Factory;
  * @method static \Illuminate\Http\Client\Factory globalOptions(\Closure|array $options)
  * @method static \GuzzleHttp\Promise\PromiseInterface response(array|string|null $body = null, int $status = 200, array $headers = [])
  * @method static \GuzzleHttp\Psr7\Response psr7Response(array|string|null $body = null, int $status = 200, array $headers = [])
-<<<<<<< HEAD
- * @method static \Illuminate\Http\Client\RequestException requestException(array|string|null $body = null, int $status = 200, array $headers = [])
-=======
  * @method static \Illuminate\Http\Client\RequestException failedRequest(array|string|null $body = null, int $status = 200, array $headers = [])
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
  * @method static \GuzzleHttp\Promise\PromiseInterface failedConnection(string|null $message = null)
  * @method static \Illuminate\Http\Client\ResponseSequence sequence(array $responses = [])
  * @method static bool preventingStrayRequests()

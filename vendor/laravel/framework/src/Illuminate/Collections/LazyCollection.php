@@ -113,11 +113,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
     /**
      * Eager load all items into a new lazy collection backed by an array.
      *
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function eager()
     {
@@ -127,11 +123,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
     /**
      * Cache values as they're enumerated.
      *
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function remember()
     {
@@ -342,11 +334,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * Get the items that are not present in the given items.
      *
      * @param  \Illuminate\Contracts\Support\Arrayable<array-key, TValue>|iterable<array-key, TValue>  $items
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function diff($items)
     {
@@ -1103,11 +1091,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
     /**
      * Reverse items order.
      *
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function reverse()
     {
@@ -1202,11 +1186,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
     /**
      * Shuffle the items in the collection.
      *
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function shuffle()
     {
@@ -1451,11 +1431,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * Chunk the collection into chunks with a callback.
      *
      * @param  callable(TValue, TKey, Collection<TKey, TValue>): bool  $callback
-<<<<<<< HEAD
-     * @return static<int, static<int, TValue>>
-=======
      * @return static<int, static<TKey, TValue>>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function chunkWhile(callable $callback)
     {
@@ -1573,11 +1549,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * Take the first or last {$limit} items.
      *
      * @param  int  $limit
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function take($limit)
     {
@@ -1620,11 +1592,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * Take items in the collection until the given condition is met.
      *
      * @param  TValue|callable(TValue,TKey): bool  $value
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function takeUntil($value)
     {
@@ -1646,11 +1614,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * Take items in the collection until a given point in time.
      *
      * @param  \DateTimeInterface  $timeout
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function takeUntilTimeout(DateTimeInterface $timeout)
     {
@@ -1675,11 +1639,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * Take items in the collection while the given condition is met.
      *
      * @param  TValue|callable(TValue,TKey): bool  $value
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function takeWhile($value)
     {
@@ -1693,11 +1653,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      * Pass each item in the collection to the given callback, lazily.
      *
      * @param  callable(TValue, TKey): mixed  $callback
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function tapEach(callable $callback)
     {
@@ -1757,11 +1713,7 @@ class LazyCollection implements CanBeEscapedWhenCastToString, Enumerable
      *
      * @param  (callable(TValue, TKey): mixed)|string|null  $key
      * @param  bool  $strict
-<<<<<<< HEAD
-     * @return static
-=======
      * @return static<TKey, TValue>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function unique($key = null, $strict = false)
     {

@@ -5,10 +5,7 @@ namespace Spatie\LaravelPackageTools\Concerns\Package;
 trait HasCommands
 {
     public array $commands = [];
-<<<<<<< HEAD
-=======
     public array $consoleCommands = [];
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
     public function hasCommand(string $commandClassName): static
     {
@@ -26,8 +23,6 @@ trait HasCommands
 
         return $this;
     }
-<<<<<<< HEAD
-=======
 
     public function hasConsoleCommand(string $commandClassName): static
     {
@@ -45,5 +40,4 @@ trait HasCommands
 
         return $this;
     }
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 }

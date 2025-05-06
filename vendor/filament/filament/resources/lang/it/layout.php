@@ -52,8 +52,6 @@ return [
 
     ],
 
-<<<<<<< HEAD
-=======
     'avatar' => [
         'alt' => 'Avatar di :name',
     ],
@@ -62,5 +60,4 @@ return [
         'alt' => 'Logo di :name',
     ],
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 ];

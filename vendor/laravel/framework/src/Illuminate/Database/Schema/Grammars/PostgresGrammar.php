@@ -277,17 +277,7 @@ class PostgresGrammar extends Grammar
         }
     }
 
-<<<<<<< HEAD
-    /**
-     * Compile a change column command into a series of SQL statements.
-     *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
-     * @return array|string
-     */
-=======
     /** @inheritDoc */
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function compileChange(Blueprint $blueprint, Fluent $command)
     {
         $column = $command->column;
@@ -469,11 +459,7 @@ class PostgresGrammar extends Grammar
     /**
      * Compile the SQL needed to drop all tables.
      *
-<<<<<<< HEAD
-     * @param  array  $tables
-=======
      * @param  array<string>  $tables
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return string
      */
     public function compileDropAllTables($tables)
@@ -484,11 +470,7 @@ class PostgresGrammar extends Grammar
     /**
      * Compile the SQL needed to drop all views.
      *
-<<<<<<< HEAD
-     * @param  array  $views
-=======
      * @param  array<string>  $views
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return string
      */
     public function compileDropAllViews($views)
@@ -499,11 +481,7 @@ class PostgresGrammar extends Grammar
     /**
      * Compile the SQL needed to drop all types.
      *
-<<<<<<< HEAD
-     * @param  array  $types
-=======
      * @param  array<string>  $types
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return string
      */
     public function compileDropAllTypes($types)
@@ -514,11 +492,7 @@ class PostgresGrammar extends Grammar
     /**
      * Compile the SQL needed to drop all domains.
      *
-<<<<<<< HEAD
-     * @param  array  $domains
-=======
      * @param  array<string>  $domains
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * @return string
      */
     public function compileDropAllDomains($domains)
@@ -704,13 +678,8 @@ class PostgresGrammar extends Grammar
     /**
      * Quote-escape the given tables, views, or types.
      *
-<<<<<<< HEAD
-     * @param  array  $names
-     * @return array
-=======
      * @param  array<string>  $names
      * @return array<string>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function escapeNames($names)
     {
@@ -1256,11 +1225,7 @@ class PostgresGrammar extends Grammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $column
-<<<<<<< HEAD
-     * @return string|array|null
-=======
      * @return string|list<string>|null
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     protected function modifyGeneratedAs(Blueprint $blueprint, Fluent $column)
     {

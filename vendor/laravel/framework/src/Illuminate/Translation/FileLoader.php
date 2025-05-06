@@ -102,17 +102,6 @@ class FileLoader implements Loader
     protected function loadNamespaceOverrides(array $lines, $locale, $group, $namespace)
     {
         return (new Collection($this->paths))
-<<<<<<< HEAD
-            ->reduce(function ($output, $path) use ($lines, $locale, $group, $namespace) {
-                $file = "{$path}/vendor/{$namespace}/{$locale}/{$group}.php";
-
-                if ($this->files->exists($file)) {
-                    $lines = array_replace_recursive($lines, $this->files->getRequire($file));
-                }
-
-                return $lines;
-            }, []);
-=======
             ->reduce(function ($output, $path) use ($locale, $group, $namespace) {
                 $file = "{$path}/vendor/{$namespace}/{$locale}/{$group}.php";
 
@@ -122,7 +111,6 @@ class FileLoader implements Loader
 
                 return $output;
             }, $lines);
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**

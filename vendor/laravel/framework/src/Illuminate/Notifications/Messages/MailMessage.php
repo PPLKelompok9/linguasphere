@@ -212,11 +212,7 @@ class MailMessage extends SimpleMessage implements Renderable
     public function replyTo($address, $name = null)
     {
         if ($this->arrayOfAddresses($address)) {
-<<<<<<< HEAD
-            $this->replyTo += $this->parseAddresses($address);
-=======
             $this->replyTo = array_merge($this->replyTo, $this->parseAddresses($address));
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         } else {
             $this->replyTo[] = [$address, $name];
         }
@@ -234,11 +230,7 @@ class MailMessage extends SimpleMessage implements Renderable
     public function cc($address, $name = null)
     {
         if ($this->arrayOfAddresses($address)) {
-<<<<<<< HEAD
-            $this->cc += $this->parseAddresses($address);
-=======
             $this->cc = array_merge($this->cc, $this->parseAddresses($address));
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         } else {
             $this->cc[] = [$address, $name];
         }
@@ -256,11 +248,7 @@ class MailMessage extends SimpleMessage implements Renderable
     public function bcc($address, $name = null)
     {
         if ($this->arrayOfAddresses($address)) {
-<<<<<<< HEAD
-            $this->bcc += $this->parseAddresses($address);
-=======
             $this->bcc = array_merge($this->bcc, $this->parseAddresses($address));
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         } else {
             $this->bcc[] = [$address, $name];
         }

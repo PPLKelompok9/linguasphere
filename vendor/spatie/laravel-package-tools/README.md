@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Tools for creating Laravel packages
-=======
 <div align="left">
     <a href="https://spatie.be/open-source?utm_source=github&utm_medium=banner&utm_campaign=laravel-package-tools">
       <picture>
@@ -10,17 +7,13 @@
     </a>
 
 <h1>Tools for creating Laravel packages</h1>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-package-tools.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-package-tools)
 ![Tests](https://github.com/spatie/laravel-package-tools/workflows/Tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-package-tools.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-package-tools)
 
-<<<<<<< HEAD
-=======
 </div>
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 This package contains a `PackageServiceProvider` that you can use in your packages to easily register config files,
 migrations, and more.
 
@@ -30,11 +23,7 @@ Here's an example of how it can be used.
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 use MyPackage\ViewComponents\Alert;
-<<<<<<< HEAD
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-=======
 use Spatie\LaravelPackageTools\Commands\Concerns;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 class YourPackageServiceProvider extends PackageServiceProvider
 {
@@ -86,8 +75,6 @@ skeleton is structured perfectly to work perfectly with the `PackageServiceProvi
 
 ## Usage
 
-<<<<<<< HEAD
-=======
 To avoid needing to scroll through to find the right usage section, here is a Table of Contents:
 
 * [Directory Structure](#directory-structure)
@@ -147,7 +134,6 @@ so e.g. `<package root>/ConfigFiles` would be specified as `../ConfigFiles`.
 
 ### Getting Started
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 In your package you should let your service provider extend `Spatie\LaravelPackageTools\PackageServiceProvider`.
 
 ```php
@@ -163,11 +149,6 @@ class YourPackageServiceProvider extends PackageServiceProvider
 }
 ```
 
-<<<<<<< HEAD
-Passing the package name to `name` is mandatory.
-
-### Working with a config file
-=======
 Defining your package name with a call to `name()` is mandatory.
 
 **Note:** If your package name starts with `laravel-` then this prefix will be omitted
@@ -245,7 +226,6 @@ $package
 ```
 
 ### Config Files
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 To register a config file, you should create a php file with your package name in the `config` directory of your
 package. In this example it should be at `<package root>/config/your-package-name.php`.
@@ -276,114 +256,7 @@ $package
     ->hasConfigFile(['my-config-file', 'another-config-file']);
 ```
 
-<<<<<<< HEAD
-### Working with views
-
-Any views your package provides, should be placed in the `<package root>/resources/views` directory.
-
-You can register these views with the `hasViews` command.
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasViews();
-```
-
-This will register your views with Laravel.
-
-If you have a view `<package root>/resources/views/myView.blade.php`, you can use it like
-this: `view('your-package-name::myView')`. Of course, you can also use subdirectories to organise your views. A view
-located at `<package root>/resources/views/subdirectory/myOtherView.blade.php` can be used
-with `view('your-package-name::subdirectory.myOtherView')`.
-
-#### Using a custom view namespace
-
-You can pass a custom view namespace to the `hasViews` method.
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasViews('custom-view-namespace');
-```
-
-You can now use the views of the package like this:
-
-```php
-view('custom-view-namespace::myView');
-```
-
-#### Publishing the views
-
-Calling `hasViews` will also make views publishable. Users of your package will be able to publish the views with this
-command:
-
-```bash
-php artisan vendor:publish --tag=your-package-name-views
-```
-
-> **Note:**
-> 
-> If you use custom view namespace then you should change your publish command like this:
-```bash
-php artisan vendor:publish --tag=custom-view-namespace-views
-```
-
-
-### Sharing global data with views
-
-You can share data with all views using the `sharesDataWithAllViews` method. This will make the shared variable
-available to all views.
-
-```php
-$package
-    ->name('your-package-name')
-    ->sharesDataWithAllViews('companyName', 'Spatie');
-```
-
-### Working with Blade view components
-
-Any Blade view components that your package provides should be placed in the `<package root>/src/Components` directory.
-
-You can register these views with the `hasViewComponents` command.
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasViewComponents('spatie', Alert::class);
-```
-
-This will register your view components with Laravel. In the case of `Alert::class`, it can be referenced in views
-as `<x-spatie-alert />`, where `spatie` is the prefix you provided during registration.
-
-Calling `hasViewComponents` will also make view components publishable, and will be published
-to `app/Views/Components/vendor/<package name>`.
-
-Users of your package will be able to publish the view components with this command:
-
-```bash
-php artisan vendor:publish --tag=your-package-name-components
-```
-
-### Working with view composers
-
-You can register any view composers that your project uses with the `hasViewComposers` method. You may also register a
-callback that receives a `$view` argument instead of a classname.
-
-To register a view composer with all views, use an asterisk as the view name `'*'`.
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasViewComposer('viewName', MyViewComposer::class)
-    ->hasViewComposer('*', function($view) { 
-        $view->with('sharedVariable', 123); 
-    });
-```
-
-### Working with inertia components
-=======
 ### Inertia Components
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 Any `.vue` or `.jsx` files your package provides, should be placed in the `<package root>/resources/js/Pages` directory.
 
@@ -413,87 +286,6 @@ php artisan vendor:publish --tag=your-package-name-inertia-components
 
 Also, the inertia components are available in a convenient way with your package [installer-command](#adding-an-installer-command)
 
-<<<<<<< HEAD
-### Working with translations
-
-Any translations your package provides, should be placed in the `<package root>/resources/lang/<language-code>`
-directory.
-
-You can register these translations with the `hasTranslations` command.
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasTranslations();
-```
-
-This will register the translations with Laravel.
-
-Assuming you save this translation file at `<package root>/resources/lang/en/translations.php`...
-
-```php
-return [
-    'translatable' => 'translation',
-];
-```
-
-... your package and users will be able to retrieve the translation with:
-
-```php
-trans('your-package-name::translations.translatable'); // returns 'translation'
-```
-
-If your package name starts with `laravel-` then you should leave that off in the example above.
-
-Coding with translation strings as keys, you should create JSON files
-in `<package root>/resources/lang/<language-code>.json`.
-
-For example, creating `<package root>/resources/lang/it.json` file like so:
-
-```json
-{
-    "Hello!": "Ciao!"
-}
-```
-
-...the output of...
-
-```php
-trans('Hello!');
-``` 
-
-...will be `Ciao!` if the application uses the Italian language.
-
-Calling `hasTranslations` will also make translations publishable. Users of your package will be able to publish the
-translations with this command:
-
-```bash
-php artisan vendor:publish --tag=your-package-name-translations
-```
-
-### Working with assets
-
-Any assets your package provides, should be placed in the `<package root>/resources/dist/` directory.
-
-You can make these assets publishable the `hasAssets` method.
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasAssets();
-```
-
-Users of your package will be able to publish the assets with this command:
-
-```bash
-php artisan vendor:publish --tag=your-package-name-assets
-```
-
-This will copy over the assets to the `public/vendor/<your-package-name>` directory in the app where your package is
-installed in.
-
-=======
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 ### Working with migrations
 
 The `PackageServiceProvider` assumes that any migrations are placed in this
@@ -553,9 +345,6 @@ $package
     ->runsMigrations();
 ```
 
-<<<<<<< HEAD
-### Working with a publishable service provider
-=======
 ### Routes
 
 The `PackageServiceProvider` assumes that any route files are placed in this directory: `<package root>/routes`. Inside
@@ -580,7 +369,6 @@ $package
 ```
 
 ### Publishable Service Providers
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 Some packages need an example service provider to be copied into the `app\Providers` directory of the Laravel app. Think
 of for instance, the `laravel/horizon` package that copies an `HorizonServiceProvider` into your app with some sensible
@@ -604,40 +392,16 @@ php artisan vendor:publish --tag=your-package-name-provider
 ... will copy `/resources/stubs/{$nameOfYourServiceProvider}.php.stub` in your package
 to `app/Providers/{$nameOfYourServiceProvider}.php` in the app of the user.
 
-<<<<<<< HEAD
-### Registering commands
-
-You can register any command you package provides with the `hasCommand` function.
-=======
 ### Translations
 
 Any translations your package provides, should be placed in the `<package root>/resources/lang/<language-code>`
 directory.
 
 You can register these translations with the `hasTranslations` command.
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 ```php
 $package
     ->name('your-package-name')
-<<<<<<< HEAD
-    ->hasCommand(YourCoolPackageCommand::class);
-````
-
-If your package provides multiple commands, you can either use `hasCommand` multiple times, or pass an array
-to `hasCommands`
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasCommands([
-        YourCoolPackageCommand::class,
-        YourOtherCoolPackageCommand::class,
-    ]);
-```
-
-### Adding an installer command
-=======
     ->hasTranslations();
 ```
 
@@ -764,7 +528,6 @@ $package
 ```
 
 ### Creating an Install Command
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 Instead of letting your users manually publishing config files, migrations, and other files manually, you could opt to
 add an install command that does all this work in one go. Packages like Laravel Horizon and Livewire provide such
@@ -776,11 +539,7 @@ call, `hasInstallCommand` and configure it using a closure. Here's an example.
 ```php
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
-<<<<<<< HEAD
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-=======
 use Spatie\LaravelPackageTools\Commands\Concerns;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 class YourPackageServiceProvider extends PackageServiceProvider
 {
@@ -825,11 +584,7 @@ end when running `php artisan your-package-name:install`. You can use this to pe
 output.
 
 ```php
-<<<<<<< HEAD
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-=======
 use Spatie\LaravelPackageTools\Commands\Concerns;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 public function configurePackage(Package $package): void
 {
@@ -853,34 +608,7 @@ public function configurePackage(Package $package): void
 }
 ```
 
-<<<<<<< HEAD
-### Working with routes
-
-The `PackageServiceProvider` assumes that any route files are placed in this directory: `<package root>/routes`. Inside
-that directory you can put any route files.
-
-To register your route, you should pass its name without the extension to the `hasRoute` method.
-
-If your route file is called `web.php` you can register them like this:
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasRoute('web');
-```
-
-Should your package contain multiple route files, you can just call `hasRoute` multiple times or use `hasRoutes`.
-
-```php
-$package
-    ->name('your-package-name')
-    ->hasRoutes(['web', 'admin']);
-```
-
-### Using lifecycle hooks
-=======
 ### Lifecycle Hooks
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 You can put any custom logic your package needs while starting up in one of these methods:
 
@@ -895,8 +623,6 @@ You can put any custom logic your package needs while starting up in one of thes
 composer test
 ```
 
-<<<<<<< HEAD
-=======
 This package now supports test groups as follows:
 
 ```bash
@@ -937,7 +663,6 @@ if you want to run `vendor/bin/pest` directly you now need to run it like this:
 php -d auto_prepend_file=tests/Prepend.php vendor/bin/pest
 ```
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

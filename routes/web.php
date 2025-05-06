@@ -43,4 +43,15 @@ Route::get('/pretest/{slug}', [PretestController::class, 'show'])->name('pretest
 Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
 Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
 
-require __DIR__ . '/auth.php';
+Route::resource('scholarships', ScholarshipController::class);
+
+Route::resource('institutions', InstitutionController::class)->parameters([
+    'institutions' => 'institution:slug'
+]);
+
+Route::get('institutions/{institution:slug}/partnerships', [
+    InstitutionController::class, 
+    'activePartnerships'
+])->name('institutions.partnerships');
+
+require __DIR__.'/auth.php';

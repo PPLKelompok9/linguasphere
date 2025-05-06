@@ -12,9 +12,9 @@ class PathDetail extends Model
     protected $table = 'path_details';
     protected $fillable = ['id_path', 'id_course'];
     public function path(){
-        return $this->hasMany(Path::class, 'id_path');
+        return $this->belongsTo(Path::class, 'id_path');
     }
-    public function courses(){
-        return $this->hasMany(Course::class,'id_course');
+    public function course(){
+        return $this->belongsTo(Course::class,'id_course');
     }
 }

@@ -63,4 +63,5 @@ class User extends Authenticatable implements FilamentUser
     public function pretest(){
         $return->hasMany(Pretest::class);
     }
+    
 }

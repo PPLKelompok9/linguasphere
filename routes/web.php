@@ -19,6 +19,8 @@ Route::get('/dashboard', function () {
   return view('homepage.main');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/path', [FrontController::class, 'path'])->name('front.path');
+
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

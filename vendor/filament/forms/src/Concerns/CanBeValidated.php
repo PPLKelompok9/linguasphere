@@ -118,9 +118,6 @@ trait CanBeValidated
             return [];
         }
 
-<<<<<<< HEAD
-        return $this->getLivewire()->validate($rules, $this->getValidationMessages(), $this->getValidationAttributes());
-=======
         $livewire = $this->getLivewire();
 
         // By storing the currently validating form in the Livewire component, we can optimize the validation process
@@ -134,6 +131,5 @@ trait CanBeValidated
         } finally {
             $livewire->currentlyValidatingForm(null);
         }
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 }

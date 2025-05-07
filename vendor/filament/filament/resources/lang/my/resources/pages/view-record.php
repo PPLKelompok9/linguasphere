@@ -2,9 +2,6 @@
 
 return [
 
-<<<<<<< HEAD
-    'breadcrumb' => 'စစ်ဆေးပါ',
-=======
     'title' => ':label ကိုကြည့်ရန်',
 
     'breadcrumb' => 'ကြည့်ရန်',
@@ -16,6 +13,5 @@ return [
         ],
 
     ],
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 ];

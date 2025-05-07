@@ -4,10 +4,7 @@ namespace Filament\Forms\Concerns;
 
 use Closure;
 use Exception;
-<<<<<<< HEAD
-=======
 use Filament\Forms\ComponentContainer;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Filament\Forms\Components\Component;
 use Filament\Forms\Form;
 use Filament\Infolists\Infolist;
@@ -40,11 +37,8 @@ trait InteractsWithForms
 
     protected bool $isCachingForms = false;
 
-<<<<<<< HEAD
-=======
     protected ?ComponentContainer $currentlyValidatingForm = null;
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     protected bool $hasFormsModalRendered = false;
 
     /**
@@ -262,17 +256,12 @@ trait InteractsWithForms
      */
     protected function prepareForValidation($attributes): array
     {
-<<<<<<< HEAD
-        foreach ($this->getCachedForms() as $form) {
-            $attributes = $form->mutateStateForValidation($attributes);
-=======
         if ($this->currentlyValidatingForm) {
             $attributes = $this->currentlyValidatingForm->mutateStateForValidation($attributes);
         } else {
             foreach ($this->getCachedForms() as $form) {
                 $attributes = $form->mutateStateForValidation($attributes);
             }
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         }
 
         return $attributes;
@@ -524,12 +513,9 @@ trait InteractsWithForms
     {
         return $this->getMountedFormComponentAction()->getInfolist();
     }
-<<<<<<< HEAD
-=======
 
     public function currentlyValidatingForm(?ComponentContainer $form): void
     {
         $this->currentlyValidatingForm = $form;
     }
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 }

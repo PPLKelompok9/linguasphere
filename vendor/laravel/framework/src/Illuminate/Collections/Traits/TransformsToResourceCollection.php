@@ -3,10 +3,6 @@
 namespace Illuminate\Support\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
-use Illuminate\Http\Resources\Json\JsonResource;
-=======
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use LogicException;
 
@@ -15,13 +11,8 @@ trait TransformsToResourceCollection
     /**
      * Create a new resource collection instance for the given resource.
      *
-<<<<<<< HEAD
-     * @param  class-string<JsonResource>|null  $resourceClass
-     * @return ResourceCollection
-=======
      * @param  class-string<\Illuminate\Http\Resources\Json\JsonResource>|null  $resourceClass
      * @return \Illuminate\Http\Resources\Json\ResourceCollection
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      *
      * @throws \Throwable
      */
@@ -37,11 +28,7 @@ trait TransformsToResourceCollection
     /**
      * Guess the resource collection for the items.
      *
-<<<<<<< HEAD
-     * @return ResourceCollection
-=======
      * @return \Illuminate\Http\Resources\Json\ResourceCollection
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      *
      * @throws \Throwable
      */
@@ -60,9 +47,6 @@ trait TransformsToResourceCollection
 
         throw_unless(method_exists($className, 'guessResourceName'), LogicException::class, sprintf('Expected class %s to implement guessResourceName method. Make sure the model uses the TransformsToResource trait.', $className));
 
-<<<<<<< HEAD
-        foreach ($className::guessResourceName() as $resourceClass) {
-=======
         $resourceClasses = $className::guessResourceName();
 
         foreach ($resourceClasses as $resourceClass) {
@@ -74,7 +58,6 @@ trait TransformsToResourceCollection
         }
 
         foreach ($resourceClasses as $resourceClass) {
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             if (is_string($resourceClass) && class_exists($resourceClass)) {
                 return $resourceClass::collection($this);
             }

@@ -7,17 +7,7 @@ use Illuminate\Support\Fluent;
 
 class MariaDbGrammar extends MySqlGrammar
 {
-<<<<<<< HEAD
-    /**
-     * Compile a rename column command.
-     *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @param  \Illuminate\Support\Fluent  $command
-     * @return array|string
-     */
-=======
     /** @inheritDoc */
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function compileRenameColumn(Blueprint $blueprint, Fluent $command)
     {
         if (version_compare($this->connection->getServerVersion(), '10.5.2', '<')) {

@@ -5,19 +5,11 @@ namespace Illuminate\Support\Facades;
 /**
  * @method static \Illuminate\Cache\RateLimiter for(\BackedEnum|\UnitEnum|string $name, \Closure $callback)
  * @method static \Closure|null limiter(\BackedEnum|\UnitEnum|string $name)
-<<<<<<< HEAD
- * @method static mixed attempt(string $key, int $maxAttempts, \Closure $callback, int $decaySeconds = 60)
- * @method static bool tooManyAttempts(string $key, int $maxAttempts)
- * @method static int hit(string $key, int $decaySeconds = 60)
- * @method static int increment(string $key, int $decaySeconds = 60, int $amount = 1)
- * @method static int decrement(string $key, int $decaySeconds = 60, int $amount = 1)
-=======
  * @method static mixed attempt(string $key, int $maxAttempts, \Closure $callback, \DateTimeInterface|\DateInterval|int $decaySeconds = 60)
  * @method static bool tooManyAttempts(string $key, int $maxAttempts)
  * @method static int hit(string $key, \DateTimeInterface|\DateInterval|int $decaySeconds = 60)
  * @method static int increment(string $key, \DateTimeInterface|\DateInterval|int $decaySeconds = 60, int $amount = 1)
  * @method static int decrement(string $key, \DateTimeInterface|\DateInterval|int $decaySeconds = 60, int $amount = 1)
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
  * @method static mixed attempts(string $key)
  * @method static mixed resetAttempts(string $key)
  * @method static int remaining(string $key, int $maxAttempts)

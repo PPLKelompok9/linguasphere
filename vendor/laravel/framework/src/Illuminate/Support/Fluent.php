@@ -5,10 +5,7 @@ namespace Illuminate\Support;
 use ArrayAccess;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Traits\Conditionable;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Illuminate\Support\Traits\InteractsWithData;
 use Illuminate\Support\Traits\Macroable;
 use JsonSerializable;
@@ -22,11 +19,7 @@ use JsonSerializable;
  */
 class Fluent implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
 {
-<<<<<<< HEAD
-    use InteractsWithData, Macroable {
-=======
     use Conditionable, InteractsWithData, Macroable {
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         __call as macroCall;
     }
 
@@ -48,8 +41,6 @@ class Fluent implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Create a new fluent instance.
      *
      * @param  iterable<TKey, TValue>  $attributes
@@ -61,7 +52,6 @@ class Fluent implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
     }
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Get an attribute from the fluent instance using "dot" notation.
      *
      * @template TGetDefault

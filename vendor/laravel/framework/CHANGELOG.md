@@ -1,8 +1,5 @@
 # Release Notes for 12.x
 
-<<<<<<< HEAD
-## [Unreleased](https://github.com/laravel/framework/compare/v12.7.1...12.x)
-=======
 ## [Unreleased](https://github.com/laravel/framework/compare/v12.9.2...12.x)
 
 ## [v12.9.2](https://github.com/laravel/framework/compare/v12.9.1...v12.9.2) - 2025-04-16
@@ -70,7 +67,6 @@
 * [12.x] Introduce Rule::anyOf() for Validating Against Multiple Rule Sets by [@brianferri](https://github.com/brianferri) in https://github.com/laravel/framework/pull/55191
 
 ## [v12.7.2](https://github.com/laravel/framework/compare/v12.7.1...v12.7.2) - 2025-04-03
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 ## [v12.7.1](https://github.com/laravel/framework/compare/v12.7.0...v12.7.1) - 2025-04-03
 

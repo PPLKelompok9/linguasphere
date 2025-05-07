@@ -10,10 +10,7 @@
 namespace PHPUnit\TextUI\Command;
 
 use const PHP_EOL;
-<<<<<<< HEAD
-=======
 use function assert;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use function count;
 use function ksort;
 use function sprintf;
@@ -40,13 +37,7 @@ final readonly class ListTestSuitesCommand implements Command
         $suites = [];
 
         foreach ($this->testSuite->tests() as $test) {
-<<<<<<< HEAD
-            if (!$test instanceof TestSuite) {
-                continue;
-            }
-=======
             assert($test instanceof TestSuite);
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
             $suites[$test->name()] = count($test->collect());
         }
@@ -78,8 +69,6 @@ final readonly class ListTestSuitesCommand implements Command
 
         $configuration = Registry::get();
 
-<<<<<<< HEAD
-=======
         if ($configuration->hasDefaultTestSuite()) {
             $buffer .= 'The defaultTestSuite (XML) and --list-suites (CLI) options cannot be combined, only the default test suite is shown' . PHP_EOL;
         }
@@ -88,29 +77,16 @@ final readonly class ListTestSuitesCommand implements Command
             $buffer .= 'The --testsuite and --list-suites options cannot be combined, --testsuite is ignored' . PHP_EOL;
         }
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         if ($configuration->hasFilter()) {
             $buffer .= 'The --filter and --list-suites options cannot be combined, --filter is ignored' . PHP_EOL;
         }
 
         if ($configuration->hasGroups()) {
-<<<<<<< HEAD
-            $buffer .= 'The --group and --list-suites options cannot be combined, --group is ignored' . PHP_EOL;
-        }
-
-        if ($configuration->hasExcludeGroups()) {
-            $buffer .= 'The --exclude-group and --list-suites options cannot be combined, --exclude-group is ignored' . PHP_EOL;
-        }
-
-        if ($configuration->includeTestSuite() !== '') {
-            $buffer .= 'The --testsuite and --list-suites options cannot be combined, --exclude-group is ignored' . PHP_EOL;
-=======
             $buffer .= 'The --group (CLI) and <groups> (XML) options cannot be combined with --list-suites, --group and <groups> are ignored' . PHP_EOL;
         }
 
         if ($configuration->hasExcludeGroups()) {
             $buffer .= 'The --exclude-group (CLI) and <groups> (XML) options cannot be combined with --list-suites, --exclude-group and <groups> are ignored' . PHP_EOL;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         }
 
         if (!empty($buffer)) {

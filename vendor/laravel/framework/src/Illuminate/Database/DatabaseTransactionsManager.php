@@ -139,11 +139,8 @@ class DatabaseTransactionsManager
                 do {
                     $this->removeCommittedTransactionsThatAreChildrenOf($this->currentTransaction[$connection]);
 
-<<<<<<< HEAD
-=======
                     $this->currentTransaction[$connection]->executeCallbacksForRollback();
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
                     $this->currentTransaction[$connection] = $this->currentTransaction[$connection]->parent;
                 } while (
                     isset($this->currentTransaction[$connection]) &&
@@ -161,15 +158,12 @@ class DatabaseTransactionsManager
      */
     protected function removeAllTransactionsForConnection($connection)
     {
-<<<<<<< HEAD
-=======
         if ($this->currentTransaction) {
             for ($currentTransaction = $this->currentTransaction[$connection]; isset($currentTransaction); $currentTransaction = $currentTransaction->parent) {
                 $currentTransaction->executeCallbacksForRollback();
             }
         }
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         $this->currentTransaction[$connection] = null;
 
         $this->pendingTransactions = $this->pendingTransactions->reject(
@@ -218,8 +212,6 @@ class DatabaseTransactionsManager
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Register a callback for transaction rollback.
      *
      * @param  callable  $callback
@@ -233,7 +225,6 @@ class DatabaseTransactionsManager
     }
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Get the transactions that are applicable to callbacks.
      *
      * @return \Illuminate\Support\Collection<int, \Illuminate\Database\DatabaseTransactionRecord>

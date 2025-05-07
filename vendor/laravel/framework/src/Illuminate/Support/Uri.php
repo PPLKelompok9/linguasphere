@@ -100,8 +100,6 @@ class Uri implements Htmlable, Responsable, Stringable
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Get a URI instance for a controller action.
      *
      * @param  string|array  $action
@@ -117,7 +115,6 @@ class Uri implements Htmlable, Responsable, Stringable
     }
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Get the URI's scheme.
      */
     public function scheme(): ?string

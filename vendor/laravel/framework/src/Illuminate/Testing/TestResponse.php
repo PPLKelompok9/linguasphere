@@ -1192,23 +1192,6 @@ class TestResponse implements ArrayAccess
 
         $this->ensureResponseHasView();
 
-<<<<<<< HEAD
-        if (is_null($value)) {
-            PHPUnit::withResponse($this)->assertTrue(Arr::has($this->original->gatherData(), $key));
-        } elseif ($value instanceof Closure) {
-            PHPUnit::withResponse($this)->assertTrue($value(Arr::get($this->original->gatherData(), $key)));
-        } elseif ($value instanceof Model) {
-            PHPUnit::withResponse($this)->assertTrue($value->is(Arr::get($this->original->gatherData(), $key)));
-        } elseif ($value instanceof EloquentCollection) {
-            $actual = Arr::get($this->original->gatherData(), $key);
-
-            PHPUnit::withResponse($this)->assertInstanceOf(EloquentCollection::class, $actual);
-            PHPUnit::withResponse($this)->assertSameSize($value, $actual);
-
-            $value->each(fn ($item, $index) => PHPUnit::withResponse($this)->assertTrue($actual->get($index)->is($item)));
-        } else {
-            PHPUnit::withResponse($this)->assertEquals($value, Arr::get($this->original->gatherData(), $key));
-=======
         $actual = Arr::get($this->original->gatherData(), $key);
 
         if (is_null($value)) {
@@ -1224,7 +1207,6 @@ class TestResponse implements ArrayAccess
             $value->each(fn ($item, $index) => PHPUnit::withResponse($this)->assertTrue($actual->get($index)->is($item), "Failed asserting that the collection at [{$key}.[{$index}]]' matches the given collection."));
         } else {
             PHPUnit::withResponse($this)->assertEquals($value, $actual, "Failed asserting that [{$key}] matches the expected value.");
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         }
 
         return $this;

@@ -38,11 +38,7 @@ trait HasEvents
      */
     public static function bootHasEvents()
     {
-<<<<<<< HEAD
-        static::observe(static::resolveObserveAttributes());
-=======
         static::whenBooted(fn () => static::observe(static::resolveObserveAttributes()));
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**

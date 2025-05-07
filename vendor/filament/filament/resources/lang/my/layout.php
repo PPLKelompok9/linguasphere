@@ -2,14 +2,6 @@
 
 return [
 
-<<<<<<< HEAD
-    'direction' => 'ဘယ်မှညာ',
-
-    'actions' => [
-
-        'logout' => [
-            'label' => 'ထွက်မည်',
-=======
     'direction' => 'ltr',
 
     'actions' => [
@@ -24,23 +16,12 @@ return [
 
         'open_database_notifications' => [
             'label' => 'အကြောင်းကြားချက်များ ဖွင့်ရန်',
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         ],
 
         'open_user_menu' => [
             'label' => 'အသုံးပြုသူမီနူး',
         ],
 
-<<<<<<< HEAD
-        'theme_switcher' => [
-
-            'dark' => [
-                'label' => 'အနက်နောက်ခံပုံစံ',
-            ],
-
-            'light' => [
-                'label' => 'အဖြူနောက်ခံပုံစံ',
-=======
         'sidebar' => [
 
             'collapse' => [
@@ -65,15 +46,12 @@ return [
 
             'system' => [
                 'label' => 'စနစ်သွင်ပြင် သုံးရန်',
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             ],
 
         ],
 
     ],
 
-<<<<<<< HEAD
-=======
     'avatar' => [
         'alt' => ':name ၏ ပရိုဖိုင်ပုံ',
     ],
@@ -82,5 +60,4 @@ return [
         'alt' => ':name လိုဂို',
     ],
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 ];

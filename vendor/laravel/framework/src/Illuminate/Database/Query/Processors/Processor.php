@@ -39,13 +39,8 @@ class Processor
     /**
      * Process the results of a schemas query.
      *
-<<<<<<< HEAD
-     * @param  array  $results
-     * @return array
-=======
      * @param  list<array<string, mixed>>  $results
      * @return list<array{name: string, path: string|null, default: bool}>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function processSchemas($results)
     {
@@ -63,13 +58,8 @@ class Processor
     /**
      * Process the results of a tables query.
      *
-<<<<<<< HEAD
-     * @param  array  $results
-     * @return array
-=======
      * @param  list<array<string, mixed>>  $results
      * @return list<array{name: string, schema: string|null, schema_qualified_name: string, size: int|null, comment: string|null, collation: string|null, engine: string|null}>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function processTables($results)
     {
@@ -91,13 +81,8 @@ class Processor
     /**
      * Process the results of a views query.
      *
-<<<<<<< HEAD
-     * @param  array  $results
-     * @return array
-=======
      * @param  list<array<string, mixed>>  $results
      * @return list<array{name: string, schema: string, schema_qualified_name: string, definition: string}>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function processViews($results)
     {
@@ -116,13 +101,8 @@ class Processor
     /**
      * Process the results of a types query.
      *
-<<<<<<< HEAD
-     * @param  array  $results
-     * @return array
-=======
      * @param  list<array<string, mixed>>  $results
      * @return list<array{name: string, schema: string, type: string, type: string, category: string, implicit: bool}>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function processTypes($results)
     {
@@ -132,13 +112,8 @@ class Processor
     /**
      * Process the results of a columns query.
      *
-<<<<<<< HEAD
-     * @param  array  $results
-     * @return array
-=======
      * @param  list<array<string, mixed>>  $results
      * @return list<array{name: string, type: string, type_name: string, nullable: bool, default: mixed, auto_increment: bool, comment: string|null, generation: array{type: string, expression: string|null}|null}>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function processColumns($results)
     {
@@ -148,13 +123,8 @@ class Processor
     /**
      * Process the results of an indexes query.
      *
-<<<<<<< HEAD
-     * @param  array  $results
-     * @return array
-=======
      * @param  list<array<string, mixed>>  $results
      * @return list<array{name: string, columns: list<string>, type: string, unique: bool, primary: bool}>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function processIndexes($results)
     {
@@ -164,13 +134,8 @@ class Processor
     /**
      * Process the results of a foreign keys query.
      *
-<<<<<<< HEAD
-     * @param  array  $results
-     * @return array
-=======
      * @param  list<array<string, mixed>>  $results
      * @return list<array{name: string, columns: list<string>, foreign_schema: string, foreign_table: string, foreign_columns: list<string>, on_update: string, on_delete: string}>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function processForeignKeys($results)
     {

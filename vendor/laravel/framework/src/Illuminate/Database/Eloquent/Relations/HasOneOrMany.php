@@ -437,8 +437,6 @@ abstract class HasOneOrMany extends Relation
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Create a Collection of new instances of the related model, allowing mass-assignment.
      *
      * @param  iterable  $records
@@ -467,7 +465,6 @@ abstract class HasOneOrMany extends Relation
     }
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Set the foreign ID for creating a related model.
      *
      * @param  TRelatedModel  $model

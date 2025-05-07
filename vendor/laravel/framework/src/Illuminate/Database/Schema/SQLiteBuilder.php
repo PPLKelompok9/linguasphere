@@ -30,16 +30,7 @@ class SQLiteBuilder extends Builder
         return ! File::exists($name) || File::delete($name);
     }
 
-<<<<<<< HEAD
-    /**
-     * Get the tables that belong to the connection.
-     *
-     * @param  string|string[]|null  $schema
-     * @return array
-     */
-=======
     /** @inheritDoc */
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function getTables($schema = null)
     {
         try {
@@ -69,16 +60,7 @@ class SQLiteBuilder extends Builder
         );
     }
 
-<<<<<<< HEAD
-    /**
-     * Get the views that belong to the connection.
-     *
-     * @param  string|string[]|null  $schema
-     * @return array
-     */
-=======
     /** @inheritDoc */
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function getViews($schema = null)
     {
         $schema ??= array_column($this->getSchemas(), 'name');
@@ -94,16 +76,7 @@ class SQLiteBuilder extends Builder
         return $this->connection->getPostProcessor()->processViews($views);
     }
 
-<<<<<<< HEAD
-    /**
-     * Get the columns for a given table.
-     *
-     * @param  string  $table
-     * @return array
-     */
-=======
     /** @inheritDoc */
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     public function getColumns($table)
     {
         [$schema, $table] = $this->parseSchemaAndTable($table);

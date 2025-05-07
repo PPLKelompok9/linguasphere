@@ -11,10 +11,7 @@ use Filament\Support\Enums\MaxWidth;
 use Filament\Support\View\Components\Modal;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Arr;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
 trait CanOpenModal
 {
@@ -38,11 +35,7 @@ trait CanOpenModal
     protected array $cachedModalActions;
 
     /**
-<<<<<<< HEAD
-     * @var array<StaticAction>
-=======
      * @var array<StaticAction | Closure>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     protected array $modalActions = [];
 
@@ -222,11 +215,7 @@ trait CanOpenModal
     }
 
     /**
-<<<<<<< HEAD
-     * @param  array<StaticAction>  $actions
-=======
      * @param  array<StaticAction | Closure>  $actions
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      */
     public function registerModalActions(array $actions): static
     {
@@ -364,13 +353,8 @@ trait CanOpenModal
         if ($this->modalFooterActions) {
             $actions = [];
 
-<<<<<<< HEAD
-            foreach ($this->evaluate($this->modalFooterActions) as $action) {
-                $actions[$action->getName()] = $this->prepareModalAction($action);
-=======
             foreach ($this->evaluate($this->modalFooterActions) as $modalAction) {
                 $actions[$modalAction->getName()] = $this->prepareModalAction($modalAction);
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             }
 
             return $this->cachedModalFooterActions = $actions;
@@ -415,13 +399,9 @@ trait CanOpenModal
         $actions = $this->getModalFooterActions();
 
         foreach ($this->modalActions as $action) {
-<<<<<<< HEAD
-            $actions[$action->getName()] = $this->prepareModalAction($action);
-=======
             foreach (Arr::wrap($this->evaluate($action)) as $modalAction) {
                 $actions[$modalAction->getName()] = $this->prepareModalAction($modalAction);
             }
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         }
 
         return $this->cachedModalActions = $actions;

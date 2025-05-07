@@ -20,14 +20,10 @@ use Illuminate\Log\Context\Repository as ContextRepository;
 use Illuminate\Queue\CallQueuedClosure;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Date;
-<<<<<<< HEAD
-use Illuminate\Support\HtmlString;
-=======
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Uri;
 use League\Uri\Contracts\UriInterface;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 use Symfony\Component\HttpFoundation\Response;
 
 if (! function_exists('abort')) {
@@ -1008,11 +1004,6 @@ if (! function_exists('__')) {
     }
 }
 
-<<<<<<< HEAD
-if (! function_exists('url')) {
-    /**
-     * Generate a url for the application.
-=======
 if (! function_exists('uri')) {
     /**
      * Generate a URI for the application.
@@ -1030,7 +1021,6 @@ if (! function_exists('uri')) {
 if (! function_exists('url')) {
     /**
      * Generate a URL for the application.
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      *
      * @param  string|null  $path
      * @param  mixed  $parameters

@@ -72,8 +72,6 @@ class CacheManager implements FactoryContract
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Get a memoized cache driver instance.
      *
      * @param  string|null  $driver
@@ -93,7 +91,6 @@ class CacheManager implements FactoryContract
     }
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Resolve the given store.
      *
      * @param  string  $name

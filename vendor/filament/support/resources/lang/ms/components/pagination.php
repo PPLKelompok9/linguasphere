@@ -4,11 +4,7 @@ return [
 
     'label' => 'Navigasi penomboran',
 
-<<<<<<< HEAD
-    'overview' => '{1} Memaparkan 1 rekod|Memaparkan :first hingga :last daripada :total rekod',
-=======
     'overview' => '{1} Memaparkan 1 rekod|[2,*] Memaparkan :first hingga :last daripada :total rekod',
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 
     'fields' => [
 

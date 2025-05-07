@@ -40,8 +40,6 @@ trait HasRelationships
     protected $touches = [];
 
     /**
-<<<<<<< HEAD
-=======
      * The relationship autoloader callback.
      *
      * @var \Closure|null
@@ -49,7 +47,6 @@ trait HasRelationships
     protected $relationAutoloadCallback = null;
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * The many to many relationship methods.
      *
      * @var string[]
@@ -103,8 +100,6 @@ trait HasRelationships
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Determine if a relationship autoloader callback has been defined.
      *
      * @return bool
@@ -196,7 +191,6 @@ trait HasRelationships
     }
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Define a one-to-one relationship.
      *
      * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
@@ -1078,9 +1072,6 @@ trait HasRelationships
      */
     public function relationLoaded($key)
     {
-<<<<<<< HEAD
-        return array_key_exists($key, $this->relations);
-=======
         if (array_key_exists($key, $this->relations)) {
             return true;
         }
@@ -1103,7 +1094,6 @@ trait HasRelationships
         }
 
         return true;
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
     }
 
     /**
@@ -1117,11 +1107,8 @@ trait HasRelationships
     {
         $this->relations[$relation] = $value;
 
-<<<<<<< HEAD
-=======
         $this->propagateRelationAutoloadCallbackToRelation($relation, $value, $this);
 
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
         return $this;
     }
 
@@ -1152,8 +1139,6 @@ trait HasRelationships
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Enable relationship autoloading for this model.
      *
      * @return $this
@@ -1166,7 +1151,6 @@ trait HasRelationships
     }
 
     /**
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
      * Duplicate the instance and unset all the loaded relations.
      *
      * @return $this

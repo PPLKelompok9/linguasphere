@@ -301,8 +301,6 @@
         @endif
     </button>
     @trim
-<<<<<<< HEAD
-=======
 @elseif ($tag === 'div')
     <div
         role="button"
@@ -352,5 +350,4 @@
         @endif
     </div>
     @trim
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
 @endif

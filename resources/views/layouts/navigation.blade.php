@@ -11,18 +11,6 @@
                 </div>
 
                 <!-- Navigation Links -->
-<<<<<<< HEAD
-                @if (!request()->routeIs('profile.edit'))
-                  <form action="#" class="relative mt-1.5">
-                     <label class="group">
-                        <input type="text" name="search" id="search" class="appearance-none outline-none ring-1 ring-obito-grey rounded-full w-[400px] py-[14px] px-5 bg-white font-bold placeholder:font-normal placeholder:text-obito-text-secondary group-focus-within:ring-obito-green transition-all duration-300 pr-[50px]" placeholder="Search course by name">
-                        <button type="submit" class="absolute right-0 top-0 h-[52px] w-[52px] flex shrink-0 items-center justify-center">
-                          <img src="{{ asset('assets/icons/search-normal-green-fill.svg') }}" class="flex shrink-0 w-10 h-10" alt="search">
-                        </button>
-                      </label>
-                  </form>
-                @endif
-=======
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
@@ -34,7 +22,6 @@
                         {{ __('Browse Courses') }}
                     </x-nav-link>
                 </div>
->>>>>>> 890ebdd96f7d6873ba198cc859e87d61062ce611
             </div>
 
             <!-- Settings Dropdown -->

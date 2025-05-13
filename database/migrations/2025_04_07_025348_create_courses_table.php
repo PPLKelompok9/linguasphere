@@ -20,6 +20,11 @@ return new class extends Migration
             $table->float("price");
             $table->float("diskon_price");
             $table->float("level");
+            $table->integer('impressions')->default(0);
+            $table->integer('total_sales')->default(0);
+            $table->decimal('total_revenue', 10, 2)->default(0);
+            $table->integer('total_students')->default(0);
+            $table->string('icon')->nullable();
             $table->foreignId("id_agency")->constrained("agencies")->onDelete("cascade");
             $table->foreignId("id_category")->contrained("categories")->onDelete("cascade")->nullable();
             $table->softDeletes();

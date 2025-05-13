@@ -27,4 +27,5 @@ phpunit.result.cache
 *.sqlite
 *.sqlite3
 .env
+.env.testing
 

@@ -17,8 +17,8 @@
             @if(Auth::check())
         {{ Auth::user()->name }}
       @else
-    Guest
-  @endif
+        Guest
+      @endif
           </p>
         </div>
         <div class="hidden sm:flex sm:items-center">
@@ -80,7 +80,7 @@
       </a>
     </li>
     <li class="group {{ Route::currentRouteName() === 'courses' ? 'active' : '' }}">
-      <a href="{{ route('courses') }}"
+      <a href="{{ route('courses.index') }}"
         class="flex items-center gap-2 rounded-full border border-obito-grey py-2 px-[14px] hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-light-green group-[.active]:border-obito-light-green">
         <img src="assets/icons/note-favorite.svg" class="flex shrink-0 w-5" alt="icon">
         <span>Courses</span>

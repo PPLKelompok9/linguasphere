@@ -13,4 +13,8 @@ class CourseRepository implements CourseRepositoryInterface{
     public function getAllWithCategory(): Collection{
         return Course::with('category')->latest()->get();
     }
+
+    public function findById(int $id): Collection{
+        return Course::find($id);
+    }
 }

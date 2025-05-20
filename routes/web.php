@@ -31,6 +31,12 @@ Route::middleware('auth')->group(function () {
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+  Route::middleware('role:students')->group(function (){
+    Route::get('/transactions/checkouts/{courses}', [ExternalController::class, 'checkouts'])->name('external.checkouts');
+    Route::get('/transactions/checkouts/success', [ExternalController::class, 'checkouts_success'])->name('external.checkout.success');
+    Route::post('transactions/payments/midtrans', [ExternalController::class, 'paymentMidtrans'])->name('external.midtrans');
+  });
+
   Route::middleware('role:user')->group(function () {
     Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
   });

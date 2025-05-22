@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionService{
     protected $transactionRepository;
-    protected $cousesReporitory;
+    protected $coursesRepository;
 
 
     public function __construct(
         TransactionRepositoryInterface $transactionRepository, 
-        CourseRepositoryInterface $cousesRepository){
+        CourseRepositoryInterface $coursesRepository){
         $this->transactionRepository = $transactionRepository;
-        $this->courseRepository = $cousesRepository;
+        $this->courseRepository = $coursesRepository;
     }
     //Show data on page detail-transactions
     public function validationCheckouts(Course $course){

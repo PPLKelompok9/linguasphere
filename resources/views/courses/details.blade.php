@@ -132,7 +132,7 @@ body {
                 <h2><span class="target-icon">🎯</span>{{$c['name']}}</h2>
                 <p>Rp{{ number_format($c['price'], 0, ',', '.') }}</p>
                 <p>{{ $c['description'] }}</p>
-                <button class="learn-button">Learn Class now</button>
+                <a href="{{ route('external.checkouts', $c['id'])}}"><button class="learn-button">Learn Class now</button></a>
             </div>
         </div>
         @endforeach

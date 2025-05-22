@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>@yield('title')</title>
   <meta name="description"
     content="Lingusphere is an innovative online learning platform that empowers students and professionals with high-quality, accessible courses.">
 
@@ -12,9 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-    <title>
-        @yield('title')
-    </title>
+
 
   <!-- Styles / Scripts -->
   @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -22,6 +20,7 @@
   @else
     <link href="{{ asset('css/output.css') }}" rel="stylesheet">
   @endif
+  @stack('after-style')
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/logos/logo-64.png') }}">
@@ -29,9 +28,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> 
 
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Obito Online Learning Platform - Learn Anytime, Anywhere">
-  <meta property="og:description"
-    content="Obito is an innovative online learning platform that empowers students and professionals with high-quality, accessible courses.">
   <meta property="og:image" content="{{ asset('assets/logos/logo-64-big.png') }}">
   <meta property="og:url" content="{{ url('/') }}">
   <meta property="og:type" content="website">
@@ -39,5 +35,7 @@
 
 <body>
     @yield('content')
+    <script src="js/dropdown-navbar.js"></script>
+    @stack('after-scripts')
 </body>
 </html>

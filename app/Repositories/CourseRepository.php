@@ -15,7 +15,7 @@ class CourseRepository implements CourseRepositoryInterface{
         return Category::with('agencies.courses')->get();
     }
 
-    public function findById(int $id): Collection{
+    public function findById(int $id): ?Course{
         return Course::find($id);
     }
 }

@@ -16,9 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/courses', [CourseController::class, 'index'])->name('external.course');
 
-Route::get('/courses/detail/{id}', [CourseController::class, 'showDetailCoursesByCategory'])->name('courses.detail');
 
 Route::get('/dashboard', function () {
   return view('homepage.main');
@@ -33,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
   Route::middleware('role:user')->group(function (){
     
-    Route::get('/transactions/checkouts/{courses}', [ExternalController::class, 'checkouts'])->name('external.checkouts');
+    
     Route::get('/transactions/checkouts/success', [ExternalController::class, 'checkouts_success'])->name('external.checkout.success');
     Route::post('transactions/payments/midtrans', [ExternalController::class, 'paymentMidtrans'])->name('external.midtrans');
   });
@@ -89,7 +87,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::middleware('role:user')->group(function(){
-        Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
+      Route::get('/courses', [CourseController::class, 'index'])->name('external.course');
+      Route::get('/courses/detail/{id}', [CourseController::class, 'showDetailCoursesByCategory'])->name('courses.detail');
+      Route::get('/transactions/checkouts/{id}', [ExternalController::class, 'checkouts'])->name('external.checkouts');
+      Route::post('/payment/midtrans', [ExternalController::class, 'paymentMidtrans'])->name('external.payment_midtrans');
+      Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
     });
 });
 

@@ -15,16 +15,16 @@ class PaymentService{
     protected $transactionService;
     protected $courseService;
 
-    public function __construct(TransactionRepositoryInterface $transactionService, CourseRepositoryInterface $courseService, MidtransService $midtransService){
-        $this->transactionService = $transactionService;
+    public function __construct(CourseRepositoryInterface $courseService, MidtransService $midtransService, TransactionRepositoryInterface $transactionService){
         $this->courseService = $courseService;
+        $this->transactionService = $transactionService;
         $this->midtransService = $midtransService;
     }
 
     public function createPayment(int $courseId){
         $user = Auth::user();
         $course = $this->courseService->findById($courseId);
-        $price = $course->diskon_price && $course->diskon_price > 0 ? $couse->diskon_price : $couse->price;
+        $price = $course->diskon_price && $course->diskon_price > 0 ? $course->diskon_price : $course->price;
         $tax = 0.11;
         $sub_total = $price;
         $total_tax_price = $price * $tax;
@@ -39,8 +39,8 @@ class PaymentService{
                 'first_name' => $user->name,
                 'email' => $user->email,
             ],
-            'items_details' => [
-                [
+            'item_details' => [
+                 [
                     'id' => $course->id,
                     'price' => (int) $price,
                     'quantity' => 1,
@@ -52,9 +52,9 @@ class PaymentService{
                     'quantity' => 1,
                     'name' => 'PPN 11%',
                 ],
+            ],
                 'custom_field1' => $user->id,
-                'custom_filed2' => $courseId,
-            ]
+                'custom_field2' => $courseId,
         ];
 
         return $this->midtransService->createSnapToken($params);
@@ -75,7 +75,7 @@ class PaymentService{
         $transactionData = [
             'id_user' => $notification['custom_field1'],
             'id_products' => $notification['custom_field2'],
-            'id_agency' => $couse->id_agency,
+            'id_agency' => $course->id_agency,
             'total_price' => $notification['gross_amount'],
             'type_payment' => 'Midtrans',
             'type_products' => 'Course',

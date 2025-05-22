@@ -13,7 +13,7 @@ class Category extends Model
     protected $fillable = ['name', 'images'];
     public function agencies()
     {
-        return $this->hasMany(Agency::class);
+        return $this->hasMany(Agency::class, 'category_id');
     }
     public function courses(){
         return $this->hasMany(Course::class, 'id_category');

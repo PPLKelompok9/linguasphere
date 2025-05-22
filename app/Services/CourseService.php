@@ -32,9 +32,42 @@ class CourseService{
     }
 
     public function getCoursesGroupByCategory(){
-        $courses = $this->courseRepository->getAllWithCategory();
-        return $courses->groupBy(function ($course){
-            return $course->category->name ?? 'Uncategorize';
-        });
+         $categories = $this->courseRepository->getAllWithCategory();
+            return $categories->map(function ($category) {
+        return [
+            'id' => $category->id,
+            'name' => $category->name,
+            'images' => $category->images,
+            'agencies' => $category->agencies->map(function ($agency) {
+                return [
+                    'id' => $agency->id,
+                    'name' => $agency->name,
+                    'slug' => $agency->slug,
+                    'courses' => $agency->courses->map(function ($course) {
+                        return [
+                            'id' => $course->id,
+                            'name' => $course->name,
+                            'slug' => $course->slug,
+                            'cover' => $course->cover,
+                            'price' => $course->price,
+                            // tambahkan properti lain yang dibutuhkan
+                        ];
+                    }),
+                ];
+            }),
+        ];
+    });
+       
+    }
+
+    public function getCoursesByCategory(int $id){
+        $category = $this->courseRepository->findCourseByCategory($id);
+        $courses = collect();
+
+        foreach($category->agencies as $agency){
+            $courses = $courses->merge($agency->courses);
+        }
+
+        return $courses->sortByDesc('created_at')->values();
     }
 }

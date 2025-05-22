@@ -50,10 +50,10 @@ class Course extends Model
         return $this->belongsTo(Agency::class, 'id_agency');
     }
 
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class, 'id_category');
-    }
+    // public function category(): BelongsTo
+    // {
+    //     return $this->belongsTo(Category::class, 'id_category');
+    // }
 
     public function pathDetails()
     {

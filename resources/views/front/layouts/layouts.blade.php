@@ -35,7 +35,7 @@
 
 <body>
     @yield('content')
-    <script src="js/dropdown-navbar.js"></script>
+    <script src="{{asset('js/dropdown-navbar.js')}}"></script>
     @stack('after-scripts')
 </body>
 </html>

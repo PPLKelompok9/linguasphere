@@ -62,9 +62,9 @@
                     </div>
                 </section>
                 <div class="flex items-center gap-[14px] mx-auto">
-                    <a href="my-subscriptions.html">
+                    <a href="{{ route('external.history_checkouts') }}">
                         <div class="flex items-center px-5 justify-center border border-obito-grey rounded-full py-[10px] bg-white hover:border-obito-green transition-all duration-300">
-                            <p class="font-semibold">My Transactions</p>
+                            <p class="font-semibold">My Courses</p>
                         </div>
                     </a>
                     <a href="catalog-v2.html">

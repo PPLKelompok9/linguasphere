@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\CourseService;
 use App\Services\PaymentService;
-// use App\Services\TransactionService;
+use App\Services\TransactionService;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,11 +13,13 @@ class ExternalController extends Controller
 {
 
     protected $courseServices;
+    protected $paymentServices;
     protected $transactionServices;
 
-    public function __construct(CourseService $courseServices, PaymentService $paymentServices){
+    public function __construct(CourseService $courseServices, PaymentService $paymentServices, TransactionService $transactionServices){
         $this->courseServices = $courseServices;
         $this->paymentServices = $paymentServices;
+        $this->transactionServices = $transactionServices;
     }
 
     public function checkouts(int $id){
@@ -74,8 +76,15 @@ class ExternalController extends Controller
         return view('front.checkout_success', compact('data'));
     }
 
+    public function historyCheckouts(){
+        $data = $this->transactionServices->getTransactions();
+          dd($data);
+        return view('front.history_checkouts');
+    }
+
     public function path()
     {
+        
         return view('external.path');
     }
 

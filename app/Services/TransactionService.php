@@ -50,6 +50,6 @@ class TransactionService{
     public function getTransactions(){
         $user = Auth::user();
 
-        return $this->transactionRepository->getTransation($user->id);
+        return $this->transactionRepository->getTransaction($user->id);
     }
 }

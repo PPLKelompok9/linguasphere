@@ -110,7 +110,7 @@
                     if(data.snap_token){
                         snap.pay(data.snap_token, {
                             onSuccess: function(result){
-                                window.location.href="{{ route('external.checkout.success') }}";
+                                window.location.href="{{ route('external.checkout_success') }}";
                             },
                             onPending: function(result){
                                 alert('Payment pending !');

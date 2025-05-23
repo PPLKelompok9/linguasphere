@@ -64,6 +64,16 @@ class ExternalController extends Controller
         }
     }
 
+    public function afterCheckouts(){
+        $user = Auth::user();
+        $data = $this->paymentServices->getRecentCourse();
+        // dd($data);
+        if(!$data){
+            return redirect()->front('external-course')->with('error', 'No recent payment course.');
+        }
+        return view('front.checkout_success', compact('data'));
+    }
+
     public function path()
     {
         return view('external.path');

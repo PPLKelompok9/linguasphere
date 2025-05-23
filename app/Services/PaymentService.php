@@ -71,6 +71,11 @@ class PaymentService{
         return $notification['transaction_status'];
     }
 
+    public function getRecentCourse(){
+        $courseId = session()->get('id_products');
+        return Course::find($courseId);
+    }
+
     public function createTransaction(array $notification, Course $course){
         $transactionData = [
             'id_user' => $notification['custom_field1'],

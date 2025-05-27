@@ -22,8 +22,8 @@
   @stack('after-styles')
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/logos/logo-64.png') }}">
-  <link rel="apple-touch-icon" href="{{ asset('assets/logos/logo-64.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/logos/linguasphere.png') }}">
+  <link rel="apple-touch-icon" href="{{ asset('assets/images/logos/linguasphere.png') }}">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Obito Online Learning Platform - Learn Anytime, Anywhere">

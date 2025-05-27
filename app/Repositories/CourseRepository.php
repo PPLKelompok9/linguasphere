@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Course;
+use App\Models\Category;
 use Illuminate\Support\Collection;
 
 class CourseRepository implements CourseRepositoryInterface{
@@ -11,6 +12,10 @@ class CourseRepository implements CourseRepositoryInterface{
     }
 
     public function getAllWithCategory(): Collection{
-        return Course::with('category')->latest()->get();
+        return Category::with('agencies.courses')->get();
+    }
+
+    public function findById(int $id): ?Course{
+        return Course::find($id);
     }
 }

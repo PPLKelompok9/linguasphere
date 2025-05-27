@@ -3,7 +3,11 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
+        'reference' => '4b6cab3097d11113fc162f08d811699a642ebd28',
+=======
         'reference' => '7535690846b567532b9457047fb0f9bf281950df',
+>>>>>>> main
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -541,7 +545,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
+            'reference' => '4b6cab3097d11113fc162f08d811699a642ebd28',
+=======
             'reference' => '7535690846b567532b9457047fb0f9bf281950df',
+>>>>>>> main
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -602,9 +610,15 @@
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(
+<<<<<<< HEAD
+            'pretty_version' => '2.7.0',
+            'version' => '2.7.0.0',
+            'reference' => '6fbb36d44824ed4091adbcf4c7d4a3923cdb3405',
+=======
             'pretty_version' => '2.6.2',
             'version' => '2.6.2.0',
             'reference' => '06c3b0bf2540338094575612f4a1778d0d2d5e94',
+>>>>>>> main
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/commonmark',
             'aliases' => array(),
@@ -691,6 +705,18 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
+        'midtrans/midtrans-php' => array(
+            'pretty_version' => '2.6.2',
+            'version' => '2.6.2.0',
+            'reference' => '8ed7fc58ff1ababe675da17acf8233f4028eb3be',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../midtrans/midtrans-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+=======
+>>>>>>> main
         'mockery/mockery' => array(
             'pretty_version' => '1.6.12',
             'version' => '1.6.12.0',

@@ -1,129 +1,142 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn English</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-@section('content')
-<div class="container py-5">
-    <div class="row">
-        <!-- Course Main Content -->
-        <div class="col-lg-8">
-            <!-- Course Header -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h1 class="card-title">{{ $course->title }}</h1>
-                    <div class="d-flex align-items-center mb-3">
-                        <span class="badge bg-primary me-2">{{ $course->category }}</span>
-                        <span class="text-muted"><i class="fas fa-users me-1"></i> {{ $course->enrolled_students }} students</span>
-                    </div>
-                    <p class="card-text">{{ $course->short_description }}</p>
-                </div>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.header {
+    background-color: #3D8577;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.roadmap-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.level-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.flag-container {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.flag {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.level-content {
+    flex: 1;
+}
+
+.level-content h2 {
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.level-content ul {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.level-content li {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.learn-button {
+    background-color: #3D8577;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.learn-button:hover {
+    background-color: #2c6358;
+}
+
+.arrow {
+    text-align: center;
+    font-size: 24px;
+    color: #3D8577;
+    margin: 20px 0;
+}
+
+.target-icon {
+    font-size: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4L3 7V20L12 23L21 20V7L12 4Z" stroke="white" stroke-width="2"/>
+                <path d="M12 4V23" stroke="white" stroke-width="2"/>
+            </svg>
+            Learn English
+        </h1>
+    </header>
+
+    <div class="roadmap-container">
+        @foreach($courses as $course)
+            @foreach($course['courses'] as $c)
+                 {{ print_r($c) }}
+        <div class="level-card">
+            <div class="flag-container">
+                <img src="england-flag.png" alt="English Flag" class="flag">
             </div>
-
-            <!-- Course Description -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="h4 card-title">About This Course</h2>
-                    <div class="course-description">
-                        {!! $course->description !!}
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course Curriculum -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="h4 card-title mb-4">Course Curriculum</h2>
-                    <div class="accordion" id="courseContent">
-                        @foreach($course->sections as $index => $section)
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="heading{{ $index }}">
-                                <button class="accordion-button {{ $index === 0 ? '' : 'collapsed' }}" type="button" 
-                                        data-bs-toggle="collapse" data-bs-target="#collapse{{ $index }}">
-                                    {{ $section->title }}
-                                </button>
-                            </h3>
-                            <div id="collapse{{ $index }}" class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}"
-                                 data-bs-parent="#courseContent">
-                                <div class="accordion-body">
-                                    <ul class="list-group list-group-flush">
-                                        @foreach($section->lessons as $lesson)
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <i class="fas fa-play-circle me-2"></i>
-                                                {{ $lesson->title }}
-                                            </div>
-                                            <span class="text-muted">{{ $lesson->duration }}</span>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+            <div class="level-content">
+                <h2><span class="target-icon">🎯</span>{{$c['name']}}</h2>
+                <p>Rp{{ number_format($c['price'], 0, ',', '.') }}</p>
+                <p>{{ $c['description'] }}</p>
+                <a href="{{ route('external.checkouts', $c['id'])}}"><button class="learn-button">Learn Class now</button></a>
             </div>
         </div>
-
-        <!-- Course Sidebar -->
-        <div class="col-lg-4">
-            <div class="card mb-4 position-sticky" style="top: 20px;">
-                <div class="card-body">
-                    <div class="text-center mb-4">
-                        <h3 class="h2 text-primary mb-3">${{ number_format($course->price, 2) }}</h3>
-                        <form action="{{ route('courses.enroll', $course->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-primary btn-lg w-100">Enroll Now</button>
-                        </form>
-                    </div>
-
-                    <div class="course-features">
-                        <h4 class="h5 mb-3">This course includes:</h4>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-video me-2"></i> {{ $course->video_hours }} hours on-demand video</li>
-                            <li class="mb-2"><i class="fas fa-file-alt me-2"></i> {{ $course->article_count }} articles</li>
-                            <li class="mb-2"><i class="fas fa-infinity me-2"></i> Full lifetime access</li>
-                            <li class="mb-2"><i class="fas fa-mobile-alt me-2"></i> Access on mobile and TV</li>
-                            <li class="mb-2"><i class="fas fa-certificate me-2"></i> Certificate of completion</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Instructor Info -->
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="h5 mb-3">Instructor</h4>
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="{{ $course->instructor->avatar }}" alt="{{ $course->instructor->name }}" 
-                             class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                        <div>
-                            <h5 class="mb-1">{{ $course->instructor->name }}</h5>
-                            <p class="text-muted mb-0">{{ $course->instructor->title }}</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">{{ $course->instructor->bio }}</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
+        @endforeach
     </div>
-</div>
-
-@push('styles')
-<style>
-    .course-description {
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
-    .course-features i {
-        width: 20px;
-        color: #0d6efd;
-    }
-    .accordion-button:not(.collapsed) {
-        background-color: #f8f9fa;
-        color: #0d6efd;
-    }
-    .list-group-item i {
-        color: #0d6efd;
-    }
-</style>
-@endpush
-@endsection
+</body>
+</html>

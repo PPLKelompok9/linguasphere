@@ -45,14 +45,14 @@
             <a href="{{ url('/') }}">Home</a>
           </li>
           <li class="hover:font-semibold transition-all duration-300">
-            <a href="{{ url('/pricing') }}">Pricing</a>
+            <a href="{{ url('/pricing') }}">Courses</a>
           </li>
           <li class="hover:font-semibold transition-all duration-300">
-            <a href="#">Features</a>
+            <a href="#">Learning Path</a>
           </li>
-          <li class="hover:font-semibold transition-all duration-300">
-            <a href="#">Testimonials</a>
-          </li>
+          {{-- <li class="hover:font-semibold transition-all duration-300">
+            <a href="#">Pre-Test Language</a>
+          </li> --}}
         </ul>
       </div>
       <div class="flex items-center gap-5 justify-end">

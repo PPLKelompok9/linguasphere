@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ExternalController extends Controller
 {
@@ -72,6 +73,20 @@ class ExternalController extends Controller
 
         }catch(\Exception $e){
             return response()->json(['error'=>'Payment failed: '.$e->getMessage()], 500);
+        }
+    }
+
+    public function handlePaymentNotification(Request $request){
+        try{
+            $transactionStatus = $this->paymentServices->handlePaymentNotification();
+            if(!$transactionStatus){
+                return response()->json(['error' => 'invalid notification data.'], 400);
+            }
+            return  response()->json(['staus'=>$transactionStatus]);
+
+        }catch(\Exception $e){
+            Log::error('Failed to handle midtrans notification: ', ['error'=>$e->getMessage()]);
+            return response()->json(['error' => 'Failed to process notification'], 500);
         }
     }
 

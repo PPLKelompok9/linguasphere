@@ -15,6 +15,8 @@ Route::get('/', function () {
   return view('welcome');
 });
 
+Route::match(['get', 'post'], '/transactions/payment/midtrans/notification',[ExternalController::class, 'handlePaymentNotification'])->name('external.payment_midtrans_notification');
+
 
 Route::get('/dashboard', function () {
   return view('homepage.main');

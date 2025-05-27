@@ -45,7 +45,7 @@
             <a href="{{ url('/') }}">Home</a>
           </li>
           <li class="hover:font-semibold transition-all duration-300">
-            <a href="{{ url('/pricing') }}">Courses</a>
+            <a href="{{ route('external.course') }}">Courses</a>
           </li>
           <li class="hover:font-semibold transition-all duration-300">
             <a href="#">Learning Path</a>

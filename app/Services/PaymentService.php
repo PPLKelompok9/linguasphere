@@ -61,14 +61,19 @@ class PaymentService{
 
     }
 
-    public function handlePaymentNofification(){
+    public function handlePaymentNotification(){
         $notification = $this->midtransService->handleNotification();
         if(in_array($notification['transaction_status'], ['capture','settlement'])){
-            $course = $this->courseService->findById($notification['custom_field2']);
+            $course = Course::findOrFail($notification['custom_field2']);
+            //$course = $this->courseService->findById($notification['custom_field2']);
             $this->createTransaction($notification, $course);
         }
 
         return $notification['transaction_status'];
+    }
+
+    public function getPaidCourses(int $id){
+        return $this->transactionService->paidCourses($id);
     }
 
     public function getRecentCourse(){

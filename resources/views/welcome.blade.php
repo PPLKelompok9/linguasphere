@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>Linguasphere</title>
   <meta name="description"
     content="Lingusphere is an innovative online learning platform that empowers students and professionals with high-quality, accessible courses.">
 
@@ -45,7 +45,7 @@
             <a href="{{ url('/') }}">Home</a>
           </li>
           <li class="hover:font-semibold transition-all duration-300">
-            <a href="{{ url('/pricing') }}">Courses</a>
+            <a href="{{ route('external.course') }}">Courses</a>
           </li>
           <li class="hover:font-semibold transition-all duration-300">
             <a href="#">Learning Path</a>

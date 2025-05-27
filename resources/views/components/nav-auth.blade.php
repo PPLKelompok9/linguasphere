@@ -24,7 +24,7 @@
             <div class="h-[50px] flex shrink-0 bg-obito-grey w-px"></div>
             <div id="profile-dropdown" class="relative flex items-center gap-[14px]">
                 <div class="flex shrink-0 w-[50px] h-[50px] rounded-full overflow-hidden bg-obito-grey">
-                    <img src="" class="w-full h-full object-cover" alt="photo">
+                    <img src="{{ Storage::url($user->photo) }}" class="w-full h-full object-cover" alt="photo">
                 </div>
                 <div>
                     <p class="font-semibold text-lg">{{ $user->name }}</p>
@@ -36,7 +36,7 @@
                 <div id="dropdown" class="absolute top-full right-0 mt-[7px] w-[170px] h-fit bg-white rounded-xl border border-obito-grey py-4 px-5 shadow-[0px_10px_30px_0px_#B8B8B840] z-10 hidden">
                     <ul class="flex flex-col gap-[14px]">
                         <li class="hover:text-obito-green transition-all duration-300">
-                            <a href="{{ route('dashboard') }}">My Courses</a>
+                            <a href="{{ route('external.dashboard') }}">My Courses</a>
                         </li>
                         <li class="hover:text-obito-green transition-all duration-300">
                             <a href="#">Certificates</a>

@@ -6,8 +6,10 @@ use App\Services\CourseService;
 use App\Services\PaymentService;
 use App\Services\TransactionService;
 use App\Models\Course;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ExternalController extends Controller
 {
@@ -15,11 +17,19 @@ class ExternalController extends Controller
     protected $courseServices;
     protected $paymentServices;
     protected $transactionServices;
+    
 
     public function __construct(CourseService $courseServices, PaymentService $paymentServices, TransactionService $transactionServices){
         $this->courseServices = $courseServices;
         $this->paymentServices = $paymentServices;
         $this->transactionServices = $transactionServices;
+    }
+
+    public function index(){
+        $userAuth = Auth::user();
+        $data = $this->paymentServices->getPaidCourses($userAuth->id);
+        //dd($data);
+        return view('external.index', compact('data'));
     }
 
     public function checkouts(int $id){
@@ -63,6 +73,20 @@ class ExternalController extends Controller
 
         }catch(\Exception $e){
             return response()->json(['error'=>'Payment failed: '.$e->getMessage()], 500);
+        }
+    }
+
+    public function handlePaymentNotification(Request $request){
+        try{
+            $transactionStatus = $this->paymentServices->handlePaymentNotification();
+            if(!$transactionStatus){
+                return response()->json(['error' => 'invalid notification data.'], 400);
+            }
+            return  response()->json(['staus'=>$transactionStatus]);
+
+        }catch(\Exception $e){
+            Log::error('Failed to handle midtrans notification: ', ['error'=>$e->getMessage()]);
+            return response()->json(['error' => 'Failed to process notification'], 500);
         }
     }
 

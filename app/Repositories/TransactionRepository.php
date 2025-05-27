@@ -17,4 +17,8 @@ class TransactionRepository implements TransactionRepositoryInterface{
     public function getTransaction(int $userId){
         return Transaction::with('course')->where('id_user', $userId)->orderBy('created_at', 'desc')->get();
     }
+
+    public function paidCourses(int $id){
+        return Transaction::with('course.agency')->where('id_user', $id)->get();
+    }
 }

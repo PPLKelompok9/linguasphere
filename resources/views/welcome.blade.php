@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>Linguasphere</title>
   <meta name="description"
     content="Lingusphere is an innovative online learning platform that empowers students and professionals with high-quality, accessible courses.">
 

@@ -6,6 +6,7 @@ use App\Services\CourseService;
 use App\Services\PaymentService;
 use App\Services\TransactionService;
 use App\Models\Course;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,11 +16,19 @@ class ExternalController extends Controller
     protected $courseServices;
     protected $paymentServices;
     protected $transactionServices;
+    
 
     public function __construct(CourseService $courseServices, PaymentService $paymentServices, TransactionService $transactionServices){
         $this->courseServices = $courseServices;
         $this->paymentServices = $paymentServices;
         $this->transactionServices = $transactionServices;
+    }
+
+    public function index(){
+        $userAuth = Auth::user();
+        $data = $this->paymentServices->getPaidCourses($userAuth->id);
+        //dd($data);
+        return view('external.index', compact('data'));
     }
 
     public function checkouts(int $id){

@@ -16,8 +16,6 @@ Route::get('/', function () {
 });
 
 
-
-
 Route::get('/dashboard', function () {
   return view('homepage.main');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,10 +26,6 @@ Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-  Route::middleware('role:user')->group(function () {
-    Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
-  });
 });
 
 Route::get('/home', function () {
@@ -66,8 +60,7 @@ Route::get('/price',[ExternalController::class, 'price'])->name('external.price'
 Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+  
     // Scholarship routes
     Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
     Route::get('/scholarships/{scholarship}', [ScholarshipController::class, 'show'])->name('scholarships.show');
@@ -75,11 +68,14 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::middleware('role:user')->group(function(){
+      Route::get('/user/dashboard', [ExternalController::class, 'index'])->name('external.dashboard');
       Route::get('/courses', [CourseController::class, 'index'])->name('external.course');
       Route::get('/courses/detail/{id}', [CourseController::class, 'showDetailCoursesByCategory'])->name('courses.detail');
       Route::get('/transactions/checkouts/{id}', [ExternalController::class, 'checkouts'])->name('external.checkouts');

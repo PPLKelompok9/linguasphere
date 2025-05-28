@@ -12,16 +12,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-  <!-- Styles / Scripts -->
+  {{-- <!-- Styles / Scripts -->
   @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   @else
     <link href="{{ asset('css/output.css') }}" rel="stylesheet">
-  @endif
+  @endif --}}
+   <link href="{{ asset('css/output.css') }}" rel="stylesheet">
+  @stack('after-styles')
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/logos/logo-64.png') }}">
-  <link rel="apple-touch-icon" href="{{ asset('assets/logos/logo-64.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/logos/linguasphere.png') }}">
+  <link rel="apple-touch-icon" href="{{ asset('assets/images/logos/linguasphere.png') }}">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Obito Online Learning Platform - Learn Anytime, Anywhere">

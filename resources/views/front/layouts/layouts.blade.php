@@ -15,16 +15,18 @@
 
 
   <!-- Styles / Scripts -->
-  @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+  {{-- @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   @else
     <link href="{{ asset('css/output.css') }}" rel="stylesheet">
   @endif
-  @stack('after-style')
+  @stack('after-style') --}}
+   <link href="{{ asset('css/output.css') }}" rel="stylesheet">
+  @stack('after-styles')
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/logos/logo-64.png') }}">
-  <link rel="apple-touch-icon" href="{{ asset('assets/logos/logo-64.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/logos/linguasphere.png') }}">
+  <link rel="apple-touch-icon" href="{{ asset('assets/images/logos/linguasphere.png') }}">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> 
 
   <!-- Open Graph Meta Tags -->

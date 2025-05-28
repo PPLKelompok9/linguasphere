@@ -28,8 +28,10 @@ class ExternalController extends Controller
     public function index(){
         $userAuth = Auth::user();
         $data = $this->paymentServices->getPaidCourses($userAuth->id);
-        //dd($data);
-        return view('external.index', compact('data'));
+        $firstSectionId = $data->first()?->course?->courseSections?->first()?->id ?? null;
+        $firstContentId = $data->first()?->course?->courseSections?->first()?->sectionContents?->first()?->id ?? null;
+        // $dd($firstContentId);
+        return view('external.index', compact(['data', 'firstSectionId', 'firstContentId']));
     }
 
     public function checkouts(int $id){
@@ -102,10 +104,12 @@ class ExternalController extends Controller
 
     public function historyCheckouts(){
         $data = $this->transactionServices->getTransactions();
-          dd($data);
+        //dd($data);
         return view('front.history_checkouts');
     }
 
+
+  
     public function path()
     {
         

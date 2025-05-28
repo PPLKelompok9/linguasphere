@@ -58,9 +58,32 @@
                 <main class="pt-[30px] pb-[118px] pl-[50px]">
                     <article>
                         <div class="content-ebook">
-                            <h1 class="mb-5">{{ $currentContent->name }}</h1>
-                            {!! $currentContent->content !!}
-                        </div>
+    <h1 class="mb-5">{{ $currentContent->name }}</h1>
+
+    @php
+        $content = trim($currentContent->content);
+        $isYoutube = preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w\-]+)/', $content, $matches);
+    @endphp
+
+    @if ($isYoutube)
+        @php
+            $videoId = $matches[1];
+        @endphp
+        <div class="w-full aspect-video mb-6 rounded-xl overflow-hidden shadow-md">
+    <iframe
+        class="w-full h-full"
+        src="https://www.youtube.com/embed/{{ $videoId }}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+    @else
+        {!! $currentContent->content !!}
+    @endif
+</div>
+
+
                     </article>
                 </main>
                 <nav class="fixed bottom-0 left-auto right-0 z-30 mx-auto w-[calc(100%-260px)] pt-5 pb-[30px] bg-[#F8FAF9]">

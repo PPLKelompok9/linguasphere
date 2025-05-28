@@ -44,10 +44,10 @@ class CourseController extends Controller
                 return [
                     'id' => $course->id,
                     'name' => $course->name,
+                    'cover' => $course->cover,
                     'slug' => $course->slug,
                     'description' => $course->description,
                     'price' => $course->price,
-                    // add other fields if needed
                 ];
             }),
         ];

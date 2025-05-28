@@ -25,7 +25,7 @@ class Agency extends Model
     public function sertification():HasMany{
         return $this->hasMany(Sertification::class,'id_agency');
     }
-    public function partneship():HasMany{
+    public function partnerships():HasMany{
         return $this->hasMany(Partnership::class,'id_agency');
     }
     public function category()

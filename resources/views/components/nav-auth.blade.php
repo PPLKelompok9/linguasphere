@@ -10,7 +10,7 @@
                             <a href="index.html">Home</a>
                         </li>
                         <li class="hover:font-semibold transition-all duration-300">
-                            <a href="pricing.html">Course</a>
+                            <a href="{{ route('external.course') }}">Course</a>
                         </li>
                         <li class="hover:font-semibold transition-all duration-300">
                             <a href="#">Sertification</a>

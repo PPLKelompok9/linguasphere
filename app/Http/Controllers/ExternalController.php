@@ -30,7 +30,7 @@ class ExternalController extends Controller
         $data = $this->paymentServices->getPaidCourses($userAuth->id);
         $firstSectionId = $data->first()?->course?->courseSections?->first()?->id ?? null;
         $firstContentId = $data->first()?->course?->courseSections?->first()?->sectionContents?->first()?->id ?? null;
-        // $dd($firstContentId);
+        // dd($data->Transaction);
         return view('external.index', compact(['data', 'firstSectionId', 'firstContentId']));
     }
 

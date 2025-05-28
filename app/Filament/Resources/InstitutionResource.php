@@ -12,6 +12,11 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\FileUpload;
+
 
 class InstitutionResource extends Resource
 {
@@ -19,11 +24,18 @@ class InstitutionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Scholarships';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')->label('Institution Name')->required()->maxLength(255),
+                FileUpload::make('cover')->label('Institution')->required()->hint('Upload cover gambar kursus'),
+                TextInput::make('description')->label('Description')->required()->maxLength(255),
+                TextInput::make('address')->label('Address')->required()->maxLength(255),
+                TextInput::make('contact')->label('Contact')->required()->maxLength(255),
+                
             ]);
     }
 
@@ -31,7 +43,9 @@ class InstitutionResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->label('Institution')->searchable()->sortable(),
+                TextColumn::make('address')->label('Address')->searchable(),
+                TextColumn::make('contact')->label('Contact')
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

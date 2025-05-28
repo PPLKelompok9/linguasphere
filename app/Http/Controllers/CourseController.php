@@ -58,4 +58,15 @@ class CourseController extends Controller
         'courses' => $courses,
     ]);
     }
+
+    public function learningCourse(Course $course, $contentSectionId, $sectionContentId){
+        
+        $data = $this->courseService->getLearningCourse($course,  $contentSectionId, $sectionContentId);
+        //dd($data);
+        return view('courses.learning', $data);
+    }
+
+    public function learningFinished(Course $course){
+        return view('courses.learning_finished', compact('course'));
+    }
 }

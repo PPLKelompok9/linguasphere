@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CourseResource\Pages;
 use App\Filament\Resources\CourseResource\RelationManagers;
+use App\Filament\Resources\CourseResource\RelationManagers\CourseSectionsRelationManager;
 use App\Models\Course;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -24,6 +25,8 @@ class CourseResource extends Resource
     protected static ?string $model = Course::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Courses';
 
     public static function form(Form $form): Form
     {
@@ -67,7 +70,7 @@ class CourseResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CourseSectionsRelationManager::class,
         ];
     }
 

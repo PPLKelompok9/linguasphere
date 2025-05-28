@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Course extends Model
@@ -71,5 +72,11 @@ class Course extends Model
         $this->total_students = $this->students()->count();
         $this->total_revenue = $this->total_sales * $this->price;
         $this->save();
+    }
+
+
+    public function courseSections(): HasMany
+    {
+        return $this->hasMany(CourseSection::class, 'course_id');
     }
 }

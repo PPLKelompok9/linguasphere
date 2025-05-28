@@ -70,4 +70,48 @@ class CourseService{
 
         return $courses->sortByDesc('created_at')->values();
     }
+
+    public function getLearningCourse(Course $course, $contentSectionId, $sectionContentId){
+       $data= $course->load(['courseSections.sectionContents']);
+       $currentSection = $course->courseSections->find($contentSectionId);
+       $currentContent = $currentSection ? $currentSection->sectionContents->find($sectionContentId):null;
+       
+
+       $nextContent = null;
+
+        if ($currentSection) {
+            $nextContent = $currentSection->sectionContents
+                ->where('id', '>', $currentContent->id)
+                ->sortBy('id')
+                ->first();
+        }
+
+        if (!$nextContent && $currentSection) {
+            $nextSection = $course->courseSections
+                ->where('id', '>', $currentSection->id)
+                ->sortBy('id')
+                ->first();
+
+            if ($nextSection) {
+                $nextContent = $nextSection->sectionContents->sortBy('id')->first();
+            }
+        }
+
+        // dd([
+        //      'contentSectionId' => $contentSection?->id,
+        //      'sectionContentId' => $sectionContent?->id,
+        //      'nextCandidatesInSameSection' => $contentSection?->sectionContents->where('id', '>', $sectionContent->id)->pluck('id'),
+        //       'nextSectionId' => $nextSection?->id ?? null,
+        // ]);
+
+        return[
+            'course' => $course,
+            'currentSection' => $currentSection,
+            'currentContent' => $currentContent,
+            'nextContent' => $nextContent,
+            'isFinished' => !$nextContent,
+        ];
+
+    }
+    
 }

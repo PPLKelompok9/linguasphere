@@ -1,23 +1,24 @@
 <nav id="nav-guest" class="flex w-full bg-white border-b border-obito-grey">
             <div class="flex w-[1280px] px-[75px] py-5 items-center justify-between mx-auto">
                 <div class="flex items-center gap-[50px]">
-                    <a href="index.html" class="flex shrink-0">
-                        <img src="assets/images/logos/logo.svg" class="flex shrink-0" alt="logo">
-                    </a>
-                    <ul class="flex items-center gap-10">
-                        <li class="hover:font-semibold transition-all duration-300 font-semibold">
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li class="hover:font-semibold transition-all duration-300">
-                            <a href="pricing.html">Pricing</a>
-                        </li>
-                        <li class="hover:font-semibold transition-all duration-300">
-                            <a href="#">Features</a>
-                        </li>
-                        <li class="hover:font-semibold transition-all duration-300">
-                            <a href="#">Testimonials</a>
-                        </li>
-                    </ul>
+                   <a href="{{ url('/') }}" class="flex items-center gap-2 shrink-0">
+          <img src="{{ asset('assets/logos/logo-64.svg') }}" class="flex shrink-0" alt="logo">
+          <span class="font-bold text-2xl tracking-wide">Linguasphere</span>
+        </a>
+        <ul class="flex items-center gap-10">
+          <li class="hover:font-semibold transition-all duration-300 font-semibold">
+            <a href="{{ url('/') }}">Home</a>
+          </li>
+          <li class="hover:font-semibold transition-all duration-300">
+            <a href="{{ route('course') }}">Courses</a>
+          </li>
+          <li class="hover:font-semibold transition-all duration-300">
+            <a href="#">Learning Path</a>
+          </li>
+          {{-- <li class="hover:font-semibold transition-all duration-300">
+            <a href="#">Pre-Test Language</a>
+          </li> --}}
+        </ul>
                 </div>
                 <div class="flex items-center gap-5 justify-end">
                     <a href="#" class="flex shrink-0">

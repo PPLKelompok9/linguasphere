@@ -28,11 +28,11 @@ class ExternalController extends Controller
     public function index(){
         $userAuth = Auth::user();
         $data = $this->paymentServices->getPaidCourses($userAuth->id);
-        $firstSectionId = $data->first()?->course?->courseSections?->first()?->id ?? null;
-        $firstContentId = $data->first()?->course?->courseSections?->first()?->sectionContents?->first()?->id ?? null;
-        // dd($data->Transaction);
-        return view('external.index', compact(['data', 'firstSectionId', 'firstContentId']));
+        // dd($data);
+        return view('external.index', compact('data'));
     }
+
+ 
 
     public function checkouts(int $id){
         $user = Auth::user();

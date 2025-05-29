@@ -71,8 +71,12 @@ class CourseService{
         return $courses->sortByDesc('created_at')->values();
     }
 
+    public function getCourseData(Course $course){
+        return $course;
+    }
+
     public function getLearningCourse(Course $course, $contentSectionId, $sectionContentId){
-       $data= $course->load(['courseSections.sectionContents']);
+       $data= $course->load(['agency','courseSections.sectionContents']);
        $currentSection = $course->courseSections->find($contentSectionId);
        $currentContent = $currentSection ? $currentSection->sectionContents->find($sectionContentId):null;
        
@@ -96,13 +100,6 @@ class CourseService{
                 $nextContent = $nextSection->sectionContents->sortBy('id')->first();
             }
         }
-
-        // dd([
-        //      'contentSectionId' => $contentSection?->id,
-        //      'sectionContentId' => $sectionContent?->id,
-        //      'nextCandidatesInSameSection' => $contentSection?->sectionContents->where('id', '>', $sectionContent->id)->pluck('id'),
-        //       'nextSectionId' => $nextSection?->id ?? null,
-        // ]);
 
         return[
             'course' => $course,

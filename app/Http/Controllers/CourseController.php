@@ -15,12 +15,22 @@ class CourseController extends Controller
         $this->courseService = $courseService;
     }
 
+    public function course(){
+        $coursesByCategory = $this->courseService->getCoursesGroupByCategory();
+        return view('front.course', compact('coursesByCategory'));
+    }
+
     public function index(){
         $coursesByCategory = $this->courseService->getCoursesGroupByCategory();
-        // $categories = Category::with('agencies.courses')->get();
-        // dd($coursesByCategory);
+
 
         return view('courses.index', compact('coursesByCategory'));
+    }
+
+    public function details(Course $course, $contentSectionId, $sectionContentId){
+        $data = $this->courseService->getLearningCourse($course,  $contentSectionId, $sectionContentId);
+        //dd($data);
+        return view('external.details', $data);
     }
 
     public function searchCourses(Request $request){

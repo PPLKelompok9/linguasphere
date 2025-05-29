@@ -37,7 +37,6 @@ class CourseResource extends Resource
                 FileUpload::make('cover')->label('Gambar')->required()->hint('Upload cover gambar kursus'),
                 TextInput::make('price')->numeric()->inputMode('decimal')->label('Harga')->required(),
                 TextInput::make('diskon_price')->numeric()->inputMode('decimal')->label('Harga Diskon')->required()->default(0),
-                Select::make('type')->label('Tipe')->required()->options(['courses' => 'Kursus', 'sertifications' => 'Sertifikasi'])->default('courses'),
                 Select::make('level')->label('Level')->required()->options(['beginner'=>'Pemula','intermediate'=>'Menengah','advanced'=>'profesional'])->default('beginner'),
                 TextInput::make('description')->label('Deskripsi')->required(),
             ]);
@@ -49,7 +48,6 @@ class CourseResource extends Resource
             ->columns([
                 TextColumn::make('name')->label('Kursus')->searchable()->sortable(),
                 TextColumn::make('agency.name')->label('Lembaga Bahasa')->searchable(),
-                TextColumn::make('type')->label('Jenis')->sortable(),
                 TextColumn::make('level')->label('level')->sortable()
 
             ])

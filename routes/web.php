@@ -53,13 +53,12 @@ Route::get('institutions/{institution:slug}/partnerships', [
     'activePartnerships'
 ])->name('institutions.partnerships');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // Route::get('/', [ExternalController::class, 'index'])->name('external.index');
 Route::get('/price',[ExternalController::class, 'price'])->name('external.price');
 Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
+
+ Route::get('/courses', [CourseController::class, 'course'])->name('course');
 
 Route::middleware(['auth'])->group(function () {
   
@@ -78,7 +77,8 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:user')->group(function(){
       Route::get('/user/dashboard', [ExternalController::class, 'index'])->name('external.dashboard');
-      Route::get('/courses', [CourseController::class, 'index'])->name('external.course');
+      Route::get('/user/courses', [CourseController::class, 'index'])->name('external.course');
+      Route::get('/user/courses/details/{course:slug}/{courseSection}/{sectionContent}', [CourseController::class, 'details'])->name('external.course_details');
       Route::get('/courses/detail/{id}', [CourseController::class, 'showDetailCoursesByCategory'])->name('courses.detail');
       Route::get('/transactions/checkouts/{id}', [ExternalController::class, 'checkouts'])->name('external.checkouts');
       Route::get('/transactions/checkouts-success', [ExternalController::class, 'afterCheckouts'])->name('external.checkout_success');

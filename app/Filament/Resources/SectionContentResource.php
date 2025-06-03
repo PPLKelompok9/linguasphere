@@ -20,7 +20,8 @@ class SectionContentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-     protected static ?string $navigationGroup = 'Courses';
+    protected static ?string $navigationGroup = 'Lembaga Bahasa';
+
 
     public static function form(Form $form): Form
     {
@@ -87,4 +88,9 @@ class SectionContentResource extends Resource
             'edit' => Pages\EditSectionContent::route('/{record}/edit'),
         ];
     }
+
+    public static function canAccess(): bool
+{
+    return auth()->user()?->hasAnyRole(['admin', 'agency']);
+}
 }

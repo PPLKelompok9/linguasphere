@@ -25,6 +25,8 @@ class AgencyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -86,4 +88,9 @@ class AgencyResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    public static function canAccess(): bool
+{
+    return auth()->user()?->hasAnyRole('admin');
+}
 }

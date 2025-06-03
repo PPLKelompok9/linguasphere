@@ -20,6 +20,8 @@ class PathResource extends Resource
     protected static ?string $model = Path::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Lembaga Bahasa';
+
 
     public static function form(Form $form): Form
     {
@@ -76,4 +78,9 @@ class PathResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    public static function canAccess(): bool
+{
+    return auth()->user()?->hasAnyRole(['admin', 'agency']);
+}
 }

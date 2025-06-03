@@ -23,6 +23,9 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Lembaga Bahasa';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -77,4 +80,9 @@ class CategoryResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    public static function canAccess(): bool
+{
+    return auth()->user()?->hasAnyRole(['admin', 'agency']);
+}
 }

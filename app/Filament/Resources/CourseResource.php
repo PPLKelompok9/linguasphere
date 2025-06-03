@@ -26,7 +26,8 @@ class CourseResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Courses';
+    protected static ?string $navigationGroup = 'Lembaga Bahasa';
+
 
     public static function form(Form $form): Form
     {
@@ -89,4 +90,9 @@ class CourseResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    public static function canAccess(): bool
+{
+    return auth()->user()?->hasAnyRole(['admin', 'agency']);
+}
 }

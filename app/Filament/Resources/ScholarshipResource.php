@@ -29,7 +29,8 @@ class ScholarshipResource extends Resource
     protected static ?string $model = Scholarship::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
-    protected static ?string $navigationLabel = 'Beasiswa';
+    protected static ?string $navigationGroup = 'Lembaga Bahasa';
+
 
     public static function form(Form $form): Form
     {
@@ -140,4 +141,9 @@ class ScholarshipResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    public static function canAccess(): bool
+{
+    return auth()->user()?->hasAnyRole(['admin', 'agency']);
+}
 }

@@ -19,7 +19,7 @@ class User extends Authenticatable implements FilamentUser
     use HasFactory, Notifiable, softDeletes, HasRoles;
 
     public function canAccessPanel(Panel $panel): bool {
-        return $this->hasRole('admin');
+        return $this->hasRole(['admin', 'agency']);
     }
 
     /**

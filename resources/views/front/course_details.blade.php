@@ -1,468 +1,121 @@
 @extends('front.layouts.layouts')
+
+@section('title', 'Learn English')
+
+@push('after-styles')
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+    }
+
+    .header {
+        background-color: #3D8577;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .roadmap-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    .level-card {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .flag-container {
+        width: 100px;
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .flag {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .level-content {
+        flex: 1;
+    }
+
+    .level-content h2 {
+        color: #333;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .level-content p {
+        margin-bottom: 10px;
+        color: #666;
+    }
+
+    .learn-button {
+        background-color: #3D8577;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .learn-button:hover {
+        background-color: #2c6358;
+    }
+
+    .target-icon {
+        font-size: 20px;
+    }
+</style>
+@endpush
+
 @section('content')
-        <x-nav-auth/>
-        <nav id="bottom-nav" class="flex w-full bg-white border-b border-obito-grey py-[14px]">
-            <ul class="flex w-full max-w-[1280px] px-[75px] mx-auto gap-3">
-                <li class="group">
-                    <a href="#" class="flex items-center gap-2 rounded-full border border-obito-grey py-2 px-[14px] hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-light-green group-[.active]:border-obito-light-green">
-                        <img src="assets/images/icons/home-trend-up.svg" class="flex shrink-0 w-5" alt="icon">
-                        <span>Overview</span>
-                    </a>
-                </li>
-                <li class="group active">
-                    <a href="#" class="flex items-center gap-2 rounded-full border border-obito-grey py-2 px-[14px] hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-light-green group-[.active]:border-obito-light-green">
-                        <img src="assets/images/icons/note-favorite.svg" class="flex shrink-0 w-5" alt="icon">
-                        <span>Courses</span>
-                    </a>
-                </li>
-                <li class="group">
-                    <a href="#" class="flex items-center gap-2 rounded-full border border-obito-grey py-2 px-[14px] hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-light-green group-[.active]:border-obito-light-green">
-                        <img src="assets/images/icons/message-programming.svg" class="flex shrink-0 w-5" alt="icon">
-                        <span>Quizzess</span>
-                    </a>
-                </li>
-                <li class="group">
-                    <a href="#" class="flex items-center gap-2 rounded-full border border-obito-grey py-2 px-[14px] hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-light-green group-[.active]:border-obito-light-green">
-                        <img src="assets/images/icons/cup.svg" class="flex shrink-0 w-5" alt="icon">
-                        <span>Certificates</span>
-                    </a>
-                </li>
-                <li class="group">
-                    <a href="#" class="flex items-center gap-2 rounded-full border border-obito-grey py-2 px-[14px] hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-light-green group-[.active]:border-obito-light-green">
-                        <img src="assets/images/icons/ruler&pen.svg" class="flex shrink-0 w-5" alt="icon">
-                        <span>Portfolios</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <main class="flex flex-col gap-10 pb-10 mt-[30px]">
-            <section id="catalog" class="flex flex-col w-full max-w-[1280px] px-[75px] gap-4 mx-auto">
-                <h1 class="font-bold text-[22px] leading-[33px]">Course Catalog</h1>
-                <div id="tabs-container" class="flex items-center gap-3">
-                    <button type="button" class="tab-btn group active" data-target="programming">
-                        <p class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-                            <span class="group-[.active]:font-semibold group-[.active]:text-white">Programming</span>
-                        </p>
-                    </button>
-                    <button type="button" class="tab-btn group" data-target="example">
-                        <p class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-                            <span class="group-[.active]:font-semibold group-[.active]:text-white">Networking</span>
-                        </p>
-                    </button>
-                    <button type="button" class="tab-btn group" data-target="example">
-                        <p class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-                            <span class="group-[.active]:font-semibold group-[.active]:text-white">Digital Marketing</span>
-                        </p>
-                    </button>
-                    <button type="button" class="tab-btn group" data-target="example">
-                        <p class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-                            <span class="group-[.active]:font-semibold group-[.active]:text-white">Product Design</span>
-                        </p>
-                    </button>
-                    <button type="button" class="tab-btn group" data-target="example">
-                        <p class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-                            <span class="group-[.active]:font-semibold group-[.active]:text-white">Entrepreneurship</span>
-                        </p>
-                    </button>
-                </div>
-                <div id="tabs-content-container" class="mt-1">
-                    <div id="programming" class="tab-content grid grid-cols-4 gap-5">
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-3.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Cyber Security for Dummies 101</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-4.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Copywriting for New Z Generation Digitals</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-5.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Copywriting for New Z Generation Digitals</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-6.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">User Content Generation for Digital Marketing</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-7.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Machine Learning and VR Engineering 4Ds</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-8.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Start Digital Business for 2025 Ecosystem AI</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-9.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">UI UX Masterclass Figma Principles Design</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="example" class="tab-content grid grid-cols-4 gap-5 hidden">
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-3.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Cyber Security for Dummies 101</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-5.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Cyber Security for Dummies 101</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-4.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Cyber Security for Dummies 101</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-7.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Cyber Security for Dummies 101</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-6.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Cyber Security for Dummies 101</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-9.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Cyber Security for Dummies 101</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="course-details.html" class="card">
-                            <div class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
-                                <div class="thumbnail-container p-[10px]">
-                                    <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-                                        <img src="assets/images/thumbnails/thumbnail-8.png" class="w-full h-full object-cover" alt="thumbnail">
-                                        <p class="absolute top-[10px] right-[10px] z-10 w-fit h-fit flex flex-col items-center rounded-[14px] py-[6px] px-[10px] bg-white gap-0.5">
-                                            <img src="assets/images/icons/like.svg" class="w-5 h-5" alt="icon">
-                                            <span class="font-semibold text-xs">4.8</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col p-4 pt-0 gap-[13px]">
-                                    <h3 class="font-bold text-lg line-clamp-2">Cyber Security for Dummies 101</h3>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Programming</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">182 Lessons</span>
-                                    </p>
-                                    <p class="flex items-center gap-[6px]">
-                                        <img src="assets/images/icons/briefcase-green.svg" class="flex shrink-0 w-5" alt="icon">
-                                        <span class="text-sm text-obito-text-secondary">Ready to Work</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
+<x-nav-guests/>
+
+<div class="roadmap-container">
+    @foreach($courses as $course)
+        @foreach($course['courses'] as $c)
+        <div class="level-card">
+            <div class="flag-container">
+                <img src="{{  Storage::url($c['cover']) }}" alt="English Flag" class="flag">
+            </div>
+            <div class="level-content">
+                <h2><span class="target-icon"></span> {{ $c['name'] }}</h2>
+                <p>Rp{{ number_format($c['price'], 0, ',', '.') }}</p>
+                <p>{{ $c['description'] }}</p>
+                <a href="{{ route('external.checkouts', $c['id']) }}">
+                    <button class="learn-button">Learn Class now</button>
+                </a>
+            </div>
+        </div>
+        @endforeach
+    @endforeach
+</div>
 @endsection

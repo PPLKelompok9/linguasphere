@@ -3,6 +3,7 @@
 use App\Http\Controllers\Pretest\PretestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExternalController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScholarshipController;
@@ -23,12 +24,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/path', [FrontController::class, 'path'])->name('front.path');
-
-Route::middleware('auth')->group(function () {
-  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/courses', [FrontController::class, 'courses'])->name('front.courses');
+Route::get('/courses/{id}/detail', [FrontController::class, 'CoursesDetails'])->name('front.detail');
 
 Route::get('/home', function () {
   return redirect()->route('dashboard');
@@ -42,33 +39,8 @@ Route::get('/pretest/{slug}', [PretestController::class, 'show'])->name('pretest
 Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
 Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
 
-
-    // Route::get('/scholarships/{scholarship}', [ScholarshipController::class, 'show'])->name('scholarships.show');
-    // Route::post('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'apply'])->name('scholarships.apply');
-
-// Route::resource('scholarships', ScholarshipController::class);
-
-Route::resource('institutions', InstitutionController::class)->parameters([
-    'institutions' => 'institution:slug'
-]);
-
-Route::get('institutions/{institution:slug}/partnerships', [
-    InstitutionController::class, 
-    'activePartnerships'
-])->name('institutions.partnerships');
-
-
-// Route::get('/', [ExternalController::class, 'index'])->name('external.index');
 Route::get('/price',[ExternalController::class, 'price'])->name('external.price');
 Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
-
- Route::get('/courses', [CourseController::class, 'course'])->name('course');
-
-Route::middleware(['auth'])->group(function () {
-  
-    // Scholarship routes
-   
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -94,6 +66,13 @@ Route::middleware('auth')->group(function () {
       Route::get('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'applyForScholarship'])->name('scholarships.apply');
     });
 });
+
+Route::middleware('auth')->group(function () {
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 
 Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
 Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');

@@ -15,15 +15,9 @@ class CourseController extends Controller
         $this->courseService = $courseService;
     }
 
-    public function course(){
-        $coursesByCategory = $this->courseService->getCoursesGroupByCategory();
-        return view('front.course', compact('coursesByCategory'));
-    }
 
     public function index(){
         $coursesByCategory = $this->courseService->getCoursesGroupByCategory();
-
-
         return view('courses.index', compact('coursesByCategory'));
     }
 

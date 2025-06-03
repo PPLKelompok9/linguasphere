@@ -2,12 +2,12 @@
 <nav id="nav-auth" class="flex w-full bg-white border-b border-obito-grey">
     <div class="flex w-[1280px] px-[75px] py-5 items-center justify-between mx-auto">
         <div class="flex items-center gap-[15rem]">
-            <a href="#" class="flex shrink-0">
+            <a href="{{ route('external.dashboard') }}" class="flex shrink-0">
                 <img src="{{ asset('assets/images/logos/linguasphere.png') }}" class="flex shrink-0 w-[70px]" alt="logo">
             </a>
             <ul class="flex items-center gap-10">
                         <li class="hover:font-semibold transition-all duration-300 font-semibold">
-                            <a href="index.html">Home</a>
+                            <a href="{{ route('external.dashboard') }}">Home</a>
                         </li>
                         <li class="hover:font-semibold transition-all duration-300">
                             <a href="{{ route('external.course') }}">Course</a>

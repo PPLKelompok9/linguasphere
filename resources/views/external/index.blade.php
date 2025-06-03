@@ -4,6 +4,7 @@
 
 @section('content')
     <x-nav-auth :user="auth()->user()" />
+    <x-scholarship-notif />     
 
     <main class="flex flex-col gap-10 pb-10 mt-[30px]">
         <section id="roadmap" class="flex flex-col w-full max-w-[1280px] px-[75px] gap-4 mx-auto">

@@ -10,10 +10,11 @@ class ScholarshipDetail extends Model
 {
     protected $table = 'scholarship_details';
     protected $fillable = ['date', 'id_user', 'id_scholarship'];
-    public function users(){
-        return $this->hasMany(Users::class, 'id_user');
+    
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
     }
     public function scholarship(){
-        return $this->hasMany(Scholarship::class,'id_scholarship');
+        return $this->belongsTo(Scholarship::class,'id_scholarship');
     }
 }

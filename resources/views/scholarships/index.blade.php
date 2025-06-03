@@ -1,6 +1,7 @@
-@extends('layouts.app')
-
+@extends('front.layouts.layouts')
+@section('title', 'Beasiswa - Linguasphere')
 @section('content')
+     <x-nav-auth :user="auth()->user()" />
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <!-- Header -->
@@ -15,7 +16,7 @@
             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <div class="relative">
                     <!-- Course Image -->
-                    <img src="{{ $scholarship->course->cover }}" alt="{{ $scholarship->course->name }}" class="w-full h-48 object-cover">
+                    <img src="{{ Storage::url($scholarship->course->cover) }}" class="w-30 h-30 object-cover">
                     
                     <!-- Status Badge -->
                     <div class="absolute top-4 right-4">
@@ -28,39 +29,45 @@
                 </div>
 
                 <div class="p-6">
-                    <h2 class="text-xl font-semibold text-gray-900 mb-2">{{ $scholarship->title }}</h2>
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2"></h2>
                     
                     <div class="flex items-center text-sm text-gray-500 mb-4">
                         <i class="fas fa-book-open mr-2"></i>
-                        <span>{{ $scholarship->course->name }}</span>
+                        <span></span>
                     </div>
 
                     <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-black font-semibold text-xl">
+                            <i class="fas fa-calendar mr-2"></i>
+                            <h3>{{$scholarship->title}}</h3>
+                        </div>
                         <div class="flex items-center text-sm text-gray-500">
                             <i class="fas fa-calendar mr-2"></i>
-                            <span>Deadline: {{ $scholarship->deadline->format('M d, Y') }}</span>
+                            <span>Deadline:  {{$scholarship->deadline}}</span>
                         </div>
                         <div class="flex items-center text-sm text-gray-500">
                             <i class="fas fa-users mr-2"></i>
-                            <span>{{ $scholarship->slots_available - $scholarship->applications()->count() }} slots remaining</span>
+                            <span>Kuota : {{$scholarship->slots_available}}</span>
                         </div>
                     </div>
 
                     <div class="mt-4">
-                        <a href="{{ route('scholarships.show', $scholarship) }}" 
-                           class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
-                            View Details
-                        </a>
+                       @if($scholarship->isOpen())  
+                            <a href="{{ route('scholarships.detail', $scholarship->id) }}"   
+                               class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">  
+                                Selengkapnya  
+                            </a>  
+                        @else  
+                            <button   
+                                class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-400 bg-gray-600 rounded-md cursor-not-allowed"   
+                                disabled>  
+                                Closed  
+                            </button>  
+                        @endif  
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
-
-        <!-- Pagination -->
-        <div class="mt-8">
-            {{ $scholarships->links() }}
-        </div>
-    </div>
 </div>
 @endsection 

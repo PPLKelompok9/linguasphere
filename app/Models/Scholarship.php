@@ -36,7 +36,7 @@ class Scholarship extends Model
 
     public function applications(): HasMany
     {
-        return $this->hasMany(ScholarshipApplication::class);
+        return $this->hasMany(ScholarshipDetail::class, 'id_scholarship');
     }
 
     public function isOpen(): bool

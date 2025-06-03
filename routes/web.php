@@ -42,7 +42,11 @@ Route::get('/pretest/{slug}', [PretestController::class, 'show'])->name('pretest
 Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
 Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
 
-Route::resource('scholarships', ScholarshipController::class);
+
+    // Route::get('/scholarships/{scholarship}', [ScholarshipController::class, 'show'])->name('scholarships.show');
+    // Route::post('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'apply'])->name('scholarships.apply');
+
+// Route::resource('scholarships', ScholarshipController::class);
 
 Route::resource('institutions', InstitutionController::class)->parameters([
     'institutions' => 'institution:slug'
@@ -63,9 +67,7 @@ Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
 Route::middleware(['auth'])->group(function () {
   
     // Scholarship routes
-    Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
-    Route::get('/scholarships/{scholarship}', [ScholarshipController::class, 'show'])->name('scholarships.show');
-    Route::post('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'apply'])->name('scholarships.apply');
+   
 });
 
 Route::middleware('auth')->group(function () {
@@ -86,7 +88,10 @@ Route::middleware('auth')->group(function () {
       Route::post('/payment/midtrans', [ExternalController::class, 'paymentMidtrans'])->name('external.payment_midtrans');
       Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
       Route::get('/user/courses/{course:slug}/{courseSection}/{sectionContent}', [CourseController::class, 'learningCourse'])->name('courses.learning');
-       Route::get('/user/courses/{course:slug}/finished', [CourseController::class, 'learningFinished'])->name('courses.finished');
+      Route::get('/user/courses/{course:slug}/finished', [CourseController::class, 'learningFinished'])->name('courses.finished');
+      Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
+      Route::get('/scholarships/{id}/details', [ScholarshipController::class, 'show'])->name('scholarships.detail');
+      Route::get('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'applyForScholarship'])->name('scholarships.apply');
     });
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Category;
@@ -19,7 +20,15 @@ class CourseController extends Controller
   // User
   public function userIndex()
   {
-    $courses = Course::with('category')->get();
+    $boughtCourseIds = Transaction::where('id_user', auth()->id())
+      ->where('type_products', 'Courses')
+      ->where('status_payment', 1)
+      ->pluck('id_products')
+      ->toArray();
+
+    $courses = Course::with('category')
+      ->whereNotIn('id', $boughtCourseIds)
+      ->get();
     $categories = Category::all();
     return view('user.courses.index', compact('courses', 'categories'));
   }
@@ -67,6 +76,19 @@ class CourseController extends Controller
     $instructor = $aboutContents[$course->slug]['instructor'] ?? [];
 
     return view('user.courses.detail', compact('course', 'learn', 'instructor'));
+  }
+
+  public function learningCourse(Course $course, $contentSectionId, $sectionContentId)
+  {
+
+    $data = $this->courseService->getLearningCourse($course, $contentSectionId, $sectionContentId);
+    //dd($data);
+    return view('user.courses.learning', $data);
+  }
+
+  public function learningFinished(Course $course)
+  {
+    return view('user.courses.learning_finished', compact('course'));
   }
 
   // Guest
@@ -117,18 +139,5 @@ class CourseController extends Controller
       'category' => $category->name,
       'courses' => $courses,
     ]);
-  }
-
-  public function learningCourse(Course $course, $contentSectionId, $sectionContentId)
-  {
-
-    $data = $this->courseService->getLearningCourse($course, $contentSectionId, $sectionContentId);
-    //dd($data);
-    return view('courses.learning', $data);
-  }
-
-  public function learningFinished(Course $course)
-  {
-    return view('courses.learning_finished', compact('course'));
   }
 }

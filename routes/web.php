@@ -31,10 +31,13 @@ Route::middleware('auth')->group(function () {
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
   Route::middleware('role:user')->prefix('user')->group(function () {
-    Route::get('/dashboard', [ExternalController::class, 'index'])->name('external.dashboard');
+    Route::get('/dashboard', [ExternalController::class, 'index'])->name('dashboard.user');
     Route::get('/courses', [CourseController::class, 'userIndex'])->name('courses.user');
     Route::get('/courses/detail/{slug}', [CourseController::class, 'show'])->name('courses.detail');
     Route::get('/courses/checkouts/{slug}', [ExternalController::class, 'checkouts'])->name('courses.checkout');
+    Route::get('/courses/{course:slug}/{courseSection}/{sectionContent}', [CourseController::class, 'learningCourse'])->name('courses.learning');
+    Route::get('/courses/{course:slug}/finished', [CourseController::class, 'learningFinished'])->name('courses.finished');
+
     Route::get('/pretest', [PretestController::class, 'index'])->name('pretest');
     Route::get('/pretest/{slug}', [PretestController::class, 'showTest'])->name('pretest.test');
     Route::post('/pretest/{slug}', [PretestController::class, 'showTest']);
@@ -46,8 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/transactions/history', [ExternalController::class, 'historyCheckouts'])->name('external.history_checkouts');
     Route::post('/payment/midtrans', [ExternalController::class, 'paymentMidtrans'])->name('external.payment_midtrans');
     Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
-    Route::get('/user/courses/{course:slug}/{courseSection}/{sectionContent}', [CourseController::class, 'learningCourse'])->name('courses.learning');
-    Route::get('/user/courses/{course:slug}/finished', [CourseController::class, 'learningFinished'])->name('courses.finished');
   });
 });
 

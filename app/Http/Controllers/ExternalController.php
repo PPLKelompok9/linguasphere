@@ -33,7 +33,7 @@ class ExternalController extends Controller
     $firstSectionId = $data->first()?->course?->courseSections?->first()?->id ?? null;
     $firstContentId = $data->first()?->course?->courseSections?->first()?->sectionContents?->first()?->id ?? null;
     // $dd($firstContentId);
-    return view('external.index', compact(['data', 'firstSectionId', 'firstContentId']));
+    return view('user.home.index', compact(['data', 'firstSectionId', 'firstContentId']));
   }
 
   public function checkouts($slug)

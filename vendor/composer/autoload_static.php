@@ -104,6 +104,7 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
             'Spatie\\LaravelPackageTools\\' => 27,
             'Spatie\\Invade\\' => 14,
             'Spatie\\Color\\' => 13,
+            'SnapBi\\' => 7,
         ),
         'R' => 
         array (
@@ -138,6 +139,7 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         array (
             'Monolog\\' => 8,
             'Mockery\\' => 8,
+            'Midtrans\\' => 9,
             'Masterminds\\' => 12,
         ),
         'L' => 
@@ -381,6 +383,10 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         array (
             0 => __DIR__ . '/..' . '/spatie/color/src',
         ),
+        'SnapBi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/midtrans/midtrans-php/SnapBi',
+        ),
         'RyanChandler\\BladeCaptureDirective\\Database\\Factories\\' => 
         array (
             0 => __DIR__ . '/..' . '/ryangjchandler/blade-capture-directive/database/factories',
@@ -411,8 +417,8 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -458,6 +464,10 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         array (
             0 => __DIR__ . '/..' . '/mockery/mockery/library/Mockery',
         ),
+        'Midtrans\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans',
+        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -468,8 +478,8 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces',
-            1 => __DIR__ . '/..' . '/league/uri',
+            0 => __DIR__ . '/..' . '/league/uri',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -697,6 +707,7 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         'App\\Filament\\Resources\\CourseResource\\Pages\\CreateCourse' => __DIR__ . '/../..' . '/app/Filament/Resources/CourseResource/Pages/CreateCourse.php',
         'App\\Filament\\Resources\\CourseResource\\Pages\\EditCourse' => __DIR__ . '/../..' . '/app/Filament/Resources/CourseResource/Pages/EditCourse.php',
         'App\\Filament\\Resources\\CourseResource\\Pages\\ListCourses' => __DIR__ . '/../..' . '/app/Filament/Resources/CourseResource/Pages/ListCourses.php',
+        'App\\Filament\\Resources\\CourseResource\\RelationManagers\\CourseSectionsRelationManager' => __DIR__ . '/../..' . '/app/Filament/Resources/CourseResource/RelationManagers/CourseSectionsRelationManager.php',
         'App\\Filament\\Resources\\InstitutionResource' => __DIR__ . '/../..' . '/app/Filament/Resources/InstitutionResource.php',
         'App\\Filament\\Resources\\InstitutionResource\\Pages\\CreateInstitution' => __DIR__ . '/../..' . '/app/Filament/Resources/InstitutionResource/Pages/CreateInstitution.php',
         'App\\Filament\\Resources\\InstitutionResource\\Pages\\EditInstitution' => __DIR__ . '/../..' . '/app/Filament/Resources/InstitutionResource/Pages/EditInstitution.php',
@@ -714,6 +725,10 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         'App\\Filament\\Resources\\ScholarshipResource\\Pages\\CreateScholarship' => __DIR__ . '/../..' . '/app/Filament/Resources/ScholarshipResource/Pages/CreateScholarship.php',
         'App\\Filament\\Resources\\ScholarshipResource\\Pages\\EditScholarship' => __DIR__ . '/../..' . '/app/Filament/Resources/ScholarshipResource/Pages/EditScholarship.php',
         'App\\Filament\\Resources\\ScholarshipResource\\Pages\\ListScholarships' => __DIR__ . '/../..' . '/app/Filament/Resources/ScholarshipResource/Pages/ListScholarships.php',
+        'App\\Filament\\Resources\\SectionContentResource' => __DIR__ . '/../..' . '/app/Filament/Resources/SectionContentResource.php',
+        'App\\Filament\\Resources\\SectionContentResource\\Pages\\CreateSectionContent' => __DIR__ . '/../..' . '/app/Filament/Resources/SectionContentResource/Pages/CreateSectionContent.php',
+        'App\\Filament\\Resources\\SectionContentResource\\Pages\\EditSectionContent' => __DIR__ . '/../..' . '/app/Filament/Resources/SectionContentResource/Pages/EditSectionContent.php',
+        'App\\Filament\\Resources\\SectionContentResource\\Pages\\ListSectionContents' => __DIR__ . '/../..' . '/app/Filament/Resources/SectionContentResource/Pages/ListSectionContents.php',
         'App\\Filament\\Resources\\SertificationResource' => __DIR__ . '/../..' . '/app/Filament/Resources/SertificationResource.php',
         'App\\Filament\\Resources\\SertificationResource\\Pages\\CreateSertification' => __DIR__ . '/../..' . '/app/Filament/Resources/SertificationResource/Pages/CreateSertification.php',
         'App\\Filament\\Resources\\SertificationResource\\Pages\\EditSertification' => __DIR__ . '/../..' . '/app/Filament/Resources/SertificationResource/Pages/EditSertification.php',
@@ -726,6 +741,7 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         'App\\Filament\\Resources\\UserResource\\Pages\\CreateUser' => __DIR__ . '/../..' . '/app/Filament/Resources/UserResource/Pages/CreateUser.php',
         'App\\Filament\\Resources\\UserResource\\Pages\\EditUser' => __DIR__ . '/../..' . '/app/Filament/Resources/UserResource/Pages/EditUser.php',
         'App\\Filament\\Resources\\UserResource\\Pages\\ListUsers' => __DIR__ . '/../..' . '/app/Filament/Resources/UserResource/Pages/ListUsers.php',
+        'App\\Helpers\\TransactionHelper' => __DIR__ . '/../..' . '/app/Helpers/TransactionHelper.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
         'App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/EmailVerificationNotificationController.php',
@@ -745,6 +761,7 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
         'App\\Http\\Controllers\\ScholarshipController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScholarshipController.php',
         'App\\Http\\Controllers\\SertificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/SertificationController.php',
+        'App\\Http\\Middleware\\CheckSubscriptions' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckSubscriptions.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
         'App\\Models\\Agency' => __DIR__ . '/../..' . '/app/Models/Agency.php',
@@ -761,14 +778,21 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         'App\\Models\\Scholarship' => __DIR__ . '/../..' . '/app/Models/Scholarship.php',
         'App\\Models\\ScholarshipApplication' => __DIR__ . '/../..' . '/app/Models/ScholarshipApplication.php',
         'App\\Models\\ScholarshipDetail' => __DIR__ . '/../..' . '/app/Models/ScholarshipDetail.php',
+        'App\\Models\\SectionContent' => __DIR__ . '/../..' . '/app/Models/SectionContent.php',
         'App\\Models\\Sertification' => __DIR__ . '/../..' . '/app/Models/Sertification.php',
         'App\\Models\\Transaction' => __DIR__ . '/../..' . '/app/Models/Transaction.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Observers\\TransactionObserver' => __DIR__ . '/../..' . '/app/Observers/TransactionObserver.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\Filament\\AdminPanelProvider' => __DIR__ . '/../..' . '/app/Providers/Filament/AdminPanelProvider.php',
         'App\\Repositories\\CourseRepository' => __DIR__ . '/../..' . '/app/Repositories/CourseRepository.php',
         'App\\Repositories\\CourseRepositoryInterface' => __DIR__ . '/../..' . '/app/Repositories/CourseRepositoryInterface.php',
+        'App\\Repositories\\TransactionRepository' => __DIR__ . '/../..' . '/app/Repositories/TransactionRepository.php',
+        'App\\Repositories\\TransactionRepositoryInterface' => __DIR__ . '/../..' . '/app/Repositories/TransactionRepositoryInterface.php',
         'App\\Services\\CourseService' => __DIR__ . '/../..' . '/app/Services/CourseService.php',
+        'App\\Services\\MidtransService' => __DIR__ . '/../..' . '/app/Services/MidtransService.php',
+        'App\\Services\\PaymentService' => __DIR__ . '/../..' . '/app/Services/PaymentService.php',
+        'App\\Services\\TransactionService' => __DIR__ . '/../..' . '/app/Services/TransactionService.php',
         'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/app/View/Components/AppLayout.php',
         'App\\View\\Components\\GuestLayout' => __DIR__ . '/../..' . '/app/View/Components/GuestLayout.php',
         'App\\View\\Components\\SidebarDashboard' => __DIR__ . '/../..' . '/app/View/Components/SidebarDashboard.php',
@@ -5225,6 +5249,14 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         'Masterminds\\HTML5\\Serializer\\OutputRules' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/OutputRules.php',
         'Masterminds\\HTML5\\Serializer\\RulesInterface' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/RulesInterface.php',
         'Masterminds\\HTML5\\Serializer\\Traverser' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/Traverser.php',
+        'Midtrans\\ApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/ApiRequestor.php',
+        'Midtrans\\Config' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Config.php',
+        'Midtrans\\CoreApi' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/CoreApi.php',
+        'Midtrans\\Notification' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Notification.php',
+        'Midtrans\\Sanitizer' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Sanitizer.php',
+        'Midtrans\\Snap' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Snap.php',
+        'Midtrans\\SnapApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/SnapApiRequestor.php',
+        'Midtrans\\Transaction' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Transaction.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',
@@ -7550,6 +7582,9 @@ class ComposerStaticInitdaf9c8410069283e2eaf1a35bf55dcc0
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/type/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/type/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'SnapBi\\SnapBi' => __DIR__ . '/..' . '/midtrans/midtrans-php/SnapBi/SnapBi.php',
+        'SnapBi\\SnapBiApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/SnapBi/SnapBiApiRequestor.php',
+        'SnapBi\\SnapBiConfig' => __DIR__ . '/..' . '/midtrans/midtrans-php/SnapBi/SnapBiConfig.php',
         'Spatie\\Color\\CIELab' => __DIR__ . '/..' . '/spatie/color/src/CIELab.php',
         'Spatie\\Color\\Cmyk' => __DIR__ . '/..' . '/spatie/color/src/Cmyk.php',
         'Spatie\\Color\\Color' => __DIR__ . '/..' . '/spatie/color/src/Color.php',

@@ -1,37 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Linguasphere - Courses</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Roadmap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
+
+    .header {
+      background-color: #3D8577;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Styles for main roadmap page */
+    .courses-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .course-card {
+      background-color: #3D8577;
+      border-radius: 10px;
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .book-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .start-button {
+      background-color: white;
+      color: #3D8577;
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .start-button:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen overflow-hidden">
-        <header class="w-full h-24 bg-teal-700 shadow-xl/30 flex items-center justify-center">
-            <div class="flex items-center gap-4 ">
-                <img src="{{ asset('assets/icons/united-kingdom.png') }}" alt="" class="w-10 h-10">
-                <h1 class="font-bold text-3xl text-white text-center">Language Course</h1>
-            </div>
-        </header>
-        <div class="flex flex-1 overflow-hidden">
-            <x-sidebar-dashboard></x-sidebar-dashboard>
-            <main class="relative flex-1 ml-[30rem] mt-[5rem] mr-[5rem] overflow-y-auto ">
-                <div class="flex flex-wrap items-center gap-5 h-[90%]  bg-white shadow-xl rounded-xl p-10">
-                    @foreach($coursesByCategory as $category => $courses)
-                    <a href="{{ route('courses.detail', $courses->first()->category->id) }}" class="mx-auto rounded-xl h-[20rem] w-[20rem] flex flex-col justify-center items-center bg-teal-700 shadow-xl/20 transform transition duration-200 hover:-translate-y-5 hover:translate-x-3 hover:shadow-2xl/30 ">
-                            <img src="{{ Storage::url($courses->first()->category->images) ?? asset('assets/icons/japan.png') }}" class="w-24" alt="logo" srcset="">
-                            <p class="text-white font-bold text-3xl mt-5">{{ $category }} <span>Course</span></p>
-                    </a>
-                    
-                    @endforeach
-                </div>
-                
-            </main>
-        </div>   
-     
-    
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+<body>
+  <header class="header">
+    <h1>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4L3 7V20L12 23L21 20V7L12 4Z" stroke="white" stroke-width="2" />
+        <path d="M12 4V23" stroke="white" stroke-width="2" />
+      </svg>
+      Learning Roadmaps
+    </h1>
+  </header>
+
+  <div class="courses-container">
+    @foreach ($coursesByCategory as $category)
+    <div class="course-card">
+      {{-- <img
+      src="{{ Storage::url($courses->first()->category->images) ?? asset('assets/icons/united-kingdom.png') }}"
+      class="w-24" alt="logo" srcset=""> --}}
+      <h2>{{ $category['name'] }}</h2>
+      <a href="{{ route('courses.guestDetail', ['id' => $category['id']]) }}" class="start-button">Start Journey</a>
+    </div>
+  @endforeach
+
+
+
+  </div>
 </body>
+
 </html>

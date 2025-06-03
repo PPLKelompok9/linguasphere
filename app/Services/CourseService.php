@@ -32,9 +32,86 @@ class CourseService{
     }
 
     public function getCoursesGroupByCategory(){
-        $courses = $this->courseRepository->getAllWithCategory();
-        return $courses->groupBy(function ($course){
-            return $course->category->name ?? 'Uncategorize';
-        });
+         $categories = $this->courseRepository->getAllWithCategory();
+            return $categories->map(function ($category) {
+        return [
+            'id' => $category->id,
+            'name' => $category->name,
+            'images' => $category->images,
+            'agencies' => $category->agencies->map(function ($agency) {
+                return [
+                    'id' => $agency->id,
+                    'name' => $agency->name,
+                    'slug' => $agency->slug,
+                    'courses' => $agency->courses->map(function ($course) {
+                        return [
+                            'id' => $course->id,
+                            'name' => $course->name,
+                            'slug' => $course->slug,
+                            'cover' => $course->cover,
+                            'price' => $course->price,
+                            // tambahkan properti lain yang dibutuhkan
+                        ];
+                    }),
+                ];
+            }),
+        ];
+    });
+       
     }
+
+    public function getCoursesByCategory(int $id){
+        $category = $this->courseRepository->findCourseByCategory($id);
+        $courses = collect();
+
+        foreach($category->agencies as $agency){
+            $courses = $courses->merge($agency->courses);
+        }
+
+        return $courses->sortByDesc('created_at')->values();
+    }
+
+    public function getLearningCourse(Course $course, $contentSectionId, $sectionContentId){
+       $data= $course->load(['courseSections.sectionContents']);
+       $currentSection = $course->courseSections->find($contentSectionId);
+       $currentContent = $currentSection ? $currentSection->sectionContents->find($sectionContentId):null;
+       
+
+       $nextContent = null;
+
+        if ($currentSection) {
+            $nextContent = $currentSection->sectionContents
+                ->where('id', '>', $currentContent->id)
+                ->sortBy('id')
+                ->first();
+        }
+
+        if (!$nextContent && $currentSection) {
+            $nextSection = $course->courseSections
+                ->where('id', '>', $currentSection->id)
+                ->sortBy('id')
+                ->first();
+
+            if ($nextSection) {
+                $nextContent = $nextSection->sectionContents->sortBy('id')->first();
+            }
+        }
+
+        // dd([
+        //      'contentSectionId' => $contentSection?->id,
+        //      'sectionContentId' => $sectionContent?->id,
+        //      'nextCandidatesInSameSection' => $contentSection?->sectionContents->where('id', '>', $sectionContent->id)->pluck('id'),
+        //       'nextSectionId' => $nextSection?->id ?? null,
+        // ]);
+
+        return[
+            'course' => $course,
+            'currentSection' => $currentSection,
+            'currentContent' => $currentContent,
+            'nextContent' => $nextContent,
+            'isFinished' => !$nextContent,
+        ];
+
+    }
+    
 }

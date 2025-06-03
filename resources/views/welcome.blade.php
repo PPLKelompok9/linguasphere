@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>Linguasphere</title>
   <meta name="description"
     content="Lingusphere is an innovative online learning platform that empowers students and professionals with high-quality, accessible courses.">
 
@@ -12,16 +12,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-  <!-- Styles / Scripts -->
+  {{-- <!-- Styles / Scripts -->
   @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
   @else
-    <link href="{{ asset('css/output.css') }}" rel="stylesheet">
-  @endif
+  <link href="{{ asset('css/output.css') }}" rel="stylesheet">
+  @endif --}}
+  <link href="{{ asset('css/output.css') }}" rel="stylesheet">
+
+
+  @stack('after-styles')
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/logos/logo-64.png') }}">
-  <link rel="apple-touch-icon" href="{{ asset('assets/logos/logo-64.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/logos/linguasphere.png') }}">
+  <link rel="apple-touch-icon" href="{{ asset('assets/images/logos/linguasphere.png') }}">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Obito Online Learning Platform - Learn Anytime, Anywhere">
@@ -41,17 +45,16 @@
           <span class="font-bold text-2xl tracking-wide">Linguasphere</span>
         </a>
         <ul class="flex items-center gap-10">
-          <li class="hover:font-semibold transition-all duration-300 font-semibold">
+          <li class="hover:font-semibold transition-all duration-300 {{ request()->is('/') ? 'font-semibold' : '' }}">
             <a href="{{ url('/') }}">Home</a>
           </li>
-          <li class="hover:font-semibold transition-all duration-300">
-            <a href="{{ url('/pricing') }}">Pricing</a>
+          <li
+            class="hover:font-semibold transition-all duration-300 {{ request()->is('courses') ? 'font-semibold' : '' }}">
+            <a href="{{ route('courses.guest') }}">Courses</a>
           </li>
-          <li class="hover:font-semibold transition-all duration-300">
-            <a href="#">Features</a>
-          </li>
-          <li class="hover:font-semibold transition-all duration-300">
-            <a href="#">Testimonials</a>
+          <li
+            class="hover:font-semibold transition-all duration-300 {{ request()->is('learning-path') ? 'font-semibold' : '' }}">
+            <a href="#">Learning Path</a>
           </li>
         </ul>
       </div>
@@ -71,53 +74,10 @@
     </div>
   </nav>
 
-  <main class="flex flex-1 items-center py-[70px]">
-    <div class="w-full flex gap-[77px] justify-between items-center pl-[calc(((100%-1280px)/2)+75px)]">
-      <div class="flex flex-col max-w-[500px] gap-[50px]">
-        <div class="flex flex-col gap-[30px]">
-          <p class="flex items-center gap-[6px] w-fit rounded-full py-2 px-[14px] bg-obito-light-green">
-            <img src="{{ asset('assets/icons/crown-green.svg') }}" class="flex shrink-0 w-5" alt="icon">
-            <span class="font-bold text-sm">TRUSTED BY 500 FORTUNE LINGUASPHERE COMPANIES</span>
-          </p>
-          <div>
-            <h1 class="font-extrabold text-[50px] leading-[65px]">Upgrade Skills, <br>Get Higher Salary</h1>
-            <p class="leading-7 mt-[10px] text-obito-text-secondary">Materi terbaru disusun oleh professional dan
-              perusahaan besar agar lebih sesuai kebutuhan dan anda lorem dolorsi.</p>
-          </div>
-          <div class="flex items-center gap-[18px]">
-            <a href="{{ url('/pricing') }}"
-              class="flex items-center rounded-full h-[67px] py-5 px-[30px] gap-[10px] bg-obito-green hover:drop-shadow-effect transition-all duration-300">
-              <span class="text-white font-semibold text-lg">Get Started</span>
-            </a>
-            <a href="#"
-              class="flex items-center rounded-full h-[67px] border border-obito-grey py-5 px-[30px] bg-white gap-[10px] hover:border-obito-green transition-all duration-300">
-              <img src="{{ asset('assets/icons/play-circle-fill.svg') }}" class="size-8 flex shrink-0" alt="icon">
-              <span class="font-semibold text-lg">How It Works</span>
-            </a>
-          </div>
-        </div>
-        <div class="flex items-center gap-[14px]">
-          <img src="{{ asset('assets/images/group.png') }}" class="flex shrink-0 h-[50px]" alt="group ">
-          <div>
-            <div class="flex gap-1 items-center">
-              <div class="flex">
-                <img src="{{ asset('assets/icons/Star 1.svg') }}" class="flex shrink-0 w-5" alt="star">
-                <img src="{{ asset('assets/icons/Star 1.svg') }}" class="flex shrink-0 w-5" alt="star">
-                <img src="{{ asset('assets/icons/Star 1.svg') }}" class="flex shrink-0 w-5" alt="star">
-                <img src="{{ asset('assets/icons/Star 1.svg') }}" class="flex shrink-0 w-5" alt="star">
-                <img src="{{ asset('assets/icons/Star 1.svg') }}" class="flex shrink-0 w-5" alt="star">
-              </div>
-              <span class="font-bold">5.0</span>
-            </div>
-            <p class="font-bold mt-1">Join Millions Developer</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flex shrink-0 h-[590px] w-[666px] justify-end">
-      <img src="{{ asset('assets/images/hero-image.png') }}" alt="hero">
-    </div>
-  </main>
+  <section>
+    @yield('content')
+  </section>
+
 </body>
 
 </html>

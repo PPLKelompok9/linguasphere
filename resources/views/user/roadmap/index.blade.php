@@ -2,7 +2,7 @@
 @section('content')
   @php
     $activeCategory = request('category_id') ?? ($categories->first()->id ?? null);
-    @endphp
+  @endphp
   <main class="pb-10 mt-[30px]">
     <section class="pl-[calc(((100%-1280px)/2)+75px)] pr-[calc(((100%-1280px)/2)+75px)]">
     <section id="catalog" class="flex flex-col w-full max-w-[1280px] gap-4 mx-auto">
@@ -57,7 +57,7 @@
       $isLast = $detail === $filteredDetails->last();
       @endphp
       @if(!$isLast)
-      <div class="flex justify-center text-gray-100">
+      <div class="flex justify-center text-gray-400">
       <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
       <g fill="none">
         <path

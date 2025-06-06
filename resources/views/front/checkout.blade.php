@@ -117,15 +117,15 @@
         },
         onPending: function (result) {
           alert('Payment pending !');
-          window.location.href = "{route('external.course')}"
+          window.location.href = "{route('courses.guest')}"
         },
         onError: function (result) {
           alert('Payment failed: ' + result.status_message);
-          window.location.href = "{{ route('external.course') }}"
+          window.location.href = "{{ route('courses.guest') }}"
         },
         onClose: function () {
           alert('Payment popup closed');
-          window.location.href = "{{ route('external.course') }}"
+          window.location.href = "{{ route('courses.guest') }}"
         }
         });
       } else {

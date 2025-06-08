@@ -22,9 +22,9 @@
   <link rel="apple-touch-icon" href="{{ asset('assets/images/logos/linguasphere.png') }}">
 
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Obito Online Learning Platform - Learn Anytime, Anywhere">
+  <meta property="og:title" content="Linguasphere Online Learning Platform - Learn Anytime, Anywhere">
   <meta property="og:description"
-    content="Obito is an innovative online learning platform that empowers students and professionals with high-quality, accessible courses.">
+    content="Linguasphere is an innovative online learning platform that empowers students and professionals with high-quality, accessible courses.">
   <meta property="og:image" content="{{ asset('assets/logos/logo-64-big.png') }}">
   <meta property="og:url" content="{{ url('/') }}">
   <meta property="og:type" content="website">

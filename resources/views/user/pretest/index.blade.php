@@ -16,7 +16,7 @@
       <div class="flex flex-col p-4 pt-0 gap-[13px]">
       <h3 class="font-bold text-lg line-clamp-4 overflow-hidden max-h-[56px] min-h-[56px]">{{ $course->name }}
       </h3>
-      <p class="text-sm w-full text-obito-text-secondary text-justify overflow-hidden line-clamp-6">
+      <p class="text-sm w-full text-obito-text-secondary text-justify overflow-hidden line-clamp-4">
         {{ $course->description }}
       </p>
       <button class="border border-obito-grey bg-obito-green text-white rounded-lg">

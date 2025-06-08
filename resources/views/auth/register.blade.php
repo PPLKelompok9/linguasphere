@@ -5,7 +5,7 @@
 
     <!-- Name -->
     <div class="flex flex-col gap-2 mt-4">
-      <x-input-label for="name" :value="__('Name')" icon="assets/icons/profile.svg">
+      <x-input-label for="name" :value="__('Name')" icon="assets/images/icons/profile.svg">
         <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus
           placeholder="Type your valid full name" />
       </x-input-label>
@@ -14,7 +14,7 @@
 
     <!-- Email Address -->
     <div class="flex flex-col gap-2 mt-4">
-      <x-input-label for="email" :value="__('Email Address')" icon="assets/icons/sms.svg">
+      <x-input-label for="email" :value="__('Email Address')" icon="assets/images/icons/sms.svg">
         <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="email"
           placeholder="Type your valid email address" />
       </x-input-label>
@@ -23,7 +23,7 @@
 
     <!-- Password -->
     <div class="flex flex-col gap-2 mt-4">
-      <x-input-label for="password" :value="__('Password')" icon="assets/icons/shield-security.svg">
+      <x-input-label for="password" :value="__('Password')" icon="assets/images/icons/shield-security.svg">
         <x-text-input id="password" type="password" name="password" required autocomplete="current-password"
           placeholder="Type your password" />
       </x-input-label>
@@ -33,7 +33,7 @@
     <!-- Confirm Password -->
     <div class="flex flex-col gap-2 mt-4">
       <x-input-label for="password_confirmation" :value="__('Confirm Password')"
-        icon="assets/icons/shield-security.svg">
+        icon="assets/images/icons/shield-security.svg">
         <x-text-input id="password_confirmation" type="password" name="password_confirmation" required
           autocomplete="new-password" placeholder="Type your password again" />
       </x-input-label>

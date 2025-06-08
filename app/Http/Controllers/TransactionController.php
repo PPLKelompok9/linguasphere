@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Services\CourseService;
 use App\Services\PaymentService;
 use App\Services\TransactionService;
-use App\Models\Course;
-use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-class ExternalController extends Controller
+class TransactionController extends Controller
 {
-
   protected $courseServices;
   protected $paymentServices;
   protected $transactionServices;
-
 
   public function __construct(CourseService $courseServices, PaymentService $paymentServices, TransactionService $transactionServices)
   {
@@ -26,6 +23,7 @@ class ExternalController extends Controller
     $this->transactionServices = $transactionServices;
   }
 
+  // User
   public function index()
   {
     $userAuth = Auth::user();
@@ -66,29 +64,13 @@ class ExternalController extends Controller
     return view('user.courses.checkout', $data);
   }
 
-  // public function checkouts(int $id){
-  //     $user = Auth::user();
-  //     $course = Course::find($id);  
-  //     if(!$course){
-  //         abort(404, 'Course not found');
-  //     }
-  //     $price = $course->diskon_price && $course->diskon_price > 0 ? $course->diskon_price : $course->price;
-  //     $type_products = 'Courses';
-  //     $tax = 0.11;
-  //     $sub_total = $price;
-  //     $total_tax_price = $price * $tax;
-  //     $total_amount =   $sub_total + $total_tax_price;
-  //     session()->put('id_products', $course->id);       
+  public function historyCheckouts()
+  {
+    $data = $this->transactionServices->getTransactions();
+    return view('user.subscriptions.index', compact('data'));
+  }
 
-  //     $data = compact('sub_total',
-  //         'total_tax_price',
-  //         'total_amount',
-  //         'course',
-  //         'user',
-  //         'type_products');
-  //     return view('front.checkout', $data);
-  // }
-
+  // Handle Midtrans Payment
   public function paymentMidtrans()
   {
     try {
@@ -125,31 +107,4 @@ class ExternalController extends Controller
       return response()->json(['error' => 'Failed to process notification'], 500);
     }
   }
-
-  public function afterCheckouts()
-  {
-    $user = Auth::user();
-    $data = $this->paymentServices->getRecentCourse();
-    // dd($data);
-    if (!$data) {
-      return redirect()->front('external-course')->with('error', 'No recent payment course.');
-    }
-    return view('front.checkout_success', compact('data'));
-  }
-
-  public function historyCheckouts()
-  {
-    $data = $this->transactionServices->getTransactions();
-    return view('user.subscriptions.index', compact('data'));
-  }
-
-
-
-  public function path()
-  {
-
-    return view('external.path');
-  }
-
-
 }

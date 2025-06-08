@@ -41,7 +41,7 @@
     <div class="flex w-[1280px] px-[75px] py-5 items-center justify-between mx-auto">
       <div class="flex items-center gap-[50px]">
         <a href="{{ url('/') }}" class="flex items-center gap-2 shrink-0">
-          <img src="{{ asset('assets/logos/logo-64.svg') }}" class="flex shrink-0" alt="logo">
+          <img src="{{ asset('assets/images/logos/logo-64.svg') }}" class="flex shrink-0" alt="logo">
           <span class="font-bold text-2xl tracking-wide">Linguasphere</span>
         </a>
         <ul class="flex items-center gap-10">

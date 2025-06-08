@@ -3,7 +3,17 @@
   <main class="pb-10 mt-[30px]">
     <section class="pl-[calc(((100%-1280px)/2)+75px)] pr-[calc(((100%-1280px)/2)+75px)] flex flex-col gap-10">
     <section id="catalog" class="flex flex-col w-full max-w-[1280px] gap-4 mx-auto">
+      <div class="flex justify-between items-center">
       <h1 class="font-bold text-[22px] leading-[33px]">Course Catalog</h1>
+      <form action="{{ route('courses.search') }}" method="GET" class="flex gap-2">
+        <input type="text" name="search" class="border border-obito-grey rounded-full px-4 py-2 focus:outline-none"
+        placeholder="Search course..." value="{{ request('search') }}">
+        <button type="submit"
+        class="bg-obito-green text-white rounded-full px-4 py-2 font-semibold hover:bg-obito-black transition-all">
+        Search
+        </button>
+      </form>
+      </div>
       <div id="tabs-container" class="flex items-center gap-3">
       <button type="button" class="tab-btn group active" data-target="category-all">
         <p
@@ -37,13 +47,12 @@
         <h3 class="font-bold text-lg min-h-[56px] max-h-[56px] overflow-hidden line-clamp-2">{{ $course->name }}
         </h3>
         <p class="flex items-center gap-[6px]">
-        <img src="{{ asset('assets/images/icons/crown-green.svg') }}" class="flex shrink-0 w-5" alt="icon">
+        <img src="{{ asset('assets/images/icons/crown-green.svg') }}" alt="icon">
         <span class="text-sm text-obito-text-secondary">{{ $course->category?->name ?? '-' }}</span>
         </p>
         <p class="flex items-center gap-[6px]">
-        <img src="{{ asset('assets/images/icons/menu-board-green.svg') }}" class="flex shrink-0 w-5"
-        alt="icon">
-        <span class="text-sm text-obito-text-secondary">0 Lessons</span>
+        <img src="/assets/images/icons/menu-board-green.svg" class="flex shrink-0 w-5" alt="icon">
+        <span class="text-sm text-obito-text-secondary">{{ $course->courseSections->count() }} Lessons</span>
         </p>
         <p class="flex items-center gap-[6px]">
         <img src="{{ asset('assets/images/icons/briefcase-green.svg') }}" class="flex shrink-0 w-5"

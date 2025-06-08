@@ -8,14 +8,14 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditScholarship extends EditRecord
 {
-    protected static string $resource = ScholarshipResource::class;
+  protected static string $resource = ScholarshipResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-            Actions\ForceDeleteAction::make(),
-            Actions\RestoreAction::make(),
-        ];
-    }
+  protected function getHeaderActions(): array
+  {
+    return [
+      Actions\DeleteAction::make(),
+      Actions\ForceDeleteAction::make(),
+      Actions\RestoreAction::make(),
+    ];
+  }
 }

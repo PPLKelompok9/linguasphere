@@ -8,7 +8,7 @@
 
     <!-- Email Address -->
     <div class="flex flex-col gap-2">
-      <x-input-label for="email" :value="__('Email Address')" icon="assets/icons/sms.svg">
+      <x-input-label for="email" :value="__('Email Address')" icon="assets/images/icons/sms.svg">
         <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="email"
           placeholder="Type your valid email address" />
       </x-input-label>
@@ -17,7 +17,7 @@
 
     <!-- Password -->
     <div class="flex flex-col gap-2">
-      <x-input-label for="password" :value="__('Password')" icon="assets/icons/shield-security.svg">
+      <x-input-label for="password" :value="__('Password')" icon="assets/images/icons/shield-security.svg">
         <x-text-input id="password" type="password" name="password" required autocomplete="current-password"
           placeholder="Type your password" />
       </x-input-label>

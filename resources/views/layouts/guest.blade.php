@@ -26,7 +26,7 @@
       </section>
       <div class="relative flex w-1/2 shrink-0">
         <div id="background-banner" class="absolute flex w-full h-full overflow-hidden">
-          <img src="assets/images/banner-subscription.png" class="w-full h-full object-cover" alt="banner">
+          <img src="assets/images/backgrounds/banner-subscription.jpg" class="w-full h-full object-cover" alt="banner">
         </div>
       </div>
     </div>

@@ -8,5 +8,5 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateScholarship extends CreateRecord
 {
-    protected static string $resource = ScholarshipResource::class;
+  protected static string $resource = ScholarshipResource::class;
 }

@@ -2,7 +2,7 @@
 @section('content')
   @php
     $activeCategory = request('category_id') ?? ($categories->first()->id ?? null);
-  @endphp
+    @endphp
   <main class="pb-10 mt-[30px]">
     <section class="pl-[calc(((100%-1280px)/2)+75px)] pr-[calc(((100%-1280px)/2)+75px)]">
     <section id="catalog" class="flex flex-col w-full max-w-[1280px] gap-4 mx-auto">
@@ -41,11 +41,11 @@
         <div class="flex flex-col justify-between h-[100px] flex-1 gap-3">
         <h3 class="font-bold text-lg line-clamp-2 self-start">{{ $detail->course->name }}</h3>
         <div class="flex">
-        <img src="/assets/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
-        <img src="/assets/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
-        <img src="/assets/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
-        <img src="/assets/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
-        <img src="/assets/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
+        <img src="/assets/images/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
+        <img src="/assets/images/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
+        <img src="/assets/images/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
+        <img src="/assets/images/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
+        <img src="/assets/images/icons/Star 1.svg" class="flex shrink-0 w-5" alt="star">
         </div>
         </div>
         </div>

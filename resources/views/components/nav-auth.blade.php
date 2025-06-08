@@ -20,12 +20,12 @@
           <a href="{{ route('pretest') }}">PreTest</a>
         </li>
         <li
-          class="hover:font-semibold transition-all duration-300 {{ request()->routeIs('sertifications.*') ? 'font-semibold ' : '' }}">
-          <a href="{{ route('sertifications.index') }}">Sertification</a>
-        </li>
-        <li
           class="hover:font-semibold transition-all duration-300 {{ request()->routeIs('paths*') || request()->routeIs('paths.index') ? 'font-semibold ' : '' }}">
           <a href="{{ route('paths.index') }}">Roadmap</a>
+        </li>
+        <li
+          class="hover:font-semibold transition-all duration-300 {{ request()->routeIs('sertifications.*') ? 'font-semibold ' : '' }}">
+          <a href="{{ route('sertifications.coming_soon') }}">Sertification</a>
         </li>
       </ul>
     </div>
@@ -43,8 +43,11 @@
           <img src="{{ asset('assets/images/icons/arrow-circle-down.svg') }}" class="w-6 h-6" alt="icon">
         </button>
         <div id="dropdown"
-          class="absolute top-full right-0 mt-[7px] w-[170px] h-fit bg-white rounded-xl border border-obito-grey py-4 px-5 shadow-[0px_10px_30px_0px_#B8B8B840] z-10 hidden">
+          class="absolute top-full right-0 mt-[7px] w-fit h-fit bg-white rounded-xl border border-obito-grey py-4 px-5 shadow-[0px_10px_30px_0px_#B8B8B840] z-10 hidden">
           <ul class="flex flex-col gap-[14px]">
+            <li class="hover:text-obito-green transition-all duration-300"><a href={{ route('setting.edit') }}>Settings</a>
+            </li>
+            <li class="hover:text-obito-green transition-all duration-300"><a href={{ route('subscriptions.history') }}>Subscriptions</a>
             <li class="hover:text-obito-green transition-all duration-300">
 
               <!-- Authentication -->

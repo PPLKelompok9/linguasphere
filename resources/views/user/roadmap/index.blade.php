@@ -1,8 +1,8 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('content')
   @php
     $activeCategory = request('category_id') ?? ($categories->first()->id ?? null);
-    @endphp
+  @endphp
   <main class="pb-10 mt-[30px]">
     <section class="pl-[calc(((100%-1280px)/2)+75px)] pr-[calc(((100%-1280px)/2)+75px)]">
     <section id="catalog" class="flex flex-col w-full max-w-[1280px] gap-4 mx-auto">

@@ -1,4 +1,4 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('content')
   <main class="relative flex flex-1 h-full">
     <div id="background-banner" class="absolute flex w-1/2 shrink-0 h-[56.3rem] overflow-hidden right-0">

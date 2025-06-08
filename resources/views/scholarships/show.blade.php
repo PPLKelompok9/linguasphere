@@ -1,4 +1,4 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('title', 'Beasiswa - Linguasphere')
 @section('content')
   <x-scholarship-notif />

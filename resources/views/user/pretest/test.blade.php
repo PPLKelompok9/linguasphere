@@ -1,4 +1,4 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('content')
   <main class="py-[70px] flex items-center justify-center">
     <div class="border border-obito-grey bg-white rounded-[20px] p-[30px] w-[400px]">

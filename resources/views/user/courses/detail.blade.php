@@ -1,4 +1,4 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('content')
   <main class="pb-10 mt-[30px]">
     <section class="pl-[calc(((100%-1280px)/2)+75px)] pr-[calc(((100%-1280px)/2)+75px)] flex flex-col gap-10">
@@ -116,22 +116,22 @@
         <div id="lessons-content" class="tab-content flex flex-col gap-5 w-full max-w-[650px] hidden">
         @foreach($course->courseSections as $section)
         <div class="accordion flex flex-col gap-4 rounded-[20px] border border-obito-grey p-5 bg-white">
-        <button type="button" id="accordion-btn" data-expand="WarmingUp" class="flex items-center justify-between"
-        data-target="section-{{ $section->id }}>
-      <p class=" font-semibold text-lg">{{ $section->name }}</p>
-        <img src="/assets/images/icons/arrow-circle-down.svg" alt="icon"
+          <button type="button" id="accordion-btn" data-expand="WarmingUp" class="flex items-center justify-between"
+          data-target="section-{{ $section->id }}>
+        <p class=" font-semibold text-lg">{{ $section->name }}</p>
+          <img src="/assets/images/icons/arrow-circle-down.svg" alt="icon"
           class="size-6 shrink-0 transition-all duration-300 -rotate-180" />
-        </button>
-        <div id="section-{{ $section->id }}" class="hidden">
-        <div class="flex flex-col gap-4">
+          </button>
+          <div id="section-{{ $section->id }}" class="hidden">
+          <div class="flex flex-col gap-4">
           @foreach($section->sectionContents as $content)
         <div class="flex items-center rounded-[50px] gap-[10px] border border-obito-grey py-3 px-4 bg-white">
         <img src="/assets/images/icons/menu-board.svg" class="size-6 flex shrink-0" alt="icon">
         <p class="font-semibold">{{ $content->name }}</p>
         </div>
         @endforeach
-        </div>
-        </div>
+          </div>
+          </div>
         </div>
       @endforeach
         </div>

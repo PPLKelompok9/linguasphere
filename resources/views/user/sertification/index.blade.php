@@ -1,4 +1,4 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('content')
   <main class="relative flex flex-1 h-full">
     <div class="flex items-center justify-center w-screen">

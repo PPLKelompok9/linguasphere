@@ -1,4 +1,4 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('title', 'Course Finished - Linguasphere')
 @section('content')
   <div class="relative flex justify-center">
@@ -12,7 +12,8 @@
     <div class="mx-auto flex w-[500px] flex-col gap-[10px] items-center">
       <h1 class="text-center font-bold text-[28px] leading-[42px]">What a Day! Now<br>You’re Excellent</h1>
       <p class="text-center text-obito-text-secondary leading-[28px]">Anda telah menyelesaikan materi kelas dengan baik
-      <br>Keep Sprit For Learning</p>
+      <br>Keep Sprit For Learning
+      </p>
     </div>
     <div id="card"
       class="flex items-center pt-[10px] pb-[10px] pl-[10px] pr-4 border border-obito-grey rounded-[20px] gap-4">

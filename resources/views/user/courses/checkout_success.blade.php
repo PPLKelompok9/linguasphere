@@ -1,4 +1,4 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('title', 'Checkout Success')
 @section('content')
   <main class="flex justify-center py-5 flex-1 items-center">

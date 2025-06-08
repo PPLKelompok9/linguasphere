@@ -1,4 +1,4 @@
-@extends('front.layouts.layouts')
+@extends('user.layouts.layouts')
 @section('title', 'Course Learning - Linguasphere')
 @section('content')
 
@@ -48,7 +48,8 @@
         class="px-4 group-[&.active]:bg-obito-black group-[&.active]:border-transparent group-[&.active]:text-white py-[10px] rounded-full border border-obito-grey group-hover:bg-obito-black transition-all duration-300">
         <h3
         class="font-semibold text-sm leading-[21px] group-hover:text-white transition-all duration-300">
-        {{ $content->name }}</h3>
+        {{ $content->name }}
+        </h3>
         </div>
         </a>
         </li>

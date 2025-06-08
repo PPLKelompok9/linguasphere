@@ -53,7 +53,7 @@
 
         <div class="mt-4">
         @if($scholarship->isOpen())
-      <a href="{{ route('scholarships.show', $scholarship->id) }}"
+      <a href="{{ route('scholarships.detail', $scholarship->id) }}"
       class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
       Selengkapnya
       </a>

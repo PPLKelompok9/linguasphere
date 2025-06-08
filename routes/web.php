@@ -78,6 +78,11 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/payment/midtrans', [TransactionController::class, 'paymentMidtrans'])->name('external.payment_midtrans');
   });
+
+  // User Scholarships
+  Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
+  Route::get('/scholarships/{id}/details', [ScholarshipController::class, 'show'])->name('scholarships.detail');
+  Route::get('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'applyForScholarship'])->name('scholarships.apply');
 });
 
 
@@ -99,19 +104,6 @@ Route::get('institutions/{institution:slug}/partnerships', [
 ])->name('institutions.partnerships');
 
 
-// Route::get('/', [ExternalController::class, 'index'])->name('external.index');
-Route::get('/price', [ExternalController::class, 'price'])->name('external.price');
 Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
-
-Route::middleware(['auth'])->group(function () {
-
-  // Scholarship routes
-  Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
-  Route::get('/scholarships/{scholarship}', [ScholarshipController::class, 'show'])->name('scholarships.show');
-  Route::post('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'apply'])->name('scholarships.apply');
-});
-
-Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
-Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
 
 require __DIR__ . '/auth.php';

@@ -10,39 +10,39 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Scholarship extends Model
 {
-    use HasFactory, SoftDeletes;
+  use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'title',
-        'description',
-        'requirements',
-        'benefits',
-        'deadline',
-        'course_id',
-        'slots_available',
-        'status'
-    ];
+  protected $fillable = [
+    'title',
+    'description',
+    'requirements',
+    'benefits',
+    'deadline',
+    'course_id',
+    'slots_available',
+    'status'
+  ];
 
-    protected $casts = [
-        'deadline' => 'datetime',
-        'requirements' => 'array',
-        'benefits' => 'array',
-    ];
+  protected $casts = [
+    'deadline' => 'datetime',
+    'requirements' => 'array',
+    'benefits' => 'array',
+  ];
 
-    public function course(): BelongsTo
-    {
-        return $this->belongsTo(Course::class);
-    }
+  public function course(): BelongsTo
+  {
+    return $this->belongsTo(Course::class);
+  }
 
-    public function applications(): HasMany
-    {
-        return $this->hasMany(ScholarshipApplication::class);
-    }
+  public function applications(): HasMany
+  {
+    return $this->hasMany(ScholarshipApplication::class);
+  }
 
-    public function isOpen(): bool
-    {
-        return $this->status === 'open' && 
-               $this->deadline->isFuture() && 
-               $this->applications()->count() < $this->slots_available;
-    }
+  public function isOpen(): bool
+  {
+    return $this->status === 'open' &&
+      $this->deadline->isFuture() &&
+      $this->applications()->count() < $this->slots_available;
+  }
 }

@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Pretest\PretestController;
+use App\Http\Controllers\PathController;
+use App\Http\Controllers\PretestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExternalController;
 use App\Http\Controllers\DashboardController;
@@ -8,89 +9,84 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\SertificationController;
 use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 
+// Routing Guest
 Route::get('/', function () {
-  return view('welcome');
+  return view('guest.Home.index');
 });
 
-Route::match(['get', 'post'], '/transactions/payment/midtrans/notification',[ExternalController::class, 'handlePaymentNotification'])->name('external.payment_midtrans_notification');
+Route::get('/courses', [CourseController::class, 'guestIndex'])->name('courses.guest');
+Route::get('/courses/detail/{id}', [CourseController::class, 'showDetailCoursesByCategory'])->name('courses.guestDetail');
 
+Route::get('/learning-path', [PathController::class, 'guestIndex'])->name('paths.guest');
 
-Route::get('/dashboard', function () {
-  return view('homepage.main');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::match(['get', 'post'], '/transactions/payment/midtrans/notification', [TransactionController::class, 'handlePaymentNotification'])->name('external.payment_midtrans_notification');
 
-Route::get('/path', [FrontController::class, 'path'])->name('front.path');
-
+// Routing Authenticated
 Route::middleware('auth')->group(function () {
-  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-Route::get('/home', function () {
-  return redirect()->route('dashboard');
-})->name('home');
+  Route::middleware('role:admin')->group(function () {
 
+    $profilePath = '/profile';
+    // Admin Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
 
+    // Admin Profile
+    Route::get($profilePath, [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch($profilePath, [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete($profilePath, [ProfileController::class, 'destroy'])->name('profile.destroy');
+  });
 
-Route::get('/pretest', [PretestController::class, 'index'])->name('pretest');
-Route::get('/pretest/{slug}', [PretestController::class, 'show'])->name('pretest.show');
+  Route::middleware('role:user')->prefix('user')->group(function () {
 
-Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
-Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
+    $settingsPath = '/settings';
 
-Route::resource('scholarships', ScholarshipController::class);
+    // User Dashboard
+    Route::get('/dashboard', [ExternalController::class, 'index'])->name('dashboard.user');
 
-Route::resource('institutions', InstitutionController::class)->parameters([
-    'institutions' => 'institution:slug'
-]);
+    // User Settings
+    Route::get($settingsPath, [SettingController::class, 'edit'])->name('setting.edit');
+    Route::patch($settingsPath, [SettingController::class, 'update'])->name('setting.update');
+    Route::delete($settingsPath, [SettingController::class, 'destroy'])->name('setting.destroy');
 
-Route::get('institutions/{institution:slug}/partnerships', [
-    InstitutionController::class, 
-    'activePartnerships'
-])->name('institutions.partnerships');
+    // User Courses
+    Route::get('/courses', [CourseController::class, 'userIndex'])->name('courses.user');
+    Route::get('/courses/search', [CourseController::class, 'searchCourses'])->name('courses.search');
+    Route::get('/courses/detail/{slug}', [CourseController::class, 'show'])->name('courses.detail');
+    Route::get('/courses/checkouts/{slug}', [TransactionController::class, 'checkouts'])->name('courses.checkout');
+    Route::get('/courses/checkouts-success', [TransactionController::class, 'afterCheckouts'])->name('user.checkout_success');
+    Route::get('/courses/{course:slug}/{courseSection}/{sectionContent}', [CourseController::class, 'learningCourse'])->name('courses.learning');
+    Route::get('/courses/{course:slug}/finished', [CourseController::class, 'learningFinished'])->name('courses.finished');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+    // User PreTest
+    Route::get('/pretest', [PretestController::class, 'index'])->name('pretest');
+    Route::get('/pretest/{slug}', [PretestController::class, 'showTest'])->name('pretest.test');
+    Route::post('/pretest/{slug}', [PretestController::class, 'showTest']);
 
-// Route::get('/', [ExternalController::class, 'index'])->name('external.index');
-Route::get('/price',[ExternalController::class, 'price'])->name('external.price');
-Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
+    // User Roadmaps
+    Route::get('/paths', [PathController::class, 'index'])->name('paths.index');
 
-Route::middleware(['auth'])->group(function () {
-  
-    // Scholarship routes
+    // User Sertifications
+    Route::get('/sertifications', [SertificationController::class, 'comingSoon'])->name('sertifications.coming_soon');
+
+    // User Transactions
+    Route::get('/transactions/checkouts/{id}', [TransactionController::class, 'checkoutsGuest'])->name('guest.checkouts');
+    Route::get('/transactions/history', [TransactionController::class, 'historyCheckouts'])->name('subscriptions.history');
+    Route::get('/subscriptions/{transaction}', [SubscriptionController::class, 'subscriptionDetail'])
+      ->name('user.subscriptions.detail');
+
+    Route::post('/payment/midtrans', [TransactionController::class, 'paymentMidtrans'])->name('transaction.payment_midtrans');
+
+    // User Scholarships
     Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
-    Route::get('/scholarships/{scholarship}', [ScholarshipController::class, 'show'])->name('scholarships.show');
-    Route::post('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'apply'])->name('scholarships.apply');
+    Route::get('/scholarships/{id}/details', [ScholarshipController::class, 'show'])->name('scholarships.detail');
+    Route::get('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'applyForScholarship'])->name('scholarships.apply');
+  });
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::middleware('role:user')->group(function(){
-      Route::get('/user/dashboard', [ExternalController::class, 'index'])->name('external.dashboard');
-      Route::get('/courses', [CourseController::class, 'index'])->name('external.course');
-      Route::get('/courses/detail/{id}', [CourseController::class, 'showDetailCoursesByCategory'])->name('courses.detail');
-      Route::get('/transactions/checkouts/{id}', [ExternalController::class, 'checkouts'])->name('external.checkouts');
-      Route::get('/transactions/checkouts-success', [ExternalController::class, 'afterCheckouts'])->name('external.checkout_success');
-      Route::get('/transactions/history', [ExternalController::class, 'historyCheckouts'])->name('external.history_checkouts');
-      Route::post('/payment/midtrans', [ExternalController::class, 'paymentMidtrans'])->name('external.payment_midtrans');
-      Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
-      Route::get('/user/courses/{course:slug}/{courseSection}/{sectionContent}', [CourseController::class, 'learningCourse'])->name('courses.learning');
-       Route::get('/user/courses/{course:slug}/finished', [CourseController::class, 'learningFinished'])->name('courses.finished');
-    });
-});
-
-Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
-Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

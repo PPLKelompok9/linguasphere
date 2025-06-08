@@ -8,7 +8,7 @@
     <div class="flex flex-col max-w-[500px] gap-[50px]">
       <div class="flex flex-col gap-[30px]">
       <p class="flex items-center gap-[6px] w-fit rounded-full py-2 px-[14px] bg-obito-light-green">
-        <img src="assets/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
+        <img src="assets/images/icons/crown-green.svg" class="flex shrink-0 w-5" alt="icon">
         <span class="font-bold text-sm">TRUSTED BY 500 FORTUNE LINGUASPHERE COMPANIES</span>
       </p>
       <div>
@@ -47,7 +47,7 @@
     </div>
     </div>
     <div class="flex shrink-0 h-[590px] w-[666px] justify-end">
-    <img src="assets/images/hero-image.png" alt="hero">
+    <img src="assets/images/backgrounds/hero-image.png" alt="hero">
     </div>
   </main>
 @endsection

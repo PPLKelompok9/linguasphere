@@ -23,16 +23,20 @@ Route::get('/', function () {
 Route::get('/courses', [CourseController::class, 'guestIndex'])->name('courses.guest');
 Route::get('/courses/detail/{id}', [CourseController::class, 'showDetailCoursesByCategory'])->name('courses.guestDetail');
 
+Route::get('/learning-path', [PathController::class, 'guestIndex'])->name('paths.guest');
 
+Route::match(['get', 'post'], '/transactions/payment/midtrans/notification', [TransactionController::class, 'handlePaymentNotification'])->name('external.payment_midtrans_notification');
 
-// Routing User
+// Routing Authenticated
 Route::middleware('auth')->group(function () {
 
   Route::middleware('role:admin')->group(function () {
 
     $profilePath = '/profile';
-
+    // Admin Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
+
+    // Admin Profile
     Route::get($profilePath, [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch($profilePath, [ProfileController::class, 'update'])->name('profile.update');
     Route::delete($profilePath, [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -55,9 +59,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/courses/search', [CourseController::class, 'searchCourses'])->name('courses.search');
     Route::get('/courses/detail/{slug}', [CourseController::class, 'show'])->name('courses.detail');
     Route::get('/courses/checkouts/{slug}', [TransactionController::class, 'checkouts'])->name('courses.checkout');
+    Route::get('/courses/checkouts-success', [TransactionController::class, 'afterCheckouts'])->name('user.checkout_success');
     Route::get('/courses/{course:slug}/{courseSection}/{sectionContent}', [CourseController::class, 'learningCourse'])->name('courses.learning');
     Route::get('/courses/{course:slug}/finished', [CourseController::class, 'learningFinished'])->name('courses.finished');
 
+    // User PreTest
     Route::get('/pretest', [PretestController::class, 'index'])->name('pretest');
     Route::get('/pretest/{slug}', [PretestController::class, 'showTest'])->name('pretest.test');
     Route::post('/pretest/{slug}', [PretestController::class, 'showTest']);
@@ -69,41 +75,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/sertifications', [SertificationController::class, 'comingSoon'])->name('sertifications.coming_soon');
 
     // User Transactions
-    Route::get('/transactions/checkouts/{id}', [ExternalController::class, 'checkouts'])->name('external.checkouts');
-    Route::get('/transactions/checkouts-success', [ExternalController::class, 'afterCheckouts'])->name('external.checkout_success');
-
+    Route::get('/transactions/checkouts/{id}', [TransactionController::class, 'checkoutsGuest'])->name('guest.checkouts');
     Route::get('/transactions/history', [TransactionController::class, 'historyCheckouts'])->name('subscriptions.history');
     Route::get('/subscriptions/{transaction}', [SubscriptionController::class, 'subscriptionDetail'])
       ->name('user.subscriptions.detail');
 
-    Route::post('/payment/midtrans', [TransactionController::class, 'paymentMidtrans'])->name('external.payment_midtrans');
+    Route::post('/payment/midtrans', [TransactionController::class, 'paymentMidtrans'])->name('transaction.payment_midtrans');
+
+    // User Scholarships
+    Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
+    Route::get('/scholarships/{id}/details', [ScholarshipController::class, 'show'])->name('scholarships.detail');
+    Route::get('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'applyForScholarship'])->name('scholarships.apply');
   });
-
-  // User Scholarships
-  Route::get('/scholarships', [ScholarshipController::class, 'index'])->name('scholarships.index');
-  Route::get('/scholarships/{id}/details', [ScholarshipController::class, 'show'])->name('scholarships.detail');
-  Route::get('/scholarships/{scholarship}/apply', [ScholarshipController::class, 'applyForScholarship'])->name('scholarships.apply');
 });
-
-
-Route::match(['get', 'post'], '/transactions/payment/midtrans/notification', [TransactionController::class, 'handlePaymentNotification'])->name('external.payment_midtrans_notification');
-
-
-Route::get('/sertifications', [SertificationController::class, 'index'])->name('sertifications.index');
-Route::get('/sertifications/{slug}', [SertificationController::class, 'show'])->name('sertifications.show');
-
-Route::resource('scholarships', ScholarshipController::class);
-
-Route::resource('institutions', InstitutionController::class)->parameters([
-  'institutions' => 'institution:slug'
-]);
-
-Route::get('institutions/{institution:slug}/partnerships', [
-  InstitutionController::class,
-  'activePartnerships'
-])->name('institutions.partnerships');
-
-
-Route::get('/path', [ExternalController::class, 'path'])->name('external.path');
 
 require __DIR__ . '/auth.php';

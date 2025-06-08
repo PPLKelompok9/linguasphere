@@ -133,6 +133,18 @@ class CourseController extends Controller
     ));
   }
 
+  public function searchCourses(Request $request)
+  {
+    $keyword = trim($request->get('search', ''));
+
+    if ($keyword === '') {
+      return redirect()->route('courses.user');
+    }
+
+    $courses = $this->courseService->searchCourses($keyword);
+    return view('user.courses.search', compact('courses', 'keyword'));
+  }
+
   public function learningCourse(Course $course, $contentSectionId, $sectionContentId)
   {
 
@@ -150,23 +162,8 @@ class CourseController extends Controller
   public function guestIndex()
   {
     $coursesByCategory = $this->courseService->getCoursesGroupByCategory();
-    // $categories = Category::with('agencies.courses')->get();
-    // dd($coursesByCategory);
+    return view('guest.Course.index', compact('coursesByCategory'));
 
-    return view('courses.index', compact('coursesByCategory'));
-
-  }
-
-  public function searchCourses(Request $request)
-  {
-    $keyword = trim($request->get('search', ''));
-
-    if ($keyword === '') {
-      return redirect()->route('courses.user');
-    }
-
-    $courses = $this->courseService->searchCourses($keyword);
-    return view('user.courses.search', compact('courses', 'keyword'));
   }
 
   public function showDetailCoursesByCategory(int $id)
@@ -182,16 +179,16 @@ class CourseController extends Controller
           return [
             'id' => $course->id,
             'name' => $course->name,
+            'cover' => $course->cover,
             'slug' => $course->slug,
             'description' => $course->description,
             'price' => $course->price,
-            // add other fields if needed
           ];
         }),
       ];
     });
 
-    return view('courses.details', [
+    return view('guest.Course.detail', [
       'category' => $category->name,
       'courses' => $courses,
     ]);

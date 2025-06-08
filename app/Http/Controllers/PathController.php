@@ -17,5 +17,9 @@ class PathController extends Controller
     return view('user.roadmap.index', compact('paths', 'categories'));
   }
 
+  public function guestIndex()
+  {
+    return view('guest.LearningPath.index');
+  }
 
 }

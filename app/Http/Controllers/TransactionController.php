@@ -64,6 +64,46 @@ class TransactionController extends Controller
     return view('user.courses.checkout', $data);
   }
 
+  public function checkoutsGuest(int $id)
+  {
+    $user = Auth::user();
+    $course = Course::find($id);
+    if (!$course) {
+      abort(404, 'Course not found');
+    }
+
+    $price = $course->price;
+    $discount = $course->diskon_price ?? 0;
+    $calculate = $price - $discount;
+    $sub_total = $calculate > 0 ? $calculate : $price;
+
+    $tax = 0.11;
+    $total_tax_price = $sub_total * $tax;
+    $total_amount = $sub_total + $total_tax_price;
+
+    $type_products = 'Courses';
+    session()->put('id_products', $course->id);
+
+    $data = compact(
+      'sub_total',
+      'total_tax_price',
+      'total_amount',
+      'course',
+      'user',
+      'type_products'
+    );
+    return view('guest.Course.checkout', $data);
+  }
+
+  public function afterCheckouts()
+  {
+    $data = $this->paymentServices->getRecentCourse();
+    if (!$data) {
+      return redirect()->user('courses-index')->with('error', 'No recent payment course.');
+    }
+    return view('user.courses.checkout-success', compact('data'));
+  }
+
   public function historyCheckouts()
   {
     $data = $this->transactionServices->getTransactions();

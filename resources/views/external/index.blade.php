@@ -3,38 +3,6 @@
   <main class="flex flex-col gap-10 pb-10 mt-[30px]">
     <section id="roadmap" class="flex flex-col w-full max-w-[1280px] px-[75px] gap-4 mx-auto">
     <h2 class="font-bold text-[22px] leading-[33px]">Kursus Bahasa Saya</h2>
-    {{-- <div id="tabs-container" class="flex items-center gap-3">
-      <button type="button" class="tab-btn group active" data-target="programming">
-      <p
-        class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-        <span class="group-[.active]:font-semibold group-[.active]:text-white">Inggris</span>
-      </p>
-      </button>
-      <button type="button" class="tab-btn group" data-target="example">
-      <p
-        class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-        <span class="group-[.active]:font-semibold group-[.active]:text-white">Jepang</span>
-      </p>
-      </button>
-      <button type="button" class="tab-btn group" data-target="example">
-      <p
-        class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-        <span class="group-[.active]:font-semibold group-[.active]:text-white">Jerman</span>
-      </p>
-      </button>
-      <button type="button" class="tab-btn group" data-target="example">
-      <p
-        class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-        <span class="group-[.active]:font-semibold group-[.active]:text-white">Mandarin</span>
-      </p>
-      </button>
-      <button type="button" class="tab-btn group" data-target="example">
-      <p
-        class="rounded-full border border-obito-grey py-2 px-4 hover:border-obito-green bg-white transition-all duration-300 group-[.active]:bg-obito-black">
-        <span class="group-[.active]:font-semibold group-[.active]:text-white">Perancis</span>
-      </p>
-      </button>
-    </div> --}}
     <div class="grid grid-cols-2 gap-5">
       @forelse($data as $transaction)
       <a href="{{ route('courses.learning', ['course' => $transaction->course->slug, 'courseSection' => $firstSectionId, 'sectionContent' => $firstContentId]) }}"

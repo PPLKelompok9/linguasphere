@@ -101,7 +101,7 @@
     @foreach($course['courses'] as $c)
     <div class="level-card">
     <div class="flag-container">
-      <img src="{{  Storage::url($c['cover']) }}" alt="English Flag" class="flag">
+      <img src="{{  $c['cover'] }}" alt="English Flag" class="flag">
     </div>
     <div class="level-content">
       <h2><span class="target-icon"></span> {{ $c['name'] }}</h2>

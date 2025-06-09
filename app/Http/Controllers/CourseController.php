@@ -54,14 +54,14 @@ class CourseController extends Controller
     $sectionContentId = $firstContent?->id ?? '';
 
     $aboutContents = [
-      'paket-intensive-1-bulan' => [
+      'intermediate-business-english' => [
         'learn' => [
-          'Pengenalan dan penggunaan ekspresi dasar dalam kehidupan sehari-hari',
-          'Latihan mendeskripsikan orang, tempat, dan benda secara lisan dan tulisan',
-          'Kemampuan melakukan interaksi sosial seperti bertanya, menjawab, dan bernegosiasi',
-          'Penguasaan tata bahasa dasar (Part of Speech dan Tenses umum)',
-          'Pemahaman dan penggunaan kalimat kompleks: Modal & WH Questions',
-          'Persiapan evaluasi pemahaman secara terstruktur (ujian mingguan)'
+          'Cara Menulis Email Resmi yang Efektif',
+          'Teknik Membuka & Menutup Presentasi',
+          'Tips Menggunakan Visual Aids & Slide',
+          'Ungkapan Umum dalam Meeting & Telepon',
+          'Dasar-dasar Bahasa Negosiasi',
+          'Teknik Mendengarkan & Simulasi Negosiasi'
         ],
         'instructor' => [
           [
@@ -86,14 +86,14 @@ class CourseController extends Controller
           ]
         ]
       ],
-      'paket-kelas-reguler-basic' => [
+      'advanced-english-for-academic-purposes' => [
         'learn' => [
-          'Pengenalan dan pembelajaran huruf Hiragana dan Katakana',
-          'Penguasaan 110 huruf Kanji dasar',
-          'Menghafal minimal 800 kosakata umum',
-          'Pembelajaran pola kalimat dasar dalam bahasa Jepang',
-          'Latihan berkomunikasi secara lisan dan tulisan',
-          'Persiapan dan target kelulusan JLPT N5'
+          'Struktur Esai & Penulisan Thesis Statement',
+          'Menulis Bagian Pendahuluan yang Efektif',
+          'Penggunaan Kosakata dalam Konteks Akademik',
+          'Cara Menyitir & Menghindari Plagiarisme',
+          'Membuat Outline Penelitian',
+          'Tips Berbicara di Depan Umum'
         ],
         'instructor' => [
           [

@@ -2,7 +2,7 @@
 @section('content')
   @php
     $activeCategory = request('category_id') ?? ($categories->first()->id ?? null);
-  @endphp
+    @endphp
   <main class="pb-10 mt-[30px]">
     <section class="pl-[calc(((100%-1280px)/2)+75px)] pr-[calc(((100%-1280px)/2)+75px)]">
     <section id="catalog" class="flex flex-col w-full max-w-[1280px] gap-4 mx-auto">
@@ -36,7 +36,7 @@
         <div
         class="roadmap-card flex items-center rounded-[20px] border border-obito-grey p-[10px] pr-4 gap-4 bg-white hover:border-obito-green transition-all duration-300">
         <div class="relative flex shrink-0 w-[240px] h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-        <img src="{{ Storage::url($detail->course->cover) }}" class="w-full h-full object-cover" alt="thumbnail">
+        <img src="{{ $detail->course->cover }}" class="w-full h-full object-cover" alt="thumbnail">
         </div>
         <div class="flex flex-col justify-between h-[100px] flex-1 gap-3">
         <h3 class="font-bold text-lg line-clamp-2 self-start">{{ $detail->course->name }}</h3>

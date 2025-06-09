@@ -6,7 +6,7 @@
       class="flex items-center w-full max-w-[1000px] rounded-[20px] border border-obito-grey p-5 gap-[30px] bg-white mx-auto">
       <div id="thumbnail-container"
       class="flex relative w-[500px] h-[350px] shrink-0 rounded-[14px] overflow-hidden bg-obito-grey">
-      <img src="{{ asset('storage/' . $course->cover) }}" class="w-full h-full object-fill" alt="thumbnail">
+      <img src="{{ $course->cover }}" class="w-full h-full object-fill" alt="thumbnail">
       </div>
       <div id="course-info" class="flex flex-col justify-center gap-[30px]">
       <div class="flex flex-col gap-[10px]">
@@ -116,22 +116,22 @@
         <div id="lessons-content" class="tab-content flex flex-col gap-5 w-full max-w-[650px] hidden">
         @foreach($course->courseSections as $section)
         <div class="accordion flex flex-col gap-4 rounded-[20px] border border-obito-grey p-5 bg-white">
-          <button type="button" id="accordion-btn" data-expand="section-{{ $section->id }}"
-          class="flex items-center justify-between" data-target="section-{{ $section->id }}>
-        <p class=" font-semibold text-lg">{{ $section->name }}</p>
-          <img src="/assets/images/icons/arrow-circle-down.svg" alt="icon"
+        <button type="button" id="accordion-btn" data-expand="section-{{ $section->id }}"
+        class="flex items-center justify-between" data-target="section-{{ $section->id }}>
+      <p class=" font-semibold text-lg">{{ $section->name }}</p>
+        <img src="/assets/images/icons/arrow-circle-down.svg" alt="icon"
           class="size-6 shrink-0 transition-all duration-300 -rotate-180" />
-          </button>
-          <div id="section-{{ $section->id }}" class="">
-          <div class="flex flex-col gap-4">
+        </button>
+        <div id="section-{{ $section->id }}" class="">
+        <div class="flex flex-col gap-4">
           @foreach($section->sectionContents as $content)
         <div class="flex items-center rounded-[50px] gap-[10px] border border-obito-grey py-3 px-4 bg-white">
         <img src="/assets/images/icons/menu-board.svg" class="size-6 flex shrink-0" alt="icon">
         <p class="font-semibold">{{ $content->name }}</p>
         </div>
         @endforeach
-          </div>
-          </div>
+        </div>
+        </div>
         </div>
       @endforeach
         </div>
@@ -144,10 +144,11 @@
 
 @push('after-scripts')
 
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
   <script>
     $(function () {
-    // Pastikan lessons-content sudah tampil
-    // Tampilkan panel pertama dan putar panah pertama
     $('#lessons-content .accordion > div[id]').hide().first().show();
     $('#lessons-content .accordion button img').removeClass('-rotate-180').first().addClass('-rotate-180');
 
@@ -163,10 +164,8 @@
       $targetPanel.slideUp();
       $img.removeClass('-rotate-180');
       } else {
-      // Tutup semua panel & reset semua panah
       $('#lessons-content .accordion > div[id]').slideUp();
       $('#lessons-content .accordion button img').removeClass('-rotate-180');
-      // Buka panel yang diklik & putar panah
       $targetPanel.slideDown();
       $img.addClass('-rotate-180');
       }

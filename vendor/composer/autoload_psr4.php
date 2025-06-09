@@ -71,6 +71,7 @@ return array(
     'League\\Uri\\' => array($vendorDir . '/league/uri', $vendorDir . '/league/uri-interfaces'),
     'League\\MimeTypeDetection\\' => array($vendorDir . '/league/mime-type-detection/src'),
     'League\\Flysystem\\Local\\' => array($vendorDir . '/league/flysystem-local'),
+    'League\\Flysystem\\AwsS3V3\\' => array($vendorDir . '/league/flysystem-aws-s3-v3'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'League\\Csv\\' => array($vendorDir . '/league/csv/src'),
     'League\\Config\\' => array($vendorDir . '/league/config/src'),
@@ -82,6 +83,7 @@ return array(
     'Laravel\\Pail\\' => array($vendorDir . '/laravel/pail/src'),
     'Laravel\\Breeze\\' => array($vendorDir . '/laravel/breeze/src'),
     'Kirschbaum\\PowerJoins\\' => array($vendorDir . '/kirschbaum-development/eloquent-power-joins/src'),
+    'JmesPath\\' => array($vendorDir . '/mtdowling/jmespath.php/src'),
     'Illuminate\\Support\\' => array($vendorDir . '/laravel/framework/src/Illuminate/Macroable', $vendorDir . '/laravel/framework/src/Illuminate/Collections', $vendorDir . '/laravel/framework/src/Illuminate/Conditionable'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\UriTemplate\\' => array($vendorDir . '/guzzlehttp/uri-template/src'),
@@ -117,6 +119,7 @@ return array(
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'BladeUI\\Icons\\' => array($vendorDir . '/blade-ui-kit/blade-icons/src'),
     'BladeUI\\Heroicons\\' => array($vendorDir . '/blade-ui-kit/blade-heroicons/src'),
+    'Aws\\' => array($vendorDir . '/aws/aws-sdk-php/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
     'AnourValar\\EloquentSerialize\\' => array($vendorDir . '/anourvalar/eloquent-serialize/src'),
 );

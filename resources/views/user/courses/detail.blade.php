@@ -116,13 +116,13 @@
         <div id="lessons-content" class="tab-content flex flex-col gap-5 w-full max-w-[650px] hidden">
         @foreach($course->courseSections as $section)
         <div class="accordion flex flex-col gap-4 rounded-[20px] border border-obito-grey p-5 bg-white">
-          <button type="button" id="accordion-btn" data-expand="WarmingUp" class="flex items-center justify-between"
-          data-target="section-{{ $section->id }}>
+          <button type="button" id="accordion-btn" data-expand="section-{{ $section->id }}"
+          class="flex items-center justify-between" data-target="section-{{ $section->id }}>
         <p class=" font-semibold text-lg">{{ $section->name }}</p>
           <img src="/assets/images/icons/arrow-circle-down.svg" alt="icon"
           class="size-6 shrink-0 transition-all duration-300 -rotate-180" />
           </button>
-          <div id="section-{{ $section->id }}" class="hidden">
+          <div id="section-{{ $section->id }}" class="">
           <div class="flex flex-col gap-4">
           @foreach($section->sectionContents as $content)
         <div class="flex items-center rounded-[50px] gap-[10px] border border-obito-grey py-3 px-4 bg-white">
@@ -141,3 +141,37 @@
     </section>
   </main>
 @endsection
+
+@push('after-scripts')
+
+  <script>
+    $(function () {
+    // Pastikan lessons-content sudah tampil
+    // Tampilkan panel pertama dan putar panah pertama
+    $('#lessons-content .accordion > div[id]').hide().first().show();
+    $('#lessons-content .accordion button img').removeClass('-rotate-180').first().addClass('-rotate-180');
+
+    $('#lessons-content [data-expand]').on('click', function (e) {
+      e.preventDefault();
+      const $btn = $(this);
+      const $img = $btn.find('img');
+      const targetId = $btn.data('expand');
+      const $targetPanel = $('#' + targetId);
+
+      if ($targetPanel.is(':visible')) {
+      // Jika panel sudah terbuka, tutup panel & reset panah
+      $targetPanel.slideUp();
+      $img.removeClass('-rotate-180');
+      } else {
+      // Tutup semua panel & reset semua panah
+      $('#lessons-content .accordion > div[id]').slideUp();
+      $('#lessons-content .accordion button img').removeClass('-rotate-180');
+      // Buka panel yang diklik & putar panah
+      $targetPanel.slideDown();
+      $img.addClass('-rotate-180');
+      }
+    });
+    });
+  </script>
+
+@endpush

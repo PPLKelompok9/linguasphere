@@ -31,7 +31,6 @@
   @yield('content')
   <script src="{{asset('js/dropdown-navbar.js')}}"></script>
   <script src="{{asset('js/switching-tabs.js')}}"></script>
-  <script src="{{asset('js/accordion.js')}}"></script>
   <script src="{{asset('js/tabs.js')}}"></script>
   @stack('after-scripts')
 </body>

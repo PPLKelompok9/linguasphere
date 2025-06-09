@@ -19,7 +19,7 @@
       </ul>
       <header class="flex flex-col gap-[12px]">
         <div class="flex justify-center items-center overflow-hidden w-full h-[100px] rounded-[14px]">
-        <img src="{{ Storage::url($course->cover) }}" alt="image" class="w-full h-full object-cover" />
+        <img src="{{ Storage::url($course->cover) }}" alt="cover course" class="w-full h-full object-cover" />
         </div>
         <h1 class="font-bold">{{$course->name}}</h1>
       </header>
@@ -108,9 +108,39 @@
   @push('after-scripts')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/accordion.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script>
+    $(function () {
+      // Sembunyikan semua panel kecuali yang pertama
+      $(".lesson.accordion div[id]").hide().first().show();
+      // Reset semua panah, lalu putar panah pertama
+      $(".lesson.accordion button img").removeClass("-rotate-180").first().addClass("-rotate-180");
+
+      $("[data-expand]").on("click", function (e) {
+      e.preventDefault();
+      const $btn = $(this);
+      const $img = $btn.children("img");
+      const targetId = $btn.data("expand");
+      const $targetPanel = $("#" + targetId);
+
+      // Jika panel sudah terbuka, tutup semua
+      if ($targetPanel.is(":visible")) {
+        $targetPanel.slideUp();
+        $img.removeClass("-rotate-180");
+      } else {
+        // Tutup semua panel & reset panah
+        $(".lesson.accordion div[id]").slideUp();
+        $(".lesson.accordion button img").removeClass("-rotate-180");
+        // Buka panel yang diklik & putar panah
+        $targetPanel.slideDown();
+        $img.addClass("-rotate-180");
+      }
+      });
+    });
+    </script>
+
     <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('pre').forEach(pre => {

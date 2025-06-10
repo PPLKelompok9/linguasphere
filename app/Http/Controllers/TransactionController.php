@@ -101,7 +101,7 @@ class TransactionController extends Controller
     if (!$data) {
       return redirect()->user('courses-index')->with('error', 'No recent payment course.');
     }
-    return view('user.courses.checkout-success', compact('data'));
+    return view('user.courses.checkout_success', compact('data'));
   }
 
   public function historyCheckouts()

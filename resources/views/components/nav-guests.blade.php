@@ -1,9 +1,8 @@
 <nav id="nav-guest" class="flex w-full bg-white border-b border-obito-grey">
   <div class="flex w-[1280px] px-[75px] py-5 items-center justify-between mx-auto">
-    <div class="flex items-center gap-[50px]">
-      <a href="{{ url('/') }}" class="flex items-center gap-2 shrink-0">
-        <img src="{{ asset('assets/images/logos/logo-64.svg') }}" class="flex shrink-0" alt="logo">
-        <span class="font-bold text-2xl tracking-wide">Linguasphere</span>
+    <div class="flex items-center gap-[15rem]">
+      <a href="/" class="flex shrink-0">
+        <img src="{{ asset('assets/images/logos/linguasphere.png') }}" class="flex shrink-0 w-[70px]" alt="logo">
       </a>
       <ul class="flex items-center gap-10">
         <li class="hover:font-semibold transition-all duration-300 {{ request()->is('/') ? 'font-semibold' : '' }}">

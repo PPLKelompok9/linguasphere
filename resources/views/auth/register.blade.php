@@ -1,7 +1,21 @@
 <x-guest-layout>
-  <form method="POST" action="{{ route('register') }}"
+  <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data"
     class="flex flex-col h-fit w-[510px] shrink-0 rounded-[20px] border border-obito-grey p-5 gap-4 bg-white">
     @csrf
+
+    <label class="relative flex items-center gap-3">
+      <button id="upload-photo" type="button"
+        class="relative w-[90px] h-[90px] flex rounded-full overflow-hidden border border-obito-grey focus:ring-obito-green transition-all duration-300">
+        <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 font-semibold text-sm">
+          Add <br>Photo
+        </span>
+        <img id="photo-preview" src="" class="w-full h-full object-cover hidden" alt="profile">
+      </button>
+      <button id="delete-photo" type="button"
+        class="rounded-full w-fit py-[6px] px-[10px] bg-obito-light-red font-bold text-xs text-obito-red hidden">DELETE
+        PHOTO</button>
+      <input id="hidden-input" type="file" accept="image/*" name="photo" class="absolute -z-10 opacity-0">
+    </label>
 
     <!-- Name -->
     <div class="flex flex-col gap-2 mt-4">
@@ -50,4 +64,40 @@
       </x-primary-button>
     </div>
   </form>
+
+  <script>
+    const fileInput = document.getElementById('hidden-input');
+    const previewImg = document.getElementById('photo-preview');
+    const addPhotoText = document.querySelector('#upload-photo span');
+    const deletePhotoBtn = document.getElementById('delete-photo');
+
+    document.getElementById('upload-photo').addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          previewImg.src = e.target.result;
+          previewImg.classList.remove('hidden');
+          addPhotoText.classList.add('hidden');
+          deletePhotoBtn.classList.remove('hidden');
+        };
+
+        reader.readAsDataURL(file);
+      }
+    });
+
+    deletePhotoBtn.addEventListener('click', () => {
+      fileInput.value = '';
+      previewImg.src = '';
+      previewImg.classList.add('hidden');
+      addPhotoText.classList.remove('hidden');
+      deletePhotoBtn.classList.add('hidden');
+    });
+  </script>
 </x-guest-layout>

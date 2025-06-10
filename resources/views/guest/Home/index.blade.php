@@ -31,7 +31,7 @@
     </div>
     </div>
     <div class="flex shrink-0 h-[590px] w-[666px] justify-end">
-    <img src="{{ asset('assets/images/logos/background.jpeg') }}" alt="hero">
+    <img src="{{ asset('assets/images/logos/background.png') }}" alt="hero">
     </div>
   </main>
 

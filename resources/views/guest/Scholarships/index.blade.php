@@ -32,7 +32,7 @@
       </h3>
       <div class="flex items-center justify-between pt-2">
         <p class="text-sm text-gray-600">
-        Deadline: {{ $scholarship->deadline }}
+        Deadline: {{ \Carbon\Carbon::parse($scholarship->deadline)->translatedFormat('d F Y') }}
         </p>
         <p class="text-sm text-gray-600">
         Kuota: {{ $scholarship->slots_available }}

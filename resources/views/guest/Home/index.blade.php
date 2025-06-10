@@ -17,11 +17,11 @@
         native speakers to ensure an effective and relevant learning experience.</p>
       </div>
       <div class="flex items-center gap-[18px]">
-        <a href="{{ url('/pricing') }}"
+        <a href="{{ route('courses.guest') }}"
         class="flex items-center rounded-full h-[67px] py-5 px-[30px] gap-[10px] bg-obito-green hover:drop-shadow-effect transition-all duration-300">
         <span class="text-white font-semibold text-lg">Get Started</span>
         </a>
-        <a href="#"
+        <a href="{{ route('paths.guest') }}"
         class="flex items-center rounded-full h-[67px] border border-obito-grey py-5 px-[30px] bg-white gap-[10px] hover:border-obito-green transition-all duration-300">
         <img src="{{ asset('assets/images/icons/play-circle-fill.svg') }}" class="size-8 flex shrink-0" alt="icon">
         <span class="font-semibold text-lg">How It Works</span>
@@ -31,7 +31,7 @@
     </div>
     </div>
     <div class="flex shrink-0 h-[590px] w-[666px] justify-end">
-    <img src="{{ asset('assets/images/backgrounds/hero-image.png') }}" alt="hero">
+    <img src="{{ asset('assets/images/logos/background.jpeg') }}" alt="hero">
     </div>
   </main>
 

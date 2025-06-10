@@ -57,7 +57,7 @@
         <h2 class="font-semibold">Access Given to</h2>
         <div class="profile flex items-center gap-[14px] rounded-[20px] border border-obito-grey p-[14px]">
           <div class="flex justify-center items-center overflow-hidden size-[50px] rounded-full">
-          <img src="{{ asset('storage/' . $user->photo) }}" class="w-full h-full object-cover" alt="profile">
+          <img src="{{ $user->photo }}" class="w-full h-full object-cover" alt="profile">
           </div>
           <h3 class="font-semibold">{{ $user->name }}</h3>
         </div>
@@ -66,7 +66,7 @@
       <div id="benefits" class="bg-[#F8FAF9] rounded-[20px] overflow-hidden shrink-0 w-[420px]">
         <section id="thumbnails"
         class="relative flex justify-center h-[250px] items-center overflow-hidden rounded-t-[14px] w-full">
-        <img src="{{ asset('storage/' . $course->cover) }}" class="w-full h-full object-cover" alt="thumbnail">
+        <img src="{{ $course->cover }}" class="w-full h-full object-cover" alt="thumbnail">
         </section>
         <section id="points" class="pt-[61px] relative flex flex-col gap-4 px-5 pb-5">
         <div
@@ -77,21 +77,23 @@
           <p class="text-obito-text-secondary">Life Time</p>
           </div>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="mt-5 flex flex-col space-y-2">
+          <div class="flex items-center gap-2">
           <img src="/assets/images/icons/tick-circle-green-fill.svg" alt="icon" class="size-6 shrink-0" />
           <p class="font-semibold">Access 1500+ Online Courses</p>
-        </div>
-        <div class="flex items-center gap-2">
+          </div>
+          <div class="flex items-center gap-2">
           <img src="/assets/images/icons/tick-circle-green-fill.svg" alt="icon" class="size-6 shrink-0" />
           <p class="font-semibold">Get Premium Certifications</p>
-        </div>
-        <div class="flex items-center gap-2">
+          </div>
+          <div class="flex items-center gap-2">
           <img src="/assets/images/icons/tick-circle-green-fill.svg" alt="icon" class="size-6 shrink-0" />
           <p class="font-semibold">High Quality Work Portfolio</p>
-        </div>
-        <div class="flex items-center gap-2">
+          </div>
+          <div class="flex items-center gap-2">
           <img src="/assets/images/icons/tick-circle-green-fill.svg" alt="icon" class="size-6 shrink-0" />
           <p class="font-semibold">Support learning 24/7</p>
+          </div>
         </div>
         </section>
       </div>

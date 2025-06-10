@@ -6,7 +6,7 @@
       class="flex items-center w-full max-w-[1000px] rounded-[20px] border border-obito-grey p-5 gap-[30px] bg-white mx-auto">
       <div id="thumbnail-container"
       class="flex relative w-[500px] h-[350px] shrink-0 rounded-[14px] overflow-hidden bg-obito-grey">
-      <img src="{{ asset('storage/' . $course->cover) }}" class="w-full h-full object-fill" alt="thumbnail">
+      <img src="{{ $course->cover }}" loading="lazy" class="w-full h-full object-fill" alt="thumbnail">
       </div>
       <div id="course-info" class="flex flex-col justify-center gap-[30px]">
       <div class="flex flex-col gap-[10px]">
@@ -82,47 +82,99 @@
       @endforeach
           </div>
         </div>
-        <div id="instructors"
-          class="flex flex-col w-full max-w-[900px] rounded-[20px] border border-obito-grey p-5 gap-4 bg-white">
-          <h3 class="font-semibold text-lg">Course Instructors</h3>
-          <div class="grid grid-cols-2 gap-5">
-          @foreach ($instructor as $teacher)
-        <div class="instructors-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white">
-        <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="flex w-[50px] h-[50px] shrink-0 rounded-full overflow-hidden">
-          <img src="{{ asset($teacher['photo']) }}" class="w-full h-full object-cover"
-          alt="{{ $teacher['name'] }}">
+        <div id="testimonials-content" class="tab-content grid grid-cols-2 w-full max-w-[860px] gap-5">
+          <div class="testimonial-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white">
+          <div class="flex items-center">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
           </div>
-          <div>
-          <p class="font-semibold">{{ $teacher['name'] }}</p>
+          <p class="leading-7">"Kelas ini benar-benar mengubah cara saya belajar! Materinya disampaikan dengan
+            sangat jelas, dan mentor sangat membantu. Saya merasa lebih percaya diri setelah mengikuti kursus ini.
+            Terima kasih!"</p>
+          <div class="flex items-center gap-3">
+            <div class="flex w-[50px] h-[50px] shrink-0 rounded-full overflow-hidden">
+            <img src="/assets/images/photos/avatar1.png" class="w-full h-full object-cover" alt="profile">
+            </div>
+            <div>
+            <p class="font-semibold">Pung</p>
+            </div>
           </div>
-        </div>
-        <div class="flex items-center">
-          <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
-          <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
-          <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
-          <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
-          <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
-        </div>
-        </div>
-        <hr class="border-obito-grey">
-        <p class="leading-7 text-justify">{{ $teacher['description'] }}</p>
-        </div>
-      @endforeach
+          </div>
+          <div class="testimonial-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white">
+          <div class="flex items-center">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+          </div>
+          <p class="leading-7">"Saya sudah mencoba banyak kursus online, tapi yang ini benar-benar berbeda.
+            Pembahasannya detail, latihan soal sangat relevan, dan komunitasnya sangat suportif. Sangat
+            direkomendasikan!"</p>
+          <div class="flex items-center gap-3">
+            <div class="flex w-[50px] h-[50px] shrink-0 rounded-full overflow-hidden">
+            <img src="/assets/images/photos/avatar2.png" class="w-full h-full object-cover" alt="profile">
+            </div>
+            <div>
+            <p class="font-semibold">Aang</p>
+            </div>
+          </div>
+          </div>
+          <div class="testimonial-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white">
+          <div class="flex items-center">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+          </div>
+          <p class="leading-7">"Awalnya ragu karena harganya cukup terjangkau, tapi ternyata kualitasnya premium!
+            Saya berhasil menguasai materi dengan cepat berkat metode pengajaran yang sistematis. Pokoknya worth
+            it banget!"</p>
+          <div class="flex items-center gap-3">
+            <div class="flex w-[50px] h-[50px] shrink-0 rounded-full overflow-hidden">
+            <img src="/assets/images/photos/avatar3.png" class="w-full h-full object-cover" alt="profile">
+            </div>
+            <div>
+            <p class="font-semibold">Tri</p>
+            </div>
+          </div>
+          </div>
+          <div class="testimonial-card flex flex-col rounded-[20px] border border-obito-grey p-5 gap-4 bg-white">
+          <div class="flex items-center">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/Star 1.svg" class="w-5 flex shrink-0" alt="icon">
+          </div>
+          <p class="leading-7">"Saya tidak menyangka bisa mendapatkan hasil sebaik ini dalam waktu singkat. Mentor
+            sangat berpengalaman dan selalu siap membantu. Sekarang saya bisa menerapkan ilmu ini langsung di
+            pekerjaan saya. 10/10!"</p>
+          <div class="flex items-center gap-3">
+            <div class="flex w-[50px] h-[50px] shrink-0 rounded-full overflow-hidden">
+            <img src="/assets/images/photos/avatar4.png" class="w-full h-full object-cover" alt="profile">
+            </div>
+            <div>
+            <p class="font-semibold">Yanto</p>
+            </div>
+          </div>
           </div>
         </div>
         </div>
         <div id="lessons-content" class="tab-content flex flex-col gap-5 w-full max-w-[650px] hidden">
         @foreach($course->courseSections as $section)
         <div class="accordion flex flex-col gap-4 rounded-[20px] border border-obito-grey p-5 bg-white">
-          <button type="button" id="accordion-btn" data-expand="WarmingUp" class="flex items-center justify-between"
-          data-target="section-{{ $section->id }}>
+          <button type="button" id="accordion-btn" data-expand="section-{{ $section->id }}"
+          class="flex items-center justify-between" data-target="section-{{ $section->id }}>
         <p class=" font-semibold text-lg">{{ $section->name }}</p>
           <img src="/assets/images/icons/arrow-circle-down.svg" alt="icon"
           class="size-6 shrink-0 transition-all duration-300 -rotate-180" />
           </button>
-          <div id="section-{{ $section->id }}" class="hidden">
+          <div id="section-{{ $section->id }}" class="">
           <div class="flex flex-col gap-4">
           @foreach($section->sectionContents as $content)
         <div class="flex items-center rounded-[50px] gap-[10px] border border-obito-grey py-3 px-4 bg-white">
@@ -141,3 +193,36 @@
     </section>
   </main>
 @endsection
+
+@push('after-scripts')
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <script>
+    $(function () {
+    $('#lessons-content .accordion > div[id]').hide().first().show();
+    $('#lessons-content .accordion button img').removeClass('-rotate-180').first().addClass('-rotate-180');
+
+    $('#lessons-content [data-expand]').on('click', function (e) {
+      e.preventDefault();
+      const $btn = $(this);
+      const $img = $btn.find('img');
+      const targetId = $btn.data('expand');
+      const $targetPanel = $('#' + targetId);
+
+      if ($targetPanel.is(':visible')) {
+      // Jika panel sudah terbuka, tutup panel & reset panah
+      $targetPanel.slideUp();
+      $img.removeClass('-rotate-180');
+      } else {
+      $('#lessons-content .accordion > div[id]').slideUp();
+      $('#lessons-content .accordion button img').removeClass('-rotate-180');
+      $targetPanel.slideDown();
+      $img.addClass('-rotate-180');
+      }
+    });
+    });
+  </script>
+
+@endpush

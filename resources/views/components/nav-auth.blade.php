@@ -24,8 +24,8 @@
           <a href="{{ route('paths.index') }}">Roadmap</a>
         </li>
         <li
-          class="hover:font-semibold transition-all duration-300 {{ request()->routeIs('sertifications.*') ? 'font-semibold ' : '' }}">
-          <a href="{{ route('sertifications.coming_soon') }}">Sertification</a>
+          class="hover:font-semibold transition-all duration-300 {{ request()->routeIs('scholarships*') || request()->routeIs('scholarships.index') ? 'font-semibold ' : '' }}">
+          <a href="{{ route('scholarships.index') }}">Scholarship</a>
         </li>
       </ul>
     </div>
@@ -33,7 +33,7 @@
       <div class="h-[50px] flex shrink-0 bg-obito-grey w-px"></div>
       <div id="profile-dropdown" class="relative flex items-center gap-[14px]">
         <div class="flex shrink-0 w-[50px] h-[50px] rounded-full overflow-hidden bg-obito-grey">
-          <img src="{{ Storage::url($user->photo) }}" class="w-full h-full object-cover" alt="photo">
+          <img src="{{ $user->photo }}" class="w-full h-full object-cover" alt="profile">
         </div>
         <div>
           <p class="font-semibold text-lg">{{ $user->name }}</p>

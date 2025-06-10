@@ -12,7 +12,7 @@
         <h2 class="font-semibold">User Information</h2>
         <div class="profile flex items-center gap-[14px] rounded-[20px] border border-obito-grey p-[14px]">
           <div class="flex justify-center items-center overflow-hidden size-[50px] rounded-full">
-          <img src="{{ asset('storage/' . $user->photo) }}" class="w-full h-full object-cover" alt="profile">
+          <img src="{{ $user->photo }}" class="w-full h-full object-cover" alt="profile">
           </div>
           <h3 class="font-semibold">{{ $user->name }}</h3>
         </div>
@@ -66,7 +66,7 @@
       <div id="benefits" class="bg-[#F8FAF9] rounded-[20px] overflow-hidden shrink-0 w-[420px]">
         <section id="thumbnails"
         class="relative flex justify-center h-[250px] items-center overflow-hidden rounded-t-[14px] w-full">
-        <img src="{{ Storage::url($course->cover) }}" alt="course cover" class="size-full object-cover" />
+        <img src="{{ $course->cover }}" alt="course cover" class="size-full object-cover" />
         </section>
         <section id="points" class="pt-[61px] relative flex flex-col gap-4 px-5 pb-5">
         <div

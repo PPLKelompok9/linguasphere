@@ -15,11 +15,16 @@ use Illuminate\Support\Facades\DB;
 class ScholarshipController extends Controller
 {
 
+  public function indexGuest()
+  {
+    $scholarships = Scholarship::with('course')->get();
+    return view('guest.Scholarships.index', compact('scholarships'));
+  }
+
   public function index()
   {
     $scholarships = Scholarship::with('course')->get();
-    // dd($scholarships);  
-    return view('scholarships.index', compact('scholarships'));
+    return view('user.scholarships.index', compact('scholarships'));
   }
 
 
@@ -55,19 +60,16 @@ class ScholarshipController extends Controller
   public function show(int $id)
   {
     $scholarship = Scholarship::with('course')->find($id);
-    //dd($scholarship);
-    return view('scholarships.show', compact('scholarship'));
+    return view('user.scholarships.show', compact('scholarship'));
   }
 
   public function applyForScholarship(int $id)
   {
-    //menerima request user auth 
     $user = Auth::user();
 
     //Mencari id scholarship
     $scholarship = Scholarship::with('course.agency')->where('id', $id)->first();
 
-    // //Validasi scholarship user
     $existingApplication = ScholarshipDetail::where('id_user', $user->id)
       ->where('id_scholarship', $scholarship->id)
       ->first();
@@ -105,7 +107,6 @@ class ScholarshipController extends Controller
       ScholarshipDetail::create($scholarshipData);
       Transaction::create($transactionData);
       $scholarship->decrement('slots_available');
-      // dd($createdScholarship, $createdTransaction, $cek);
       DB::commit();
       return redirect()->route('external.dashboard')->with('success', 'Selamat, kami berhasil mendapatkan beasiswa');
     } catch (\Throwable $e) {

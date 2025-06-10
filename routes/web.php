@@ -7,15 +7,12 @@ use App\Http\Controllers\ExternalController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScholarshipController;
-use App\Http\Controllers\SertificationController;
-use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 
-// Routing Guest
 Route::get('/', function () {
   return view('guest.Home.index');
 });
@@ -25,9 +22,10 @@ Route::get('/courses/detail/{id}', [CourseController::class, 'showDetailCoursesB
 
 Route::get('/learning-path', [PathController::class, 'guestIndex'])->name('paths.guest');
 
+Route::get('/scholarships', [ScholarshipController::class, 'indexGuest'])->name('scholarships.guest');
+
 Route::match(['get', 'post'], '/transactions/payment/midtrans/notification', [TransactionController::class, 'handlePaymentNotification'])->name('external.payment_midtrans_notification');
 
-// Routing Authenticated
 Route::middleware('auth')->group(function () {
 
   Route::middleware('role:admin')->group(function () {
@@ -70,9 +68,6 @@ Route::middleware('auth')->group(function () {
 
     // User Roadmaps
     Route::get('/paths', [PathController::class, 'index'])->name('paths.index');
-
-    // User Sertifications
-    Route::get('/sertifications', [SertificationController::class, 'comingSoon'])->name('sertifications.coming_soon');
 
     // User Transactions
     Route::get('/transactions/checkouts/{id}', [TransactionController::class, 'checkoutsGuest'])->name('guest.checkouts');

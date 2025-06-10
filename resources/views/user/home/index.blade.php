@@ -10,8 +10,7 @@
       <div
       class="roadmap-card flex items-center rounded-[20px] border border-obito-grey p-[10px] pr-4 gap-4 bg-white hover:border-obito-green transition-all duration-300">
       <div class="relative flex shrink-0 w-[240px] h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-      <img src="{{ Storage::url($transaction->course->cover) }}" class="w-full h-full object-cover"
-        alt="thumbnail">
+      <img src="{{ $transaction->course->cover }}" class="w-full h-full object-cover" alt="thumbnail">
 
       </div>
       <div class="flex flex-col gap-3">

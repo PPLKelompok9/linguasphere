@@ -17,6 +17,10 @@
           class="hover:font-semibold transition-all duration-300 {{ request()->is('learning-path') ? 'font-semibold' : '' }}">
           <a href="{{ route('paths.guest') }}">Learning Path</a>
         </li>
+        <li
+          class="hover:font-semibold transition-all duration-300 {{ request()->is('scholarships') ? 'font-semibold' : '' }}">
+          <a href="{{ route('scholarships.guest') }}">Scholarship</a>
+        </li>
       </ul>
     </div>
     <div class="flex items-center gap-5 justify-end">

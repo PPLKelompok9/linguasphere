@@ -37,7 +37,11 @@ class CourseResource extends Resource
         FileUpload::make('cover')->label('Gambar Kursus')->required()->hint('Upload cover gambar kursus'),
         TextInput::make('price')->numeric()->inputMode('decimal')->label('Harga Kursus')->required(),
         TextInput::make('diskon_price')->numeric()->inputMode('decimal')->label('Harga Diskon')->required()->default(0),
-        Select::make('level')->label('Level')->required()->options(['beginner' => 'Pemula', 'intermediate' => 'Menengah', 'advanced' => 'profesional'])->default('beginner'),
+        Select::make('level')->label('Level')->required()->options([
+          'beginner' => 'Pemula',
+          'intermediate' => 'Menengah',
+          'advanced' => 'profesional'
+        ])->default('beginner'),
         Select::make('id_category')->label('Kategori')->relationship('category', 'name')->searchable()->preload(),
         TextInput::make('description')->label('Deskripsi Kursus')->required(),
       ]);

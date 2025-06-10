@@ -19,7 +19,7 @@ class PretestController extends Controller
   public function showTest($slug, Request $request)
   {
     $allQuestions = [
-      'paket-intensive-1-bulan' => [
+      'english-express-beginner-survival' => [
         [
           'question' => 'What time ___ you usually wake up?',
           'choices' => [
@@ -140,7 +140,6 @@ class PretestController extends Controller
       $answers = session('pretest_answers', []);
       $score = 0;
 
-      // Hitung skor (misal: 1 poin untuk jawaban benar)
       foreach ($answers as $idx => $ans) {
         if (isset($questions[$idx - 1])) {
           foreach ($questions[$idx - 1]['choices'] as $choice) {

@@ -107,5 +107,7 @@ class PaymentService
 
     $this->transactionService->create($transactionData);
     Log::info('Transaction successfully created: ' . $notification['order_id']);
+
+    $course->increment('total_students');
   }
 }

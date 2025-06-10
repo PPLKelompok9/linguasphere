@@ -39,7 +39,7 @@
         class="course-card flex flex-col rounded-[20px] border border-obito-grey hover:border-obito-green transition-all duration-300 bg-white overflow-hidden">
         <div class="thumbnail-container p-[10px]">
         <div class="relative w-full h-[150px] rounded-[14px] overflow-hidden bg-obito-grey">
-        <img src="{{ $course->cover }}" class="w-full h-full object-cover" alt="thumbnail">
+        <img src="{{ $course->cover }}" loading="lazy" class="w-full h-full object-cover" alt="thumbnail">
         </div>
         </div>
         <div class="flex flex-col p-4 pt-0 gap-[13px]">
